@@ -1,0 +1,303 @@
+/* ============================================================
+   PedalHound – Article Styles
+   ============================================================ */
+
+.art-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── Breadcrumb ── */
+.breadcrumb {
+  padding: 20px 0 0;
+  font-size: .8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+.breadcrumb a { color: var(--text-muted); }
+.breadcrumb a:hover { color: var(--orange); }
+.breadcrumb-sep { color: var(--border); }
+
+/* ── Article Hero ── */
+.art-hero {
+  padding: 32px 0 40px;
+}
+.art-hero-badges {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.art-hero h1 {
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  margin-bottom: 1rem;
+  line-height: 1.18;
+}
+.art-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  color: var(--text-muted);
+  font-size: .85rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.art-hero-meta span { display: flex; align-items: center; gap: .35rem; }
+
+/* ── Score Card ── */
+.score-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.score-big {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--orange);
+  line-height: 1;
+}
+.score-max { font-size: 1rem; color: var(--text-muted); align-self: flex-end; padding-bottom: .3rem; }
+.score-label { font-size: .8rem; color: var(--text-muted); margin-top: .1rem; }
+.score-stars { color: var(--orange); font-size: 1.1rem; letter-spacing: .05em; }
+
+/* ── Article Body ── */
+.art-body {
+  padding-bottom: 56px;
+}
+.art-body h2 {
+  font-size: 1.45rem;
+  margin: 2.2rem 0 .8rem;
+  color: var(--white);
+  padding-top: .5rem;
+  border-top: 1px solid var(--border);
+}
+.art-body h2:first-child { border-top: none; margin-top: 0; }
+.art-body h3 {
+  font-size: 1.1rem;
+  margin: 1.75rem 0 .5rem;
+  color: var(--white);
+}
+.art-body p {
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.art-body p strong { color: var(--text); }
+.art-body ul, .art-body ol {
+  color: var(--text-muted);
+  padding-left: 1.4rem;
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+.art-body ul { list-style: disc; }
+.art-body ol { list-style: decimal; }
+.art-body li { margin-bottom: .35rem; }
+.art-body a { color: var(--orange); }
+.art-body a:hover { color: var(--orange-lt); }
+
+/* ── Pros / Cons ── */
+.pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+.pros, .cons {
+  background: var(--bg2);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+}
+.pros { border: 1px solid rgba(80,180,120,.25); }
+.cons { border: 1px solid rgba(220,80,80,.2); }
+.pros h4 { color: #50b478; margin-bottom: .75rem; font-size: .88rem; text-transform: uppercase; letter-spacing: .08em; }
+.cons h4 { color: #dc5050; margin-bottom: .75rem; font-size: .88rem; text-transform: uppercase; letter-spacing: .08em; }
+.pros ul, .cons ul { list-style: none; padding: 0; margin: 0; }
+.pros li, .cons li {
+  font-size: .9rem;
+  color: var(--text-muted);
+  padding: .3rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  line-height: 1.5;
+}
+.pros li::before { content: '✓'; color: #50b478; font-weight: 700; flex-shrink: 0; }
+.cons li::before { content: '✗'; color: #dc5050; font-weight: 700; flex-shrink: 0; }
+
+/* ── Buying Guide Box ── */
+.buying-guide {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--orange);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  margin: 2rem 0;
+}
+.buying-guide-label {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--orange);
+  margin-bottom: .5rem;
+}
+.buying-guide h3 {
+  font-size: 1.15rem;
+  color: var(--white);
+  margin: 0 0 1rem;
+}
+.buying-guide p { color: var(--text-muted); margin-bottom: .75rem; font-size: .92rem; }
+.buying-guide p:last-child { margin-bottom: 0; }
+.buying-guide ul { list-style: none; padding: 0; margin: 0; }
+.buying-guide li {
+  color: var(--text-muted);
+  font-size: .9rem;
+  padding: .45rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: .75rem;
+  line-height: 1.55;
+}
+.buying-guide li:last-child { border-bottom: none; padding-bottom: 0; }
+.buying-guide li strong { color: var(--text); min-width: 120px; flex-shrink: 0; }
+
+/* ── Product Cards (roundups) ── */
+.product-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  transition: border-color var(--transition);
+}
+.product-card:hover { border-color: rgba(240,112,32,.35); }
+.product-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .75rem;
+  flex-wrap: wrap;
+}
+.product-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+}
+.product-card-sub {
+  font-size: .82rem;
+  color: var(--text-muted);
+  margin-top: .15rem;
+}
+.product-score {
+  background: var(--orange);
+  color: var(--white);
+  font-size: .88rem;
+  font-weight: 800;
+  padding: .25rem .65rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.product-card p { color: var(--text-muted); font-size: .9rem; margin-bottom: 1rem; line-height: 1.65; }
+.product-card p:last-child { margin-bottom: 0; }
+
+/* ── Affiliate Button ── */
+.btn-affiliate {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: .82rem;
+  font-weight: 600;
+  padding: .45rem 1rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all var(--transition);
+  cursor: pointer;
+  font-family: var(--font);
+}
+.btn-affiliate:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+.btn-affiliate::before { content: '🛒'; font-size: .85rem; }
+
+/* ── Verdict Box ── */
+.verdict {
+  background: linear-gradient(135deg, var(--bg2), var(--bg3));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin: 2.5rem 0 1rem;
+}
+.verdict-label {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--orange);
+  margin-bottom: .4rem;
+}
+.verdict h3 { color: var(--white); margin-bottom: .75rem; font-size: 1.15rem; }
+.verdict p { color: var(--text-muted); font-size: .92rem; margin-bottom: 0; line-height: 1.7; }
+
+/* ── Table of Contents ── */
+.toc {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  margin: 0 0 2rem;
+}
+.toc-title { font-size: .82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .75rem; }
+.toc ol { list-style: decimal; padding-left: 1.2rem; margin: 0; }
+.toc li { padding: .2rem 0; }
+.toc a { color: var(--text-muted); font-size: .88rem; }
+.toc a:hover { color: var(--orange); }
+
+/* ── Article Nav (prev/next) ── */
+.art-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.art-nav-link {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  transition: border-color var(--transition);
+  text-decoration: none;
+}
+.art-nav-link:hover { border-color: var(--orange); }
+.art-nav-dir { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); margin-bottom: .3rem; }
+.art-nav-title { font-size: .9rem; font-weight: 600; color: var(--text); }
+.art-nav-link.next { text-align: right; }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .pros-cons { grid-template-columns: 1fr; }
+  .art-nav { grid-template-columns: 1fr; }
+  .art-nav-link.next { text-align: left; }
+  .buying-guide { padding: 1.25rem; }
+  .buying-guide li { flex-direction: column; gap: .15rem; }
+  .buying-guide li strong { min-width: unset; }
+  .score-card { flex-direction: column; gap: .5rem; }
+}
