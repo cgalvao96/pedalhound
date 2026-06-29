@@ -1,22 +1,24 @@
 /* ============================================================
    PedalHound – Main Stylesheet
-   Dark theme, orange accents, mobile-first
+   Clean editorial style: charcoal background, white text,
+   single amber accent. Flat surfaces, no gradients.
    ============================================================ */
 
 :root {
-  --bg:        #0d0d0d;
-  --bg2:       #151515;
-  --bg3:       #1e1e1e;
-  --border:    #2a2a2a;
-  --text:      #e8e8e8;
+  --bg:        #1a1a1a;
+  --bg2:       #222222;
+  --bg3:       #2a2a2a;
+  --border:    #383838;
+  --text:      #f5f5f5;
   --text-muted:#999;
-  --orange:    #f07020;
-  --orange-dk: #c85a10;
-  --orange-lt: #ff8c3a;
+  --orange:    #e8a020;
+  --orange-dk: #c4850f;
+  --orange-lt: #f0b347;
+  --orange-soft: rgba(232,160,32,.35);
   --white:     #ffffff;
   --radius:    8px;
-  --radius-lg: 14px;
-  --shadow:    0 4px 24px rgba(0,0,0,.55);
+  --radius-lg: 12px;
+  --shadow:    0 2px 12px rgba(0,0,0,.35);
   --transition:0.22s ease;
   --max-w:     1140px;
   --font:      'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -211,15 +213,6 @@ p:last-child { margin-bottom: 0; }
 .hero {
   padding: 96px 0 80px;
   position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -120px; right: -120px;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(240,112,32,.12) 0%, transparent 70%);
-  pointer-events: none;
 }
 .hero-inner {
   display: grid;
@@ -236,8 +229,8 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--orange);
-  background: rgba(240,112,32,.1);
-  border: 1px solid rgba(240,112,32,.25);
+  background: transparent;
+  border: 1px solid var(--border);
   padding: .3rem .8rem;
   border-radius: 100px;
   margin-bottom: 1.2rem;
@@ -272,19 +265,13 @@ p:last-child { margin-bottom: 0; }
 .hero-feat-img {
   width: 100%;
   aspect-ratio: 16/9;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 4rem;
   position: relative;
-  overflow: hidden;
-}
-.hero-feat-img::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,.5) 100%);
 }
 .hero-feat-body { padding: 1.25rem; }
 .hero-feat-meta {
@@ -304,10 +291,11 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: .05em;
   text-transform: uppercase;
 }
-.badge-pedal  { background: rgba(240,112,32,.15); color: var(--orange); }
-.badge-amp    { background: rgba(80,180,120,.15); color: #50b478; }
-.badge-access { background: rgba(100,150,240,.15); color: #6496f0; }
-.badge-fx     { background: rgba(200,100,220,.15); color: #c864dc; }
+.badge-pedal, .badge-amp, .badge-access, .badge-fx {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
 .star-rating { color: var(--orange); font-size: .85rem; letter-spacing: .05em; }
 
 .float-card {
@@ -350,18 +338,19 @@ p:last-child { margin-bottom: 0; }
 }
 .review-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(240,112,32,.35);
-  box-shadow: 0 8px 32px rgba(0,0,0,.5);
+  border-color: var(--orange-soft);
+  box-shadow: var(--shadow);
 }
 .review-card-img {
   width: 100%;
   aspect-ratio: 16/9;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
   position: relative;
-  overflow: hidden;
 }
 .review-card-img .badge {
   position: absolute;
@@ -447,7 +436,7 @@ p:last-child { margin-bottom: 0; }
 
 /* ── CTA Banner ── */
 .cta-banner {
-  background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+  background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 3rem 2.5rem;
@@ -455,16 +444,6 @@ p:last-child { margin-bottom: 0; }
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  position: relative;
-  overflow: hidden;
-}
-.cta-banner::before {
-  content: '';
-  position: absolute;
-  right: -60px; top: -60px;
-  width: 280px; height: 280px;
-  background: radial-gradient(circle, rgba(240,112,32,.1) 0%, transparent 70%);
-  pointer-events: none;
 }
 .cta-banner-text h2 { margin-bottom: .5rem; }
 .cta-banner-text p  { color: var(--text-muted); margin-bottom: 0; max-width: 480px; }
@@ -611,13 +590,6 @@ p:last-child { margin-bottom: 0; }
 .no-results.show { display: block; }
 .no-results-icon { font-size: 3rem; margin-bottom: 1rem; }
 
-/* ── Single Article styles (used in review cards on reviews page) ── */
-.review-card-img.bg-pedal   { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
-.review-card-img.bg-amp     { background: linear-gradient(135deg, #1a2a1a 0%, #0f2a1a 100%); }
-.review-card-img.bg-access  { background: linear-gradient(135deg, #1a1a3a 0%, #0f1a3a 100%); }
-.review-card-img.bg-fx      { background: linear-gradient(135deg, #2a1a2a 0%, #1a0f2a 100%); }
-.review-card-img.bg-warm    { background: linear-gradient(135deg, #2a1a0d 0%, #1a0f06 100%); }
-
 /* ── About Page ── */
 .about-grid {
   display: grid;
@@ -698,8 +670,8 @@ p:last-child { margin-bottom: 0; }
 }
 .contact-item-icon {
   width: 42px; height: 42px;
-  background: rgba(240,112,32,.1);
-  border: 1px solid rgba(240,112,32,.2);
+  background: var(--bg3);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   display: flex;
   align-items: center;
@@ -777,7 +749,7 @@ p:last-child { margin-bottom: 0; }
   transform: translateY(8px);
   transition: opacity var(--transition), transform var(--transition);
   z-index: 50;
-  box-shadow: 0 4px 16px rgba(240,112,32,.4);
+  box-shadow: var(--shadow);
 }
 #scroll-top.show { opacity: 1; transform: translateY(0); }
 #scroll-top:hover { background: var(--orange-lt); }

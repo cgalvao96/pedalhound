@@ -114,11 +114,10 @@
 }
 .pros, .cons {
   background: var(--bg2);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 1.25rem 1.5rem;
 }
-.pros { border: 1px solid rgba(80,180,120,.25); }
-.cons { border: 1px solid rgba(220,80,80,.2); }
 .pros h4 { color: #50b478; margin-bottom: .75rem; font-size: .88rem; text-transform: uppercase; letter-spacing: .08em; }
 .cons h4 { color: #dc5050; margin-bottom: .75rem; font-size: .88rem; text-transform: uppercase; letter-spacing: .08em; }
 .pros ul, .cons ul { list-style: none; padding: 0; margin: 0; }
@@ -180,7 +179,7 @@
   margin: 1.5rem 0;
   transition: border-color var(--transition);
 }
-.product-card:hover { border-color: rgba(240,112,32,.35); }
+.product-card:hover { border-color: var(--orange-soft); }
 .product-card-header {
   display: flex;
   align-items: flex-start;
@@ -238,7 +237,7 @@
 
 /* ── Verdict Box ── */
 .verdict {
-  background: linear-gradient(135deg, var(--bg2), var(--bg3));
+  background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 2rem;
