@@ -170,6 +170,19 @@
 .buying-guide li:last-child { border-bottom: none; padding-bottom: 0; }
 .buying-guide li strong { color: var(--text); min-width: 120px; flex-shrink: 0; }
 
+/* ── Product Photos ── */
+.product-photo {
+  display: block;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1.25rem;
+  border-radius: var(--radius-lg);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+}
+.product-card .product-photo { margin-bottom: 1rem; }
+
 /* ── Product Cards (roundups) ── */
 .product-card {
   background: var(--bg2);
