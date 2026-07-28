@@ -1,5 +1,6 @@
 /* ============================================================
    PedalHound – Article Styles
+   Warm espresso theme — uses CSS variables from style.css
    ============================================================ */
 
 .art-wrap {
@@ -37,6 +38,7 @@
   font-size: clamp(1.7rem, 4vw, 2.6rem);
   margin-bottom: 1rem;
   line-height: 1.18;
+  color: var(--text);
 }
 .art-hero-meta {
   display: flex;
@@ -77,7 +79,7 @@
 .art-body h2 {
   font-size: 1.45rem;
   margin: 2.2rem 0 .8rem;
-  color: var(--white);
+  color: var(--text);
   padding-top: .5rem;
   border-top: 1px solid var(--border);
 }
@@ -85,7 +87,7 @@
 .art-body h3 {
   font-size: 1.1rem;
   margin: 1.75rem 0 .5rem;
-  color: var(--white);
+  color: var(--text);
 }
 .art-body p {
   color: var(--text-muted);
@@ -103,7 +105,7 @@
 .art-body ol { list-style: decimal; }
 .art-body li { margin-bottom: .35rem; }
 .art-body a { color: var(--orange); }
-.art-body a:hover { color: var(--orange-lt); }
+.art-body a:hover { color: var(--orange-dk); }
 
 /* ── Pros / Cons ── */
 .pros-cons {
@@ -118,8 +120,8 @@
   border-radius: var(--radius-lg);
   padding: 1.25rem 1.5rem;
 }
-.pros h4 { color: #50b478; margin-bottom: .75rem; font-size: .88rem; text-transform: uppercase; letter-spacing: .08em; }
-.cons h4 { color: #dc5050; margin-bottom: .75rem; font-size: .88rem; text-transform: uppercase; letter-spacing: .08em; }
+.pros h4 { color: #2e7d4f; margin-bottom: .75rem; font-size: .88rem; text-transform: uppercase; letter-spacing: .08em; }
+.cons h4 { color: #b94040; margin-bottom: .75rem; font-size: .88rem; text-transform: uppercase; letter-spacing: .08em; }
 .pros ul, .cons ul { list-style: none; padding: 0; margin: 0; }
 .pros li, .cons li {
   font-size: .9rem;
@@ -130,8 +132,8 @@
   gap: .5rem;
   line-height: 1.5;
 }
-.pros li::before { content: '✓'; color: #50b478; font-weight: 700; flex-shrink: 0; }
-.cons li::before { content: '✗'; color: #dc5050; font-weight: 700; flex-shrink: 0; }
+.pros li::before { content: '✓'; color: #2e7d4f; font-weight: 700; flex-shrink: 0; }
+.cons li::before { content: '✗'; color: #b94040; font-weight: 700; flex-shrink: 0; }
 
 /* ── Buying Guide Box ── */
 .buying-guide {
@@ -152,7 +154,7 @@
 }
 .buying-guide h3 {
   font-size: 1.15rem;
-  color: var(--white);
+  color: var(--text);
   margin: 0 0 1rem;
 }
 .buying-guide p { color: var(--text-muted); margin-bottom: .75rem; font-size: .92rem; }
@@ -178,7 +180,7 @@
   height: auto;
   margin: 0 auto 1.25rem;
   border-radius: var(--radius-lg);
-  background: var(--bg2);
+  background: var(--bg3);
   border: 1px solid var(--border);
 }
 .product-card .product-photo { margin-bottom: 1rem; }
@@ -190,9 +192,12 @@
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   margin: 1.5rem 0;
-  transition: border-color var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
-.product-card:hover { border-color: var(--orange-soft); }
+.product-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 4px 20px rgba(192,125,58,.12);
+}
 .product-card-header {
   display: flex;
   align-items: flex-start;
@@ -204,7 +209,7 @@
 .product-card-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text);
   margin: 0;
 }
 .product-card-sub {
@@ -217,15 +222,15 @@
   color: var(--white);
   font-size: .88rem;
   font-weight: 800;
-  padding: .25rem .65rem;
-  border-radius: 6px;
+  padding: .25rem .75rem;
+  border-radius: var(--radius);
   white-space: nowrap;
   flex-shrink: 0;
 }
 .product-card p { color: var(--text-muted); font-size: .9rem; margin-bottom: 1rem; line-height: 1.65; }
 .product-card p:last-child { margin-bottom: 0; }
 
-/* ── Affiliate Button ── */
+/* ── Affiliate Buttons ── */
 .btn-affiliate {
   display: inline-flex;
   align-items: center;
@@ -235,7 +240,7 @@
   color: var(--text-muted);
   font-size: .82rem;
   font-weight: 600;
-  padding: .45rem 1rem;
+  padding: .45rem 1.1rem;
   border-radius: var(--radius);
   text-decoration: none;
   transition: all var(--transition);
@@ -245,6 +250,7 @@
 .btn-affiliate:hover {
   border-color: var(--orange);
   color: var(--orange);
+  background: var(--bg2);
 }
 .btn-affiliate::before { content: '🛒'; font-size: .85rem; }
 
@@ -258,26 +264,42 @@
   color: #fff;
   font-size: .82rem;
   font-weight: 600;
-  padding: .45rem 1rem;
+  padding: .45rem 1.1rem;
   border-radius: var(--radius);
   text-decoration: none;
   transition: all var(--transition);
   cursor: pointer;
   font-family: var(--font);
 }
-.btn-reverb:hover {
-  background: #c42b22;
-  border-color: #c42b22;
-  color: #fff;
-}
+.btn-reverb:hover { background: #c42b22; border-color: #c42b22; color: #fff; }
 .btn-reverb::before { content: '🎸'; font-size: .85rem; }
+
+/* ── YouTube Button ── */
+.btn-youtube {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: #ff0000;
+  border: 1px solid #ff0000;
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 600;
+  padding: .45rem 1.1rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all var(--transition);
+  cursor: pointer;
+  font-family: var(--font);
+}
+.btn-youtube:hover { background: #cc0000; border-color: #cc0000; color: #fff; }
+.btn-youtube::before { content: '▶'; font-size: .75rem; }
 
 /* ── Affiliate Button Row ── */
 .affiliate-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: .6rem;
-  margin-top: .5rem;
+  margin-top: .75rem;
 }
 
 /* ── Verdict Box ── */
@@ -296,7 +318,7 @@
   color: var(--orange);
   margin-bottom: .4rem;
 }
-.verdict h3 { color: var(--white); margin-bottom: .75rem; font-size: 1.15rem; }
+.verdict h3 { color: var(--text); margin-bottom: .75rem; font-size: 1.15rem; }
 .verdict p { color: var(--text-muted); font-size: .92rem; margin-bottom: 0; line-height: 1.7; }
 
 /* ── Table of Contents ── */

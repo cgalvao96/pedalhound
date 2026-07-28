@@ -254,7 +254,7 @@ def fetch_product_image(product_name: str) -> str:
     Prefers Sweetwater CDN results (media.sweetwater.com), which are
     verified accessible. Falls back to any image result, then placeholder.
     """
-    placeholder = f"https://placehold.co/400x300/2a2a2a/e8a020?text={urllib.parse.quote_plus(product_name)}"
+    placeholder = f"https://placehold.co/400x300/fff9f0/c07d3a?text={urllib.parse.quote_plus(product_name)}"
 
     # Try two queries: Sweetwater-specific first, then open search
     queries = [
@@ -469,7 +469,7 @@ def build_product_card(p: dict) -> str:
     # Image: fetched via DDG/Sweetwater search in generate_article()
     image_url = p.get("image_url") or ""
     image_alt = p.get("image_alt") or p["name"]
-    placeholder = "https://placehold.co/400x300/2a2a2a/e8a020?text=" + urllib.parse.quote_plus(p["name"])
+    placeholder = "https://placehold.co/400x300/fff9f0/c07d3a?text=" + urllib.parse.quote_plus(p["name"])
     if not image_url:
         image_url = placeholder
     img_tag = (
@@ -701,7 +701,7 @@ REVIEWS_CARD_TEMPLATE = """
         <article class="review-card" data-category="{category}">
           <div class="review-card-img">
             <span class="badge {badge_class}">{badge_text}</span>
-            <img src="https://placehold.co/400x300/2a2a2a/e8a020?text={placeholder_text}" alt="{title}" loading="lazy">
+            <img src="https://placehold.co/400x300/fff9f0/c07d3a?text={placeholder_text}" alt="{title}" loading="lazy">
           </div>
           <div class="review-card-body">
             <div class="review-card-meta"><span>{date_short}</span><span class="star-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
@@ -760,7 +760,7 @@ INDEX_CARD_TEMPLATE = """
         <article class="review-card">
           <div class="review-card-img">
             <span class="badge {badge_class}">{badge_text}</span>
-            <img src="https://placehold.co/400x300/2a2a2a/e8a020?text={placeholder_text}" alt="{title}" loading="lazy">
+            <img src="https://placehold.co/400x300/fff9f0/c07d3a?text={placeholder_text}" alt="{title}" loading="lazy">
           </div>
           <div class="review-card-body">
             <div class="review-card-meta">
