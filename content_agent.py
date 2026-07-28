@@ -234,6 +234,33 @@ STRICT STYLE RULES:
 - No filler paragraphs. Every sentence earns its place.
 - Scores should be real (not every product is a 9.5).
 
+PRODUCT IMAGES:
+Every product must include "image_url" and "image_alt". Use the manufacturer's official website CDN whenever possible. Do NOT use Sweetwater (they block hotlinking). Known working URL patterns:
+- Electro-Harmonix: https://www.ehx.com/wp-content/uploads/2020/10/PRODUCT-SLUG-f.jpg  (e.g. canyon-f.jpg, small-stone-f.jpg, big-muff-f.jpg)
+- Boss/Roland: https://static.roland.com/assets/images/products/gallery/PRODUCT-CODE_angle_gal.jpg  (e.g. dd-8_angle_gal.jpg, tu-3_angle_gal.jpg)
+- Strymon: https://www.strymon.net/wp-content/uploads/PRODUCTNAME.jpg
+- Walrus Audio (Shopify): https://walrusaudio.com/cdn/shop/products/PRODUCTNAME_1200x.jpg
+- MXR/Dunlop: https://cdn.jim-dunlop.com/media/catalog/product/m/PRODUCTCODE/PRODUCTCODE_1600_1.jpg
+- Empress Effects: https://empresseffects.com/cdn/shop/products/PRODUCTNAME.jpg
+- Source Audio: https://www.sourceaudio.net/images/products/PRODUCTNAME/PRODUCTNAME_top.jpg
+- EarthQuaker Devices: https://www.earthquakerdevices.com/wp-content/uploads/PRODUCTNAME.jpg
+- Chase Bliss: https://www.chaseblissaudio.com/wp-content/uploads/PRODUCTNAME.jpg
+- Death By Audio: https://www.deathbyaudio.com/cdn/shop/products/PRODUCTNAME.jpg
+- JHS Pedals: https://www.jhspedals.info/cdn/shop/products/PRODUCTNAME.jpg
+- Wampler: https://www.wamplerpedals.com/wp-content/uploads/PRODUCTNAME.jpg
+- Keeley: https://www.robertkeeley.com/wp-content/uploads/PRODUCTNAME.jpg
+- Ibanez: https://www.ibanez.com/common/product_artist_file/file/p_region_PRODUCTCODE_en_1.png
+- TC Electronic: https://cdn.tcelectronic.com/globalassets/brand/tc-electronic/products/PRODUCTNAME/PRODUCTNAME_p02.png
+- Origin Effects: https://www.origineffects.com/wp-content/uploads/PRODUCTNAME.jpg
+- Old Blood Noise: https://oldbloodnoise.com/cdn/shop/products/PRODUCTNAME_1200x.jpg
+- Zvex: https://www.zvex.com/cdn/shop/products/PRODUCTNAME.jpg
+
+If you are not confident about a specific URL, use this fallback placeholder:
+https://placehold.co/400x300/2a2a2a/e8a020?text=PRODUCT+NAME
+(replace spaces with + in the text parameter)
+
+image_alt should be the full product name and brand, e.g. "MXR M101 Phase 90 Guitar Phaser Pedal"
+
 OUTPUT FORMAT:
 Return a JSON object with exactly this structure:
 
@@ -266,6 +293,8 @@ Return a JSON object with exactly this structure:
       "subtitle": "Best overall, one sentence reason",
       "score": "9.2",
       "brand": "Brand Name",
+      "image_url": "https://manufacturer-cdn.com/path/to/product-image.jpg",
+      "image_alt": "Brand Name Full Product Name Guitar Pedal",
       "description_html": "<p>First paragraph about the product. Real details, no fluff.</p><p>Second paragraph covering practical use, price context, who it's for.</p>",
       "pros": ["Pro 1", "Pro 2", "Pro 3", "Pro 4"],
       "cons": ["Con 1", "Con 2"]
@@ -373,6 +402,18 @@ def build_product_card(p: dict) -> str:
     youtube = youtube_url(p["name"])
     score_display = f"{p['score']} / 10"
 
+    # Image: use provided URL with onerror fallback to placeholder
+    image_url = p.get("image_url", "")
+    image_alt = p.get("image_alt", p["name"])
+    placeholder = f"https://placehold.co/400x300/2a2a2a/e8a020?text={p['name'].replace(' ', '+')}"
+    if not image_url:
+        image_url = placeholder
+    img_tag = (
+        f'<img src="{image_url}" alt="{image_alt}" class="product-photo" loading="lazy" '
+        f'style="max-width:300px;display:block;margin:.75rem auto 1rem;" '
+        f'onerror="this.onerror=null;this.src=\'{placeholder}\'">'
+    )
+
     return f"""
       <div class="product-card">
         <div class="product-card-header">
@@ -382,6 +423,7 @@ def build_product_card(p: dict) -> str:
           </div>
           <span class="product-score">{score_display}</span>
         </div>
+        {img_tag}
         {p["description_html"]}
         <div class="pros-cons">
           <div class="pros"><h4>Pros</h4><ul>{pros_li}</ul></div>
