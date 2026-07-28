@@ -357,6 +357,55 @@
 .art-nav-title { font-size: .9rem; font-weight: 600; color: var(--text); }
 .art-nav-link.next { text-align: right; }
 
+/* ── Pedal DNA Widget ── */
+.pedal-dna {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--orange);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  margin: 0 0 2rem;
+}
+.pedal-dna-label {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--orange);
+  margin-bottom: 1rem;
+}
+.pedal-dna-bars { display: flex; flex-direction: column; gap: .6rem; }
+.dna-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 28px;
+  align-items: center;
+  gap: .75rem;
+}
+.dna-axis {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: right;
+}
+.dna-bar-track {
+  height: 8px;
+  background: var(--bg3);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.dna-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--orange-dk), var(--orange-lt));
+  border-radius: 100px;
+  transition: width .5s ease;
+}
+.dna-score {
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--orange);
+  text-align: right;
+}
+
 /* ── Responsive ── */
 @media (max-width: 600px) {
   .pros-cons { grid-template-columns: 1fr; }

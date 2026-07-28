@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tone Finder – Find Your Perfect Pedal | PedalHound</title>
+  <meta name="description" content="Answer 5 quick questions and PedalHound recommends the best guitar pedals for your genre, style, and budget.">
+  <link rel="canonical" href="https://pedalhound.com/tone-finder.html">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .tf-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+    .tf-hero {
+      text-align: center;
+      padding: 48px 0 36px;
+    }
+    .tf-hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--text); margin-bottom: .75rem; }
+    .tf-hero p { color: var(--text-muted); font-size: 1rem; }
+
+    /* Progress */
+    .tf-progress {
+      background: var(--bg3);
+      border-radius: 100px;
+      height: 6px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .tf-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--orange-dk), var(--orange-lt));
+      border-radius: 100px;
+      transition: width .4s ease;
+    }
+    .tf-step-label {
+      font-size: .78rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-bottom: .5rem;
+    }
+
+    /* Question card */
+    .tf-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2rem 1.5rem;
+      animation: tfSlide .25s ease;
+    }
+    @keyframes tfSlide { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform:none; } }
+    .tf-q { font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 1.25rem; }
+    .tf-options { display: flex; flex-direction: column; gap: .65rem; }
+    .tf-opt {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      padding: .85rem 1.1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      font-size: .92rem;
+      color: var(--text);
+      text-align: left;
+      font-family: var(--font);
+      width: 100%;
+    }
+    .tf-opt:hover { border-color: var(--orange); background: var(--bg2); }
+    .tf-opt.selected { border-color: var(--orange); background: var(--orange-soft); }
+    .tf-opt-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+    /* Nav */
+    .tf-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      gap: 1rem;
+    }
+    .tf-back { background: none; border: 1px solid var(--border); color: var(--text-muted); font-size: .85rem; padding: .5rem 1.25rem; border-radius: var(--radius); cursor: pointer; font-family: var(--font); transition: border-color .2s; }
+    .tf-back:hover { border-color: var(--orange); color: var(--orange); }
+    .tf-next { background: var(--orange); color: #fff; border: none; padding: .6rem 1.75rem; border-radius: var(--radius); font-weight: 700; font-size: .9rem; cursor: pointer; font-family: var(--font); transition: background .2s; opacity: .45; pointer-events: none; }
+    .tf-next.active { opacity: 1; pointer-events: auto; }
+    .tf-next.active:hover { background: var(--orange-dk); }
+
+    /* Results */
+    .tf-results { display: none; }
+    .tf-results-hero { text-align: center; padding: 2rem 0 1.5rem; }
+    .tf-results-hero h2 { font-size: 1.5rem; color: var(--text); margin-bottom: .5rem; }
+    .tf-results-hero p { color: var(--text-muted); }
+    .tf-rec-grid { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .tf-rec {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      transition: border-color .2s;
+    }
+    .tf-rec:hover { border-color: var(--orange); }
+    .tf-rec-rank {
+      background: var(--orange);
+      color: #fff;
+      font-weight: 800;
+      font-size: .85rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .tf-rec-body { flex: 1; min-width: 0; }
+    .tf-rec-name { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .2rem; }
+    .tf-rec-why { font-size: .85rem; color: var(--text-muted); margin-bottom: .75rem; line-height: 1.55; }
+    .tf-rec-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .82rem; font-weight: 600; color: var(--orange); text-decoration: none; }
+    .tf-rec-link:hover { color: var(--orange-dk); }
+    .tf-restart { display: block; margin: 2rem auto 0; background: none; border: 1px solid var(--border); color: var(--text-muted); padding: .6rem 1.75rem; border-radius: var(--radius); cursor: pointer; font-family: var(--font); font-size: .88rem; transition: border-color .2s; }
+    .tf-restart:hover { border-color: var(--orange); color: var(--orange); }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo">
+        <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="10" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="22" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="5" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><ellipse cx="27" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><path d="M16 13c-5 0-9 3.5-9 8 0 3.5 2.5 5 5 4.5 1.5-.3 2.5-1 4-1s2.5.7 4 1c2.5.5 5-1 5-4.5 0-4.5-4-8-9-8z" fill="#e8a020"/></svg>
+        PedalHound
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="tone-finder.html" aria-current="page">Tone Finder</a></li>
+        <li><a href="pedalboard-builder.html">Pedalboard Builder</a></li>
+      </ul>
+      <a href="tone-finder.html" class="btn btn-primary nav-cta">Find My Pedal</a>
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<div class="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <div class="mobile-nav-panel">
+    <a href="index.html">Home</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="tone-finder.html">Tone Finder</a>
+    <a href="pedalboard-builder.html">Pedalboard Builder</a>
+  </div>
+</div>
+
+<main>
+  <div class="tf-wrap">
+    <div class="tf-hero">
+      <span class="section-label">Tone Finder</span>
+      <h1>Find Your Perfect Pedal</h1>
+      <p>5 quick questions. Honest recommendations. No affiliate pressure on the results.</p>
+    </div>
+
+    <div id="tf-quiz">
+      <div class="tf-step-label" id="tf-step-label">Question 1 of 5</div>
+      <div class="tf-progress"><div class="tf-progress-fill" id="tf-progress" style="width:20%"></div></div>
+
+      <div class="tf-card" id="tf-card">
+        <div class="tf-q" id="tf-q"></div>
+        <div class="tf-options" id="tf-opts"></div>
+      </div>
+
+      <div class="tf-nav">
+        <button class="tf-back" id="tf-back">← Back</button>
+        <button class="tf-next" id="tf-next">Next →</button>
+      </div>
+    </div>
+
+    <div class="tf-results" id="tf-results">
+      <div class="tf-results-hero">
+        <h2>Your Tone Match</h2>
+        <p id="tf-results-sub">Based on your answers, here's what we recommend.</p>
+      </div>
+      <div class="tf-rec-grid" id="tf-rec-grid"></div>
+      <button class="tf-restart" id="tf-restart">← Start Over</button>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="10" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="22" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="5" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><ellipse cx="27" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><path d="M16 13c-5 0-9 3.5-9 8 0 3.5 2.5 5 5 4.5 1.5-.3 2.5-1 4-1s2.5.7 4 1c2.5.5 5-1 5-4.5 0-4.5-4-8-9-8z" fill="#e8a020"/></svg>
+          PedalHound
+        </a>
+        <p>Honest gear reviews for serious players. No hype, no fluff, just tone.</p>
+      </div>
+      <div class="footer-col"><h4>Reviews</h4><ul><li><a href="reviews.html">All Reviews</a></li></ul></div>
+      <div class="footer-col"><h4>Tools</h4><ul><li><a href="tone-finder.html">Tone Finder</a></li><li><a href="pedalboard-builder.html">Pedalboard Builder</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Disclosure</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PedalHound. All rights reserved.</span>
+      <span>Made with 🎸 for guitarists everywhere</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+const QUESTIONS = [
+  {
+    q: "What genre do you mainly play?",
+    opts: [
+      { icon: "🎸", label: "Blues / Classic Rock", val: "blues" },
+      { icon: "🤘", label: "Metal / Hard Rock", val: "metal" },
+      { icon: "🌊", label: "Indie / Shoegaze / Post-Rock", val: "indie" },
+      { icon: "🎷", label: "Funk / Soul / R&B", val: "funk" },
+    ]
+  },
+  {
+    q: "How would you describe your playing style?",
+    opts: [
+      { icon: "🎵", label: "Rhythm guitar, mostly chord work", val: "rhythm" },
+      { icon: "⚡", label: "Lead playing and solos", val: "lead" },
+      { icon: "🔁", label: "Ambient / texture layering", val: "ambient" },
+      { icon: "🎹", label: "Clean fingerpicking and arpeggios", val: "clean" },
+    ]
+  },
+  {
+    q: "What's your pedal budget?",
+    opts: [
+      { icon: "💵", label: "Under $75 – keep it affordable", val: "budget" },
+      { icon: "💰", label: "$75–$175 – mid-range sweet spot", val: "mid" },
+      { icon: "💎", label: "$175–$350 – willing to invest", val: "premium" },
+      { icon: "🏆", label: "$350+ – boutique or bust", val: "boutique" },
+    ]
+  },
+  {
+    q: "What does your current rig look like?",
+    opts: [
+      { icon: "🔊", label: "Solid-state or modeling amp", val: "ss" },
+      { icon: "🔥", label: "Tube amp with some breakup", val: "tube" },
+      { icon: "📱", label: "Direct recording / headphone rig", val: "direct" },
+      { icon: "🆕", label: "Just starting out, building from scratch", val: "new" },
+    ]
+  },
+  {
+    q: "What sound are you chasing?",
+    opts: [
+      { icon: "🌡️", label: "More warmth and grit in my tone", val: "warm" },
+      { icon: "🌌", label: "Lush reverb and atmospheric textures", val: "atmo" },
+      { icon: "⏱️", label: "Slap-back delay and rhythmic depth", val: "delay" },
+      { icon: "🎛️", label: "Versatility – one pedal that does it all", val: "versatile" },
+    ]
+  }
+];
+
+// Recommendation engine: each combo of answers maps to 3 article slugs + descriptions
+function getRecommendations(answers) {
+  const [genre, style, budget, rig, sound] = answers;
+
+  // Scoring system: build a ranked list from the library
+  const lib = [
+    { name: "Best Overdrive Pedals 2026",     url: "articles/best-overdrive-pedals.html",        tags: ["blues","metal","rhythm","lead","warm","tube","mid","budget","premium"] },
+    { name: "Best Fuzz Pedals 2026",           url: "articles/best-fuzz-pedals.html",             tags: ["blues","metal","indie","lead","warm","tube","budget","mid"] },
+    { name: "Best Delay Pedals 2026",          url: "articles/best-delay-pedals.html",            tags: ["indie","blues","atmo","delay","ambient","mid","premium","ss","direct"] },
+    { name: "Best Reverb Pedals 2026",         url: "articles/best-reverb-pedals.html",           tags: ["indie","ambient","atmo","clean","mid","premium","boutique","direct","ss"] },
+    { name: "Best Chorus Pedals 2026",         url: "articles/best-chorus-pedals.html",           tags: ["indie","funk","clean","rhythm","atmo","ss","mid","budget"] },
+    { name: "Best Compressor Pedals 2026",     url: "articles/best-compressor-pedals.html",       tags: ["funk","blues","clean","rhythm","versatile","budget","mid","ss","tube"] },
+    { name: "Best Multi-Effects Pedals 2026",  url: "articles/best-multi-effects-pedals.html",   tags: ["versatile","new","metal","indie","direct","ss","mid","premium"] },
+    { name: "Best Mini Pedals 2026",           url: "articles/best-mini-pedals.html",             tags: ["budget","mid","versatile","rhythm","lead","blues","ss"] },
+    { name: "Boss DS-1 Review",                url: "articles/boss-ds1-review.html",              tags: ["metal","budget","lead","warm","tube","ss"] },
+    { name: "Best Klon Clones",                url: "articles/best-klon-clones.html",             tags: ["blues","lead","warm","tube","mid","premium","versatile"] },
+    { name: "Strymon BigSky Review",           url: "articles/strymon-bigsky-review.html",        tags: ["indie","atmo","ambient","boutique","direct","premium"] },
+    { name: "MXR Phase 90 Review",             url: "articles/mxr-phase-90-review.html",          tags: ["indie","blues","rhythm","ambient","budget","ss","tube"] },
+    { name: "Best Phaser Pedals 2026",         url: "articles/best-phaser-pedals-2026.html",      tags: ["indie","funk","rhythm","ambient","budget","mid","ss"] },
+    { name: "Fender Blues Junior IV Review",   url: "articles/fender-blues-junior-review.html",   tags: ["blues","warm","tube","lead","rhythm","mid","premium"] },
+    { name: "Best Wah Pedals 2026",            url: "articles/best-wah-pedals.html",              tags: ["blues","metal","funk","lead","warm","budget","mid","tube"] },
+    { name: "Best Noise Gate Pedals 2026",     url: "articles/best-noise-gate-pedals.html",       tags: ["metal","versatile","budget","mid","tube","ss"] },
+    { name: "Best Looper Pedals 2026",         url: "articles/best-looper-pedals.html",           tags: ["ambient","indie","versatile","clean","budget","mid","direct"] },
+    { name: "Best Practice Amps 2026",         url: "articles/best-practice-amps.html",           tags: ["new","budget","mid","direct","ss","versatile"] },
+    { name: "Best Tuner Pedals 2026",          url: "articles/best-tuner-pedals.html",            tags: ["new","versatile","budget","ss","tube","direct"] },
+  ];
+
+  const whyMap = {
+    "best-overdrive-pedals":        "Perfect for adding warmth and grit — from just-breaking-up to full crunch.",
+    "best-fuzz-pedals":             "Nothing else sounds like a fuzz. Raw, charismatic, and surprisingly musical.",
+    "best-delay-pedals":            "Delay adds depth and rhythm to any rig — essential and endlessly fun.",
+    "best-reverb-pedals":           "Reverb turns a dry signal into a living, breathing tone.",
+    "best-chorus-pedals":           "Chorus adds shimmer and width — from subtle to fully submerged.",
+    "best-compressor-pedals":       "Compression is the secret weapon of players with great clean tone.",
+    "best-multi-effects-pedals":    "One box covers everything — ideal if you want flexibility without the pedalboard.",
+    "best-mini-pedals":             "Big tone in a small footprint. Your wallet and your pedalboard will thank you.",
+    "boss-ds1-review":              "The DS-1 is a $50 classic that defined rock guitar for 40 years.",
+    "best-klon-clones":             "The most hyped circuit in pedal history — and several clones genuinely earn the praise.",
+    "strymon-bigsky-review":        "The BigSky is the gold standard for studio-quality reverb on a pedalboard.",
+    "mxr-phase-90-review":          "The Phase 90 is the phaser. EVH used one. Enough said.",
+    "best-phaser-pedals-2026":      "A phaser adds movement and character that no other effect can replicate.",
+    "fender-blues-junior-review":   "The Blues Junior is the amp more professional players own than will admit it.",
+    "best-wah-pedals":              "Wah is expressive, live, and immediate — the human voice of the guitar.",
+    "best-noise-gate-pedals":       "High-gain rigs need a gate. This roundup finds the one that won't choke your sustain.",
+    "best-looper-pedals":           "Loopers let you build layers, practice harmonies, and write better songs.",
+    "best-practice-amps":           "The right practice amp makes you want to play every day.",
+    "best-tuner-pedals":            "If you're not in tune, nothing else matters.",
+  };
+
+  // Score each item
+  const scored = lib.map(item => {
+    let score = 0;
+    for (const ans of answers) if (item.tags.includes(ans)) score++;
+    return { ...item, score };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+  const top3 = scored.slice(0, 3);
+
+  return top3.map((item, i) => ({
+    rank: i + 1,
+    name: item.name,
+    url: item.url,
+    why: whyMap[item.url.replace("articles/","").replace(".html","")] || "A solid choice for your style and setup.",
+  }));
+}
+
+// State
+let step = 0;
+const answers = [];
+
+const qEl    = document.getElementById("tf-q");
+const optsEl = document.getElementById("tf-opts");
+const nextEl = document.getElementById("tf-next");
+const backEl = document.getElementById("tf-back");
+const progEl = document.getElementById("tf-progress");
+const labelEl= document.getElementById("tf-step-label");
+const quizEl = document.getElementById("tf-quiz");
+const resEl  = document.getElementById("tf-results");
+const gridEl = document.getElementById("tf-rec-grid");
+const restartEl = document.getElementById("tf-restart");
+
+function render() {
+  const q = QUESTIONS[step];
+  qEl.textContent = q.q;
+  optsEl.innerHTML = "";
+  labelEl.textContent = `Question ${step + 1} of ${QUESTIONS.length}`;
+  progEl.style.width = `${((step + 1) / QUESTIONS.length) * 100}%`;
+  nextEl.classList.remove("active");
+  nextEl.textContent = step === QUESTIONS.length - 1 ? "See Results →" : "Next →";
+  backEl.style.visibility = step === 0 ? "hidden" : "visible";
+
+  q.opts.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.className = "tf-opt" + (answers[step] === opt.val ? " selected" : "");
+    btn.innerHTML = `<span class="tf-opt-icon">${opt.icon}</span>${opt.label}`;
+    btn.addEventListener("click", () => {
+      answers[step] = opt.val;
+      document.querySelectorAll(".tf-opt").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+      nextEl.classList.add("active");
+    });
+    optsEl.appendChild(btn);
+  });
+
+  if (answers[step]) nextEl.classList.add("active");
+}
+
+nextEl.addEventListener("click", () => {
+  if (!answers[step]) return;
+  if (step < QUESTIONS.length - 1) {
+    step++;
+    render();
+  } else {
+    showResults();
+  }
+});
+
+backEl.addEventListener("click", () => {
+  if (step > 0) { step--; render(); }
+});
+
+restartEl.addEventListener("click", () => {
+  step = 0;
+  answers.length = 0;
+  quizEl.style.display = "";
+  resEl.style.display = "none";
+  render();
+});
+
+function showResults() {
+  quizEl.style.display = "none";
+  resEl.style.display = "";
+
+  const recs = getRecommendations(answers);
+  gridEl.innerHTML = recs.map(r => `
+    <div class="tf-rec">
+      <div class="tf-rec-rank">${r.rank}</div>
+      <div class="tf-rec-body">
+        <div class="tf-rec-name">${r.name}</div>
+        <div class="tf-rec-why">${r.why}</div>
+        <a href="${r.url}" class="tf-rec-link">Read the full review →</a>
+      </div>
+    </div>
+  `).join("");
+}
+
+render();
+</script>
+</body>
+</html>

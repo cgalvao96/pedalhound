@@ -254,6 +254,18 @@ p:last-child { margin-bottom: 0; }
 .hero-title span { color: var(--orange); }
 .hero-desc { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-cat-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+  margin: 1.6rem 0 1rem;
+}
+.hero-no-sponsored {
+  font-size: .8rem;
+  color: var(--text-muted);
+  margin-top: .25rem;
+  letter-spacing: .02em;
+}
 .hero-stats {
   display: flex;
   gap: 2rem;
