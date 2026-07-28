@@ -248,6 +248,38 @@
 }
 .btn-affiliate::before { content: '🛒'; font-size: .85rem; }
 
+/* ── Reverb Button ── */
+.btn-reverb {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: #e63329;
+  border: 1px solid #e63329;
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 600;
+  padding: .45rem 1rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all var(--transition);
+  cursor: pointer;
+  font-family: var(--font);
+}
+.btn-reverb:hover {
+  background: #c42b22;
+  border-color: #c42b22;
+  color: #fff;
+}
+.btn-reverb::before { content: '🎸'; font-size: .85rem; }
+
+/* ── Affiliate Button Row ── */
+.affiliate-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-top: .5rem;
+}
+
 /* ── Verdict Box ── */
 .verdict {
   background: var(--bg2);
