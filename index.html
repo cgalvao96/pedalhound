@@ -374,6 +374,53 @@
       letter-spacing: .04em;
     }
 
+    /* ── Tools strip (dark band) ── */
+    .ed-tools-strip {
+      background: var(--nav-bg);
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      padding: 1.75rem 0;
+    }
+    .ed-tools-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    @media (max-width: 640px) { .ed-tools-strip-grid { grid-template-columns: 1fr; } }
+    .ed-tools-strip-card {
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+      padding: 1.1rem 2rem;
+      text-decoration: none;
+      border-right: 1px solid rgba(255,255,255,.08);
+      transition: background .15s;
+    }
+    .ed-tools-strip-card:last-child { border-right: none; }
+    .ed-tools-strip-card:hover { background: rgba(255,255,255,.04); }
+    @media (max-width: 640px) {
+      .ed-tools-strip-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); }
+      .ed-tools-strip-card:last-child { border-bottom: none; }
+    }
+    .ed-tools-strip-name {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.05rem;
+      color: #fdf6ec;
+      line-height: 1.2;
+    }
+    .ed-tools-strip-desc {
+      font-size: .8rem;
+      color: rgba(253,246,236,.5);
+      line-height: 1.4;
+    }
+    .ed-tools-strip-btn {
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: .04em;
+      margin-top: .2rem;
+    }
+
     /* ── Newsletter minimal ── */
     .ed-newsletter {
       background: var(--bg2);
@@ -479,6 +526,29 @@
         </div>
         <div class="ed-masthead-right">
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tools strip -->
+  <div class="ed-tools-strip">
+    <div class="container">
+      <div class="ed-tools-strip-grid">
+        <a href="tone-finder.html" class="ed-tools-strip-card">
+          <div class="ed-tools-strip-name">Tone Finder</div>
+          <div class="ed-tools-strip-desc">Answer 5 questions. Get your perfect pedal chain.</div>
+          <span class="ed-tools-strip-btn">Try it &#8594;</span>
+        </a>
+        <a href="pedalboard-builder.html" class="ed-tools-strip-card">
+          <div class="ed-tools-strip-name">Pedalboard Builder</div>
+          <div class="ed-tools-strip-desc">Build your rig visually. Check compatibility.</div>
+          <span class="ed-tools-strip-btn">Build &#8594;</span>
+        </a>
+        <a href="pedal-blindspot.html" class="ed-tools-strip-card">
+          <div class="ed-tools-strip-name">Pedal Blindspot</div>
+          <div class="ed-tools-strip-desc">Find what&#8217;s missing from your setup.</div>
+          <span class="ed-tools-strip-btn">Analyse &#8594;</span>
+        </a>
       </div>
     </div>
   </div>
@@ -711,29 +781,6 @@
         <span class="ed-list-score">9.4</span>
       </a>
 
-    </div>
-
-    <!-- Tools -->
-    <div class="ed-section-row ed-gap">
-      <span class="ed-section-tag">Tools</span>
-    </div>
-
-    <div class="ed-tools-grid">
-      <a href="tone-finder.html" class="ed-tool-card">
-        <div class="ed-tool-name">Tone Finder</div>
-        <div class="ed-tool-desc">Answer 8 questions about your genre, heroes, amp, and budget. Get a complete signal chain built for you.</div>
-        <span class="ed-tool-link">Find your tone &#8594;</span>
-      </a>
-      <a href="pedalboard-builder.html" class="ed-tool-card">
-        <div class="ed-tool-name">Pedalboard Builder</div>
-        <div class="ed-tool-desc">Build your signal chain visually. Compatibility warnings, price total, and a shareable URL for your board.</div>
-        <span class="ed-tool-link">Build your board &#8594;</span>
-      </a>
-      <a href="pedal-blindspot.html" class="ed-tool-card">
-        <div class="ed-tool-name">Pedal Blindspot</div>
-        <div class="ed-tool-desc">Select what you own. We'll map the gaps across 8 signal chain roles and recommend what to add next.</div>
-        <span class="ed-tool-link">Check your gaps &#8594;</span>
-      </a>
     </div>
 
     <!-- Newsletter -->

@@ -390,7 +390,7 @@ function renderQuestion() {
  btn.className = "tf-opt";
  const isSelected = q.single ? current === opt.val : (current || []).includes(opt.val);
  if (isSelected) btn.classList.add("selected");
- btn.innerHTML = `<span class="tf-opt-icon">${opt.icon}</span>${opt.label}`;
+ btn.textContent = opt.label;
  btn.addEventListener("click", () => {
  if (q.single) {
  answers[q.key] = opt.val;
