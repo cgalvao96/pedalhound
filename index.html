@@ -385,19 +385,21 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0;
+      background: var(--nav-bg);
+      margin-bottom: 2.5rem;
     }
     @media (max-width: 640px) { .ed-tools-strip-grid { grid-template-columns: 1fr; } }
     .ed-tools-strip-card {
       display: flex;
       flex-direction: column;
       gap: .35rem;
-      padding: 1.1rem 2rem;
+      padding: 1.4rem 2rem;
       text-decoration: none;
       border-right: 1px solid rgba(255,255,255,.08);
       transition: background .15s;
     }
     .ed-tools-strip-card:last-child { border-right: none; }
-    .ed-tools-strip-card:hover { background: rgba(255,255,255,.04); }
+    .ed-tools-strip-card:hover { background: rgba(255,255,255,.05); }
     @media (max-width: 640px) {
       .ed-tools-strip-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); }
       .ed-tools-strip-card:last-child { border-bottom: none; }
@@ -530,33 +532,29 @@
     </div>
   </div>
 
-  <!-- Tools strip -->
-  <div class="ed-tools-strip">
-    <div class="container">
-      <div class="ed-tools-strip-grid">
-        <a href="tone-finder.html" class="ed-tools-strip-card">
-          <div class="ed-tools-strip-name">Tone Finder</div>
-          <div class="ed-tools-strip-desc">Answer 5 questions. Get your perfect pedal chain.</div>
-          <span class="ed-tools-strip-btn">Try it &#8594;</span>
-        </a>
-        <a href="pedalboard-builder.html" class="ed-tools-strip-card">
-          <div class="ed-tools-strip-name">Pedalboard Builder</div>
-          <div class="ed-tools-strip-desc">Build your rig visually. Check compatibility.</div>
-          <span class="ed-tools-strip-btn">Build &#8594;</span>
-        </a>
-        <a href="pedal-blindspot.html" class="ed-tools-strip-card">
-          <div class="ed-tools-strip-name">Pedal Blindspot</div>
-          <div class="ed-tools-strip-desc">Find what&#8217;s missing from your setup.</div>
-          <span class="ed-tools-strip-btn">Analyse &#8594;</span>
-        </a>
-      </div>
-    </div>
-  </div>
-
   <div class="container ed-page-body">
 
+    <!-- Tools -->
+    <div class="ed-tools-strip-grid">
+      <a href="tone-finder.html" class="ed-tools-strip-card">
+        <div class="ed-tools-strip-name">Tone Finder</div>
+        <div class="ed-tools-strip-desc">Answer 5 questions. Get your perfect pedal chain.</div>
+        <span class="ed-tools-strip-btn">Try it &#8594;</span>
+      </a>
+      <a href="pedalboard-builder.html" class="ed-tools-strip-card">
+        <div class="ed-tools-strip-name">Pedalboard Builder</div>
+        <div class="ed-tools-strip-desc">Build your rig visually. Check compatibility.</div>
+        <span class="ed-tools-strip-btn">Build &#8594;</span>
+      </a>
+      <a href="pedal-blindspot.html" class="ed-tools-strip-card">
+        <div class="ed-tools-strip-name">Pedal Blindspot</div>
+        <div class="ed-tools-strip-desc">Find what&#8217;s missing from your setup.</div>
+        <span class="ed-tools-strip-btn">Analyse &#8594;</span>
+      </a>
+    </div>
+
     <!-- Featured Review -->
-    <div class="ed-section-row">
+    <div class="ed-section-row" style="margin-top:2.5rem;">
       <span class="ed-section-tag">Featured Review</span>
     </div>
 
