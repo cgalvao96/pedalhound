@@ -1,721 +1,805 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>PedalHound – Guitar Pedal, Amp & Gear Reviews</title>
- <meta name="description" content="Honest, in-depth reviews of guitar pedals, amplifiers, and accessories. No hype, just tone. Find your next piece of gear with PedalHound.">
- <meta name="keywords" content="guitar pedal reviews, amp reviews, guitar gear, effects pedals, stompboxes, guitar accessories">
- <meta name="robots" content="index, follow">
- <link rel="canonical" href="https://pedalhound.com/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PedalHound – Guitar Pedal, Amp & Gear Reviews</title>
+  <meta name="description" content="Honest, in-depth reviews of guitar pedals, amplifiers, and accessories. No hype, just tone. Find your next piece of gear with PedalHound.">
+  <meta name="keywords" content="guitar pedal reviews, amp reviews, guitar gear, effects pedals, stompboxes, guitar accessories">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://pedalhound.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PedalHound – Guitar Pedal, Amp & Gear Reviews">
+  <meta property="og:description" content="Honest, in-depth reviews of guitar pedals, amplifiers, and accessories. No hype, just tone.">
+  <meta property="og:url" content="https://pedalhound.com/">
+  <meta property="og:site_name" content="PedalHound">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"PedalHound","url":"https://pedalhound.com","description":"Honest, in-depth reviews of guitar pedals, amplifiers, and accessories."}</script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Editorial type ── */
+    .ed-serif { font-family: Georgia, 'Times New Roman', serif; }
 
- <!-- Open Graph -->
- <meta property="og:type" content="website">
- <meta property="og:title" content="PedalHound – Guitar Pedal, Amp & Gear Reviews">
- <meta property="og:description" content="Honest, in-depth reviews of guitar pedals, amplifiers, and accessories. No hype, just tone.">
- <meta property="og:url" content="https://pedalhound.com/">
- <meta property="og:site_name" content="PedalHound">
+    /* ── Masthead ── */
+    .ed-masthead {
+      background: var(--nav-bg);
+      padding: 2.75rem 0 2.5rem;
+      border-bottom: 3px solid var(--orange);
+    }
+    .ed-masthead-inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .ed-masthead-left { flex: 1; min-width: 240px; }
+    .ed-kicker {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--orange);
+      margin-bottom: .6rem;
+    }
+    .ed-site-name {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: normal;
+      color: #fdf6ec;
+      line-height: 1;
+      margin: 0 0 .6rem;
+    }
+    .ed-tagline {
+      font-size: .85rem;
+      color: rgba(253,246,236,.5);
+      margin: 0;
+    }
+    .ed-masthead-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: .5rem;
+    }
+    .ed-masthead-stat {
+      font-size: .72rem;
+      color: rgba(253,246,236,.4);
+      text-align: right;
+      line-height: 1.6;
+    }
 
- <!-- Twitter Card -->
- <meta name="twitter:card" content="summary_large_image">
- <meta name="twitter:title" content="PedalHound – Guitar Gear Reviews">
- <meta name="twitter:description" content="Honest, in-depth reviews of guitar pedals, amps, and accessories.">
+    /* ── Section labels ── */
+    .ed-section-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin: 2.5rem 0 1.1rem;
+      padding-bottom: .55rem;
+      border-bottom: 2px solid var(--text);
+    }
+    .ed-section-tag {
+      font-size: .7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--text);
+    }
+    .ed-section-link {
+      font-size: .75rem;
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .ed-section-link:hover { text-decoration: underline; }
 
- <!-- Schema.org -->
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "WebSite",
- "name": "PedalHound",
- "url": "https://pedalhound.com",
- "description": "Honest, in-depth reviews of guitar pedals, amplifiers, and accessories.",
- "potentialAction": {
- "@type": "SearchAction",
- "target": "https://pedalhound.com/reviews.html?q={search_term_string}",
- "query-input": "required name=search_term_string"
- }
- }
- </script>
+    /* ── Featured review ── */
+    .ed-feat {
+      display: grid;
+      grid-template-columns: 44% 1fr;
+      min-height: 320px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .2s;
+    }
+    .ed-feat:hover { border-color: var(--orange); }
+    @media (max-width: 640px) { .ed-feat { grid-template-columns: 1fr; min-height: auto; } }
+    .ed-feat-img {
+      overflow: hidden;
+      background: var(--bg3);
+    }
+    .ed-feat-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .ed-feat:hover .ed-feat-img img { transform: scale(1.02); }
+    @media (max-width: 640px) { .ed-feat-img { height: 220px; } }
+    .ed-feat-body {
+      padding: 2rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .ed-cat {
+      font-size: .67rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--orange);
+      display: block;
+      margin-bottom: .7rem;
+    }
+    .ed-feat-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      font-weight: normal;
+      color: var(--text);
+      line-height: 1.3;
+      margin: 0 0 .9rem;
+    }
+    .ed-feat-excerpt {
+      font-size: .88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1.4rem;
+    }
+    .ed-feat-footer {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    .ed-score {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.8rem;
+      font-weight: normal;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .ed-score-label {
+      font-size: .65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-left: -.3rem;
+    }
+    .ed-read {
+      margin-left: auto;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+    }
+    .ed-read:hover { color: var(--orange); }
 
- <link rel="stylesheet" href="css/style.css">
+    /* ── 3-up latest grid ── */
+    .ed-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 700px) { .ed-grid-3 { grid-template-columns: 1fr; } }
+    @media (min-width: 480px) and (max-width: 700px) { .ed-grid-3 { grid-template-columns: 1fr 1fr; } }
+
+    .ed-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      transition: border-color .15s;
+    }
+    .ed-card:hover { border-color: var(--orange); }
+    .ed-card-img {
+      height: 190px;
+      overflow: hidden;
+      background: var(--bg3);
+      flex-shrink: 0;
+    }
+    .ed-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .35s ease;
+    }
+    .ed-card:hover .ed-card-img img { transform: scale(1.03); }
+    .ed-card-body {
+      padding: 1rem 1.1rem 1.2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .ed-card-cat {
+      font-size: .64rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--text-muted);
+      margin-bottom: .4rem;
+    }
+    .ed-card-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1rem;
+      font-weight: normal;
+      color: var(--text);
+      line-height: 1.4;
+      margin: 0 0 .5rem;
+      flex: 1;
+    }
+    .ed-card-excerpt {
+      font-size: .78rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: .75rem;
+    }
+    .ed-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: .65rem;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+    .ed-card-score {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.25rem;
+      color: var(--orange);
+      font-weight: normal;
+    }
+    .ed-card-read {
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .ed-card:hover .ed-card-read { color: var(--orange); }
+
+    /* ── Category strip ── */
+    .ed-cats {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin: 2.25rem 0;
+      padding: .9rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .ed-cats-label {
+      font-size: .68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--text-muted);
+      margin-right: .4rem;
+    }
+    .ed-cat-tag {
+      display: inline-block;
+      padding: .28rem .72rem;
+      border: 1px solid var(--border);
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all .15s;
+      border-radius: 2px;
+    }
+    .ed-cat-tag:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+      background: rgba(192,125,58,.05);
+    }
+
+    /* ── More reviews list ── */
+    .ed-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 2rem;
+    }
+    @media (max-width: 600px) { .ed-list { grid-template-columns: 1fr; } }
+    .ed-list-item {
+      display: grid;
+      grid-template-columns: 62px 1fr 38px;
+      align-items: baseline;
+      gap: .6rem;
+      padding: .65rem 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+    }
+    .ed-list-item:hover .ed-list-title { color: var(--orange); }
+    .ed-list-cat {
+      font-size: .62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--text-muted);
+    }
+    .ed-list-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: .87rem;
+      color: var(--text);
+      line-height: 1.35;
+      transition: color .15s;
+    }
+    .ed-list-score {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--orange);
+      text-align: right;
+    }
+
+    /* ── Tools strip ── */
+    .ed-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 640px) { .ed-tools-grid { grid-template-columns: 1fr; } }
+    .ed-tool-card {
+      background: var(--nav-bg);
+      padding: 1.5rem 1.6rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: opacity .15s;
+    }
+    .ed-tool-card:hover { opacity: .9; }
+    .ed-tool-name {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.1rem;
+      color: #fdf6ec;
+      margin-bottom: .4rem;
+    }
+    .ed-tool-desc {
+      font-size: .78rem;
+      color: rgba(253,246,236,.55);
+      line-height: 1.55;
+      margin-bottom: .85rem;
+    }
+    .ed-tool-link {
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: .04em;
+    }
+
+    /* ── Newsletter minimal ── */
+    .ed-newsletter {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .ed-newsletter-text strong {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.05rem;
+      color: var(--text);
+      display: block;
+      margin-bottom: .2rem;
+    }
+    .ed-newsletter-text span {
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+    .ed-newsletter-form {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .ed-newsletter-form input {
+      padding: .5rem .9rem;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: .85rem;
+      outline: none;
+      border-radius: 2px;
+      width: 220px;
+    }
+    .ed-newsletter-form input:focus { border-color: var(--orange); }
+    .ed-newsletter-form button {
+      padding: .5rem 1.1rem;
+      background: var(--orange);
+      border: none;
+      color: #fff;
+      font-family: var(--font);
+      font-size: .85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+    .ed-newsletter-form button:hover { background: var(--orange-dk); }
+
+    /* ── Spacing helpers ── */
+    .ed-page-body { padding: 0 0 4rem; }
+    .ed-gap { margin-top: 2.75rem; }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="site-header">
- <div class="container">
- <nav class="nav" aria-label="Main navigation">
- <a href="index.html" class="nav-logo">
- <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="10" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="22" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="5" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><ellipse cx="27" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><path d="M16 13c-5 0-9 3.5-9 8 0 3.5 2.5 5 5 4.5 1.5-.3 2.5-1 4-1s2.5.7 4 1c2.5.5 5-1 5-4.5 0-4.5-4-8-9-8z" fill="#e8a020"/></svg>
- PedalHound
- </a>
- <ul class="nav-links" role="list">
- <li><a href="index.html">Home</a></li>
- <li><a href="reviews.html">Reviews</a></li>
- <li><a href="tone-finder.html">Tone Finder</a></li>
- <li><a href="pedalboard-builder.html">Builder</a></li>
- <li><a href="pedal-blindspot.html">Blindspot</a></li>
- </ul>
- <a href="tone-finder.html" class="btn btn-primary nav-cta">Find My Pedal</a>
- <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
- <span></span><span></span><span></span>
- </button>
- </nav>
- </div>
+  <div class="container">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo">
+        <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="10" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="22" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="5" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><ellipse cx="27" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><path d="M16 13c-5 0-9 3.5-9 8 0 3.5 2.5 5 5 4.5 1.5-.3 2.5-1 4-1s2.5.7 4 1c2.5.5 5-1 5-4.5 0-4.5-4-8-9-8z" fill="#e8a020"/></svg>
+        PedalHound
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="tone-finder.html">Tone Finder</a></li>
+        <li><a href="pedalboard-builder.html">Builder</a></li>
+        <li><a href="pedal-blindspot.html">Blindspot</a></li>
+      </ul>
+      <a href="tone-finder.html" class="btn btn-primary nav-cta">Find My Pedal</a>
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
 </header>
 
-<!-- Mobile nav -->
 <div class="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
- <div class="mobile-nav-panel">
- <a href="index.html">Home</a>
- <a href="reviews.html">Reviews</a>
- <a href="tone-finder.html">Tone Finder</a>
- <a href="pedalboard-builder.html">Pedalboard Builder</a>
- <a href="pedal-blindspot.html">Pedal Blindspot</a>
- </div>
+  <div class="mobile-nav-panel">
+    <a href="index.html">Home</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="tone-finder.html">Tone Finder</a>
+    <a href="pedalboard-builder.html">Pedalboard Builder</a>
+    <a href="pedal-blindspot.html">Pedal Blindspot</a>
+  </div>
 </div>
 
 <main>
 
- <!-- HERO -->
- <section class="hero" aria-labelledby="hero-heading">
- <div class="container">
- <div class="hero-inner">
+  <!-- Masthead -->
+  <div class="ed-masthead">
+    <div class="container">
+      <div class="ed-masthead-inner">
+        <div class="ed-masthead-left">
+          <p class="ed-kicker">Guitar Gear, Honestly Reviewed</p>
+          <h1 class="ed-site-name">PedalHound</h1>
+          <p class="ed-tagline">We play it for weeks. Then we write about it.</p>
+        </div>
+        <div class="ed-masthead-right">
+          <p class="ed-masthead-stat">No sponsored content<br>No affiliate pressure<br>No manufacturer relationships</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
- <div class="hero-content">
- <h1 class="hero-title" id="hero-heading">
- Find your next pedal without wading through sponsored garbage.
- </h1>
- <div class="hero-cat-links">
- <a href="reviews.html?filter=overdrive" class="btn btn-primary">Overdrive</a>
- <a href="reviews.html?filter=fuzz" class="btn btn-primary">Fuzz</a>
- <a href="reviews.html?filter=delay" class="btn btn-primary">Delay</a>
- <a href="reviews.html?filter=reverb" class="btn btn-primary">Reverb</a>
- <a href="reviews.html?filter=chorus" class="btn btn-primary">Chorus</a>
- <a href="reviews.html?filter=amp" class="btn btn-primary">Amps</a>
- </div>
- <p class="hero-no-sponsored"> No sponsored content. Ever.</p>
- </div>
+  <div class="container ed-page-body">
 
- <div class="hero-visual" aria-hidden="true">
- <div class="hero-card-stack">
- <a href="articles/best-klon-clones.html" class="hero-feat-card">
- <div class="hero-feat-img"><img src="https://www.humbuckermusic.com/cdn/shop/products/klon-ktr-pedal-33_large.jpeg?v=1541218648" alt="Klon KTR Professional Overdrive" loading="lazy"></div>
- <div class="hero-feat-body">
- <div class="hero-feat-meta">
- <span class="badge badge-pedal">Overdrive</span>
- <span class="star-rating"></span>
- <span style="margin-left:auto;color:var(--orange);font-weight:800;font-size:.9rem;">9.4 <span style="color:var(--text-muted);font-weight:400;">/ 10</span></span>
- </div>
- <h3 style="font-size:1rem;color:var(--text);margin-bottom:.3rem;">Klon Clone Roundup</h3>
- <p style="color:var(--text-muted);font-size:.82rem;margin:0;">We lined up seven Klon style pedals and A/B'd them through the same rig. The winner surprised us.</p>
- </div>
- </a>
- <div class="float-card float-card-new"> Editor's Pick</div>
- </div>
- </div>
+    <!-- Featured Review -->
+    <div class="ed-section-row">
+      <span class="ed-section-tag">Featured Review</span>
+    </div>
 
- </div>
- </div>
- </section>
+    <a href="articles/strymon-bigsky-review.html" class="ed-feat" aria-label="Read: Strymon BigSky Review">
+      <div class="ed-feat-img">
+        <img src="https://www.strymon.net/wp-content/uploads/2016/02/bigsky_topdown_grad2_1600-1024x1024-1.jpeg"
+             alt="Strymon BigSky Reverb pedal"
+             loading="eager">
+      </div>
+      <div class="ed-feat-body">
+        <div>
+          <span class="ed-cat">Reverb</span>
+          <h2 class="ed-feat-title">Strymon BigSky: Still the Benchmark After All These Years</h2>
+          <p class="ed-feat-excerpt">Twelve algorithms, studio-rack quality reverb, and a price tag that makes you wince. We put it through three months of studio sessions, band rehearsals, and a tour's worth of gigs. If you're only ever going to buy one reverb pedal, here's our honest case for and against spending $479 on it.</p>
+        </div>
+        <div class="ed-feat-footer">
+          <div>
+            <span class="ed-score">9.4</span>
+            <span class="ed-score-label">&nbsp;/ 10</span>
+          </div>
+          <span class="ed-read">Read the review &#8594;</span>
+        </div>
+      </div>
+    </a>
 
- <!-- FEATURED REVIEWS -->
- <section class="section" aria-labelledby="featured-heading">
- <div class="container">
- <span class="section-label">Latest Reviews</span>
- <h2 class="section-title" id="featured-heading">Fresh Off the Pedalboard</h2>
- <p class="section-sub text-muted">Our most recent deep dives. Every piece of gear gets played for weeks before we write a single word about it.</p>
+    <!-- Latest 3 -->
+    <div class="ed-section-row ed-gap">
+      <span class="ed-section-tag">Latest</span>
+      <a href="reviews.html" class="ed-section-link">All reviews</a>
+    </div>
 
- <div class="reviews-grid">
- <!-- AUTO-GENERATED -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-fx">Modulation</span>
- <img src="https://placehold.co/400x300/2a2a2a/e8a020?text=Best+Phaser+Pedals+2026" alt="Best Phaser Pedals 2026: Ranked for Every Budget" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 28, 2026</span>
- <span class="star-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-phaser-pedals-2026.html">Best Phaser Pedals 2026: Ranked for Every Budget</a>
- </h3>
- <p class="review-card-excerpt">The best phaser pedals of 2026 tested and ranked: MXR, EHX, Source Audio, and more. Find the right phaser for your rig and budget.</p>
- <div class="review-card-footer">
- <span class="score-pill">9.4 / 10</span>
- <a href="articles/best-phaser-pedals-2026.html" class="read-more">
- Full Review <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+    <div class="ed-grid-3">
 
- <!-- Card 1 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-pedal">Fuzz</span>
- <img src="https://www.ehx.com/wp-content/uploads/2020/10/usbm-f.jpg" alt="Electro-Harmonix Big Muff Pi" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>June 10, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-fuzz-pedals.html">Best Fuzz Pedals 2026</a>
- </h3>
- <p class="review-card-excerpt">
- We ran a stack of fuzz boxes through a Twin and a JCM800 to see which ones actually hold up past the novelty stage.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.3 / 10</span>
- <a href="articles/best-fuzz-pedals.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+      <a href="articles/best-klon-clones.html" class="ed-card">
+        <div class="ed-card-img">
+          <img src="https://www.humbuckermusic.com/cdn/shop/products/klon-ktr-pedal-33_large.jpeg?v=1541218648"
+               alt="Klon KTR Professional Overdrive" loading="lazy">
+        </div>
+        <div class="ed-card-body">
+          <span class="ed-card-cat">Overdrive</span>
+          <h3 class="ed-card-title">Klon Clone Roundup: Seven Contenders, One Winner</h3>
+          <p class="ed-card-excerpt">We lined up seven Klon-style pedals and A/B'd them through the same rig. The winner surprised us.</p>
+          <div class="ed-card-footer">
+            <span class="ed-card-score">9.6</span>
+            <span class="ed-card-read">Read review</span>
+          </div>
+        </div>
+      </a>
 
- <!-- Card 2 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-amp">Amp</span>
- <img src="https://willcuttguitars.com/cdn/shop/products/2231500000_amp_frt_001_nr_600x.png?v=1600270777" alt="Fender Blues Junior IV" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>June 5, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/fender-blues-junior-review.html">Fender Blues Junior IV Review</a>
- </h3>
- <p class="review-card-excerpt">
- A 15-watt combo that's been a gigging staple for decades. We took it to a real show to see if it still earns the spot.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">8.8 / 10</span>
- <a href="articles/fender-blues-junior-review.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+      <a href="articles/best-delay-pedals.html" class="ed-card">
+        <div class="ed-card-img">
+          <img src="https://static.roland.com/assets/images/products/gallery/dd-8_angle_gal.jpg"
+               alt="Boss DD-8 Digital Delay" loading="lazy">
+        </div>
+        <div class="ed-card-body">
+          <span class="ed-card-cat">Delay</span>
+          <h3 class="ed-card-title">Best Delay Pedals 2026</h3>
+          <p class="ed-card-excerpt">Digital vs analog, simple vs deep. Five delay pedals tested and ranked for live playing and studio use.</p>
+          <div class="ed-card-footer">
+            <span class="ed-card-score">9.5</span>
+            <span class="ed-card-read">Read review</span>
+          </div>
+        </div>
+      </a>
 
- <!-- Card 3 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-pedal">Overdrive</span>
- <img src="https://www.ibanez.com/common/product_artist_file/file/p_region_TS9_en_1.png" alt="Ibanez Tube Screamer TS9" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>May 28, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-overdrive-pedals.html">Best Overdrive Pedals 2026</a>
- </h3>
- <p class="review-card-excerpt">
- From the $50 Boss SD-1 to the $270 Klon KTR, here's what's actually worth your money this year.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.2 / 10</span>
- <a href="articles/best-overdrive-pedals.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+      <a href="articles/best-fuzz-pedals.html" class="ed-card">
+        <div class="ed-card-img">
+          <img src="https://www.ehx.com/wp-content/uploads/2020/10/usbm-f.jpg"
+               alt="Electro-Harmonix Big Muff Pi" loading="lazy">
+        </div>
+        <div class="ed-card-body">
+          <span class="ed-card-cat">Fuzz</span>
+          <h3 class="ed-card-title">Best Fuzz Pedals 2026</h3>
+          <p class="ed-card-excerpt">We ran a stack of fuzz boxes through a Twin and a JCM800 to see which ones hold up past the novelty stage.</p>
+          <div class="ed-card-footer">
+            <span class="ed-card-score">9.3</span>
+            <span class="ed-card-read">Read review</span>
+          </div>
+        </div>
+      </a>
 
+    </div>
 
- <!-- Card 4 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-fx">Delay</span>
- <img src="https://static.roland.com/assets/images/products/gallery/dd-8_angle_gal.jpg" alt="Boss DD-8 Digital Delay" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 1, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-delay-pedals.html">Best Delay Pedals 2026</a>
- </h3>
- <p class="review-card-excerpt">
- Digital vs analog, simple vs deep. Five delay pedals tested and ranked for live playing and studio use.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.5 / 10</span>
- <a href="articles/best-delay-pedals.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+    <!-- Category strip -->
+    <div class="ed-cats">
+      <span class="ed-cats-label">Browse:</span>
+      <a href="reviews.html?filter=overdrive" class="ed-cat-tag">Overdrive</a>
+      <a href="reviews.html?filter=fuzz" class="ed-cat-tag">Fuzz</a>
+      <a href="reviews.html?filter=delay" class="ed-cat-tag">Delay</a>
+      <a href="reviews.html?filter=reverb" class="ed-cat-tag">Reverb</a>
+      <a href="reviews.html?filter=chorus" class="ed-cat-tag">Chorus</a>
+      <a href="reviews.html?filter=modulation" class="ed-cat-tag">Modulation</a>
+      <a href="reviews.html?filter=amp" class="ed-cat-tag">Amps</a>
+      <a href="reviews.html?filter=boutique" class="ed-cat-tag">Boutique</a>
+    </div>
 
- <!-- Card 5 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-fx">Reverb</span>
- <img src="https://static.roland.com/assets/images/products/main/rv-500_main.jpg" alt="Boss RV-500 Reverb Pedal" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 7, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-reverb-pedals.html">Best Reverb Pedals 2026</a>
- </h3>
- <p class="review-card-excerpt">
- Spring, hall, shimmer — every reverb type ranked from simple bedroom pedals to the Strymon BigSky.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.4 / 10</span>
- <a href="articles/best-reverb-pedals.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+    <!-- More reviews list -->
+    <div class="ed-section-row">
+      <span class="ed-section-tag">More Reviews</span>
+      <a href="reviews.html" class="ed-section-link">View all</a>
+    </div>
 
- <!-- Card 6 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-access">Dynamics</span>
- <img src="https://static.roland.com/assets/images/products/main/cp-1x_main.jpg" alt="Boss CP-1X Color Compressor" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 14, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-compressor-pedals.html">Best Compressor Pedals 2026</a>
- </h3>
- <p class="review-card-excerpt">
- What compression actually does and which pedal to buy. Optical, FET, and VCA types tested honestly.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.5 / 10</span>
- <a href="articles/best-compressor-pedals.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+    <div class="ed-list">
 
- <!-- Card 7 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-fx">Chorus</span>
- <img src="https://static.roland.com/products/ce-5/images/ce-5_01_gal.jpg" alt="Boss CE-5 Chorus Ensemble" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 23, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-chorus-pedals.html">Best Chorus Pedals 2026</a>
- </h3>
- <p class="review-card-excerpt">
- Boss CE-5, Strymon Ola, MXR Analog Chorus and more. Five chorus pedals tested for shimmer, depth, and value.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.3 / 10</span>
- <a href="articles/best-chorus-pedals.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+      <a href="articles/best-phaser-pedals-2026.html" class="ed-list-item">
+        <span class="ed-list-cat">Modulation</span>
+        <span class="ed-list-title">Best Phaser Pedals 2026</span>
+        <span class="ed-list-score">9.4</span>
+      </a>
 
- <!-- Card 8 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-fx">Wah</span>
- <img src="https://cdn11.bigcommerce.com/s-n26aknlnlm/products/657/images/6586/11537002001.MAIN__42690.1663874797.386.513.jpg?c=2" alt="Dunlop 535Q Multi-Wah" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 23, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-wah-pedals.html">Best Wah Pedals 2026</a>
- </h3>
- <p class="review-card-excerpt">
- Dunlop Crybaby to EHX envelope filter. Five wah pedals tested for sweep feel, tonal range, and live use.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.3 / 10</span>
- <a href="articles/best-wah-pedals.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+      <a href="articles/best-reverb-pedals.html" class="ed-list-item">
+        <span class="ed-list-cat">Reverb</span>
+        <span class="ed-list-title">Best Reverb Pedals 2026</span>
+        <span class="ed-list-score">9.4</span>
+      </a>
 
- <!-- Card 9 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-access">Tuner</span>
- <img src="https://static.roland.com/assets/images/products/gallery/tu-3_top_gal.jpg" alt="Boss TU-3 Chromatic Tuner" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 23, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-tuner-pedals.html">Best Tuner Pedals 2026</a>
- </h3>
- <p class="review-card-excerpt">
- Boss TU-3, Peterson StroboStomp HD, Korg Pitchblack compared. Accuracy, display readability, and value ranked.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.5 / 10</span>
- <a href="articles/best-tuner-pedals.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+      <a href="articles/best-overdrive-pedals.html" class="ed-list-item">
+        <span class="ed-list-cat">Overdrive</span>
+        <span class="ed-list-title">Best Overdrive Pedals 2026</span>
+        <span class="ed-list-score">9.2</span>
+      </a>
 
- <!-- Card 10 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-fx">Multi-FX</span>
- <img src="https://line6.com/data/6/0a020a4191e85d4b0d3e91e88/image/jpeg/file.jpeg" alt="Line 6 Helix LT" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 23, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-multi-effects-pedals.html">Best Multi-Effects Pedals 2026</a>
- </h3>
- <p class="review-card-excerpt">
- Line 6 Helix LT vs Boss GX-100 vs Boss GT-1. Amp modeling, routing flexibility, and usability compared.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.5 / 10</span>
- <a href="articles/best-multi-effects-pedals.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+      <a href="articles/best-compressor-pedals.html" class="ed-list-item">
+        <span class="ed-list-cat">Dynamics</span>
+        <span class="ed-list-title">Best Compressor Pedals 2026</span>
+        <span class="ed-list-score">9.5</span>
+      </a>
 
- <!-- Card 11 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-access">Strings</span>
- <img src="https://s3.us-west-2.amazonaws.com/static.ernieball.com/website/images/products/image_front/large/P02221.png" alt="Ernie Ball Regular Slinky" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 23, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-guitar-strings.html">Best Guitar Strings 2026</a>
- </h3>
- <p class="review-card-excerpt">
- Ernie Ball vs D'Addario vs Elixir Nanoweb. Five string sets tested for tone, longevity, and feel.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.3 / 10</span>
- <a href="articles/best-guitar-strings.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+      <a href="articles/best-chorus-pedals.html" class="ed-list-item">
+        <span class="ed-list-cat">Modulation</span>
+        <span class="ed-list-title">Best Chorus Pedals 2026</span>
+        <span class="ed-list-score">9.3</span>
+      </a>
 
- <!-- Card 12 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-amp">Amp</span>
- <img src="https://static.roland.com/assets/images/products/main/katana-mini_main.jpg" alt="Boss Katana Mini" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 23, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-practice-amps.html">Best Practice Amps 2026</a>
- </h3>
- <p class="review-card-excerpt">
- Boss Katana Mini, Roland JC-22, Blackstar ID:Core and more. Great tone at bedroom volume tested and ranked.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.3 / 10</span>
- <a href="articles/best-practice-amps.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+      <a href="articles/mxr-phase-90-review.html" class="ed-list-item">
+        <span class="ed-list-cat">Modulation</span>
+        <span class="ed-list-title">MXR Phase 90 Review</span>
+        <span class="ed-list-score">9.2</span>
+      </a>
 
- <!-- Card 13 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-access">Acoustic</span>
- <img src="https://fishman.com/wp-content/uploads/2025/07/fishman-rare-earth-series-hero-1800.jpg" alt="Fishman Rare Earth Pickup" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 23, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-acoustic-guitar-pickups.html">Best Acoustic Guitar Pickups 2026</a>
- </h3>
- <p class="review-card-excerpt">
- LR Baggs Lyric, K&amp;K Pure Mini, Fishman Rare Earth tested. Amplify your acoustic guitar naturally.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.4 / 10</span>
- <a href="articles/best-acoustic-guitar-pickups.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+      <a href="articles/best-wah-pedals.html" class="ed-list-item">
+        <span class="ed-list-cat">Filter</span>
+        <span class="ed-list-title">Best Wah Pedals 2026</span>
+        <span class="ed-list-score">9.3</span>
+      </a>
 
- <!-- Card 14 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-fx">Mini Pedals</span>
- <img src="https://xotic.us/effects/img/EP_3Quarter-1.jpg" alt="Xotic EP Booster" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 23, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-mini-pedals.html">Best Mini Pedals 2026</a>
- </h3>
- <p class="review-card-excerpt">
- Xotic EP Booster, Boss SD-1W Waza, Wampler Tumnus and more. Big tone in a compact pedalboard footprint.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.3 / 10</span>
- <a href="articles/best-mini-pedals.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+      <a href="articles/best-noise-gate-pedals.html" class="ed-list-item">
+        <span class="ed-list-cat">Utility</span>
+        <span class="ed-list-title">Best Noise Gate Pedals 2026</span>
+        <span class="ed-list-score">9.3</span>
+      </a>
 
- <!-- Card 15 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-access">Accessories</span>
- <img src="https://pedaltrain.com/cdn/shop/products/PedaltrainMetro16SoftCaseComposite_600x600.png?v=1666895888" alt="Pedaltrain Metro 16" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 23, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-pedalboard-cases.html">Best Pedalboard Cases 2026</a>
- </h3>
- <p class="review-card-excerpt">
- Pedaltrain vs Temple Audio vs RockBoard. The best pedalboard systems for gigging and touring players.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.4 / 10</span>
- <a href="articles/best-pedalboard-cases.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+      <a href="articles/fender-blues-junior-review.html" class="ed-list-item">
+        <span class="ed-list-cat">Amp</span>
+        <span class="ed-list-title">Fender Blues Junior IV Review</span>
+        <span class="ed-list-score">8.8</span>
+      </a>
 
- <!-- Card 16 -->
- <article class="review-card">
- <div class="review-card-img">
- <span class="badge badge-fx">Noise Gate</span>
- <img src="https://static.roland.com/products/ns-2/image/ns-2_hero.jpg" alt="Boss NS-2 Noise Suppressor" loading="lazy">
- </div>
- <div class="review-card-body">
- <div class="review-card-meta">
- <span>July 23, 2026</span>
- <span class="star-rating"></span>
- </div>
- <h3 class="review-card-title">
- <a href="articles/best-noise-gate-pedals.html">Best Noise Gate Pedals 2026</a>
- </h3>
- <p class="review-card-excerpt">
- Boss NS-2, MXR Smart Gate, EHX Silencer tested. Eliminate hum and hiss from your guitar signal chain.
- </p>
- <div class="review-card-footer">
- <span class="score-pill">9.3 / 10</span>
- <a href="articles/best-noise-gate-pedals.html" class="read-more">
- Full Review
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
- </a>
- </div>
- </div>
- </article>
+      <a href="articles/best-practice-amps.html" class="ed-list-item">
+        <span class="ed-list-cat">Amp</span>
+        <span class="ed-list-title">Best Practice Amps 2026</span>
+        <span class="ed-list-score">9.3</span>
+      </a>
 
- </div>
+      <a href="articles/best-tuner-pedals.html" class="ed-list-item">
+        <span class="ed-list-cat">Utility</span>
+        <span class="ed-list-title">Best Tuner Pedals 2026</span>
+        <span class="ed-list-score">9.5</span>
+      </a>
 
- <div style="text-align:center;margin-top:2.5rem;">
- <a href="reviews.html" class="btn btn-outline">View All Reviews</a>
- </div>
- </div>
- </section>
+      <a href="articles/best-looper-pedals.html" class="ed-list-item">
+        <span class="ed-list-cat">Utility</span>
+        <span class="ed-list-title">Best Looper Pedals 2026</span>
+        <span class="ed-list-score">9.2</span>
+      </a>
 
- <hr class="divider">
+      <a href="articles/boss-ds1-review.html" class="ed-list-item">
+        <span class="ed-list-cat">Distortion</span>
+        <span class="ed-list-title">Boss DS-1 Review: The $49 Icon</span>
+        <span class="ed-list-score">8.9</span>
+      </a>
 
- <!-- CATEGORIES -->
- <section class="section" aria-labelledby="cat-heading">
- <div class="container">
- <span class="section-label">Browse by Category</span>
- <h2 class="section-title" id="cat-heading">What Are You Looking For?</h2>
- <p class="section-sub text-muted">From fuzz boxes to 100-watt heads, we've plugged in just about everything.</p>
+      <a href="articles/best-multi-effects-pedals.html" class="ed-list-item">
+        <span class="ed-list-cat">Multi-FX</span>
+        <span class="ed-list-title">Best Multi-Effects Pedals 2026</span>
+        <span class="ed-list-score">9.5</span>
+      </a>
 
- <div class="categories-grid">
- <a href="reviews.html?filter=pedal" class="cat-card">
- <span class="cat-icon"></span>
- <div class="cat-name">Effects Pedals</div>
- <div class="cat-count">87 reviews</div>
- </a>
- <a href="reviews.html?filter=overdrive" class="cat-card">
- <span class="cat-icon"></span>
- <div class="cat-name">Overdrive & Distortion</div>
- <div class="cat-count">52 reviews</div>
- </a>
- <a href="reviews.html?filter=amp" class="cat-card">
- <span class="cat-icon"></span>
- <div class="cat-name">Amplifiers</div>
- <div class="cat-count">41 reviews</div>
- </a>
- <a href="reviews.html?filter=fuzz" class="cat-card">
- <span class="cat-icon"></span>
- <div class="cat-name">Fuzz & Boost</div>
- <div class="cat-count">29 reviews</div>
- </a>
- <a href="reviews.html?filter=access" class="cat-card">
- <span class="cat-icon"></span>
- <div class="cat-name">Accessories</div>
- <div class="cat-count">38 reviews</div>
- </a>
- <a href="reviews.html?filter=modulation" class="cat-card">
- <span class="cat-icon"></span>
- <div class="cat-name">Modulation</div>
- <div class="cat-count">24 reviews</div>
- </a>
- </div>
- </div>
- </section>
+      <a href="articles/best-mini-pedals.html" class="ed-list-item">
+        <span class="ed-list-cat">Pedals</span>
+        <span class="ed-list-title">Best Mini Pedals 2026</span>
+        <span class="ed-list-score">9.3</span>
+      </a>
 
- <hr class="divider">
+      <a href="articles/best-pedalboard-cases.html" class="ed-list-item">
+        <span class="ed-list-cat">Accessories</span>
+        <span class="ed-list-title">Best Pedalboard Cases 2026</span>
+        <span class="ed-list-score">9.4</span>
+      </a>
 
- <!-- CTA BANNER -->
- <section class="section--sm">
- <div class="container">
- <div class="cta-banner">
- <div class="cta-banner-text">
- <h2>Got Gear We Should Review?</h2>
- <p>We're always up for trying the next interesting piece of gear. Manufacturer, small builder, or just a player with something weird and cool, reach out and we'll give it an honest listen.</p>
- </div>
- <div class="cta-banner-action">
- 
- </div>
- </div>
- </div>
- </section>
+      <a href="articles/best-pedalboard-power-supply.html" class="ed-list-item">
+        <span class="ed-list-cat">Accessories</span>
+        <span class="ed-list-title">Best Pedalboard Power Supplies 2026</span>
+        <span class="ed-list-score">9.4</span>
+      </a>
 
- <hr class="divider">
+      <a href="articles/best-guitar-cables-pedalboard.html" class="ed-list-item">
+        <span class="ed-list-cat">Accessories</span>
+        <span class="ed-list-title">Best Guitar Cables for Pedalboards</span>
+        <span class="ed-list-score">9.1</span>
+      </a>
 
- <!-- NEWSLETTER -->
- <section class="section">
- <div class="container">
- <div class="newsletter">
- <span class="section-label" style="display:block;margin-bottom:.5rem;">Stay in the Loop</span>
- <h3>New Reviews, No Spam</h3>
- <p>One email when we post something new. No newsletter fluff, no sponsored garbage, just a heads-up when there's something worth reading.</p>
- <form class="newsletter-form" aria-label="Newsletter signup">
- <input type="email" placeholder="your@email.com" required aria-label="Email address">
- <button type="submit" class="btn btn-primary">Subscribe</button>
- </form>
- </div>
- </div>
- </section>
+      <a href="articles/best-guitar-strings.html" class="ed-list-item">
+        <span class="ed-list-cat">Accessories</span>
+        <span class="ed-list-title">Best Guitar Strings 2026</span>
+        <span class="ed-list-score">9.3</span>
+      </a>
+
+      <a href="articles/best-acoustic-guitar-pickups.html" class="ed-list-item">
+        <span class="ed-list-cat">Acoustic</span>
+        <span class="ed-list-title">Best Acoustic Guitar Pickups 2026</span>
+        <span class="ed-list-score">9.4</span>
+      </a>
+
+    </div>
+
+    <!-- Tools -->
+    <div class="ed-section-row ed-gap">
+      <span class="ed-section-tag">Tools</span>
+    </div>
+
+    <div class="ed-tools-grid">
+      <a href="tone-finder.html" class="ed-tool-card">
+        <div class="ed-tool-name">Tone Finder</div>
+        <div class="ed-tool-desc">Answer 8 questions about your genre, heroes, amp, and budget. Get a complete signal chain built for you.</div>
+        <span class="ed-tool-link">Find your tone &#8594;</span>
+      </a>
+      <a href="pedalboard-builder.html" class="ed-tool-card">
+        <div class="ed-tool-name">Pedalboard Builder</div>
+        <div class="ed-tool-desc">Build your signal chain visually. Compatibility warnings, price total, and a shareable URL for your board.</div>
+        <span class="ed-tool-link">Build your board &#8594;</span>
+      </a>
+      <a href="pedal-blindspot.html" class="ed-tool-card">
+        <div class="ed-tool-name">Pedal Blindspot</div>
+        <div class="ed-tool-desc">Select what you own. We'll map the gaps across 8 signal chain roles and recommend what to add next.</div>
+        <span class="ed-tool-link">Check your gaps &#8594;</span>
+      </a>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="ed-gap">
+      <div class="ed-newsletter">
+        <div class="ed-newsletter-text">
+          <strong>New Reviews, No Spam</strong>
+          <span>One email when we publish something new. Nothing else.</span>
+        </div>
+        <form class="ed-newsletter-form" aria-label="Newsletter signup">
+          <input type="email" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+  </div><!-- /container -->
 
 </main>
 
-<!-- FOOTER -->
 <footer class="site-footer" aria-label="Site footer">
- <div class="container">
- <div class="footer-grid">
- <div class="footer-brand">
- <a href="index.html" class="nav-logo">
- <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="10" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="22" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="5" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><ellipse cx="27" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><path d="M16 13c-5 0-9 3.5-9 8 0 3.5 2.5 5 5 4.5 1.5-.3 2.5-1 4-1s2.5.7 4 1c2.5.5 5-1 5-4.5 0-4.5-4-8-9-8z" fill="#e8a020"/></svg>
- PedalHound
- </a>
- <p>Honest gear reviews for serious players. No hype, no fluff, just tone.</p>
- </div>
- <div class="footer-col">
- <h4>Reviews</h4>
- <ul>
- <li><a href="reviews.html">All Reviews</a></li>
- <li><a href="reviews.html">Pedals</a></li>
- <li><a href="reviews.html">Amplifiers</a></li>
- <li><a href="reviews.html">Accessories</a></li>
- </ul>
- </div>
- <div class="footer-col">
- <h4>Site</h4>
- <ul>
- <li><a href="index.html">Home</a></li>
- </ul>
- </div>
- <div class="footer-col">
- <h4>Legal</h4>
- <ul>
- <li><a href="#">Privacy Policy</a></li>
- <li><a href="#">Terms of Use</a></li>
- <li><a href="#">Disclosure</a></li>
- </ul>
- </div>
- </div>
- <div class="footer-bottom">
- <span> 2026 PedalHound. All rights reserved.</span>
- <span>Made with for guitarists everywhere</span>
- </div>
- </div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="10" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="22" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="5" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><ellipse cx="27" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><path d="M16 13c-5 0-9 3.5-9 8 0 3.5 2.5 5 5 4.5 1.5-.3 2.5-1 4-1s2.5.7 4 1c2.5.5 5-1 5-4.5 0-4.5-4-8-9-8z" fill="#e8a020"/></svg>
+          PedalHound
+        </a>
+        <p>Honest gear reviews for serious players. No hype, no fluff, just tone.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="tone-finder.html">Tone Finder</a></li>
+          <li><a href="pedalboard-builder.html">Pedalboard Builder</a></li>
+          <li><a href="pedal-blindspot.html">Pedal Blindspot</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Reviews</h4>
+        <ul>
+          <li><a href="reviews.html">All Reviews</a></li>
+          <li><a href="articles/best-overdrive-pedals.html">Overdrive</a></li>
+          <li><a href="articles/best-delay-pedals.html">Delay</a></li>
+          <li><a href="articles/best-reverb-pedals.html">Reverb</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Disclosure</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>2026 PedalHound. All rights reserved.</span>
+      <span>Made for guitarists everywhere</span>
+    </div>
+  </div>
 </footer>
 
 <button id="scroll-top" aria-label="Scroll to top">
- <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
 
 <script src="js/main.js"></script>
