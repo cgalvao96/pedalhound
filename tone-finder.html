@@ -3,100 +3,113 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Tone Finder – Find Your Perfect Pedal | PedalHound</title>
- <meta name="description" content="Answer 5 quick questions and PedalHound recommends the best guitar pedals for your genre, style, and budget.">
+ <title>Tone Finder – Build Your Perfect Pedal Chain | PedalHound</title>
+ <meta name="description" content="Answer 8 quick questions and PedalHound recommends a complete pedal chain tailored to your genre, heroes, amp, and budget.">
  <link rel="canonical" href="https://pedalhound.com/tone-finder.html">
  <link rel="stylesheet" href="css/style.css">
  <style>
- .tf-wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 60px; }
+ .tf-wrap { max-width: 760px; margin: 0 auto; padding: 0 20px 80px; }
  .tf-hero { text-align: center; padding: 48px 0 36px; }
- .tf-hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--text); margin-bottom: .75rem; }
- .tf-hero p { color: var(--text-muted); font-size: 1rem; }
+ .tf-hero h1 { font-size: clamp(1.6rem,4vw,2.4rem); color: var(--text); margin-bottom: .6rem; }
+ .tf-hero p { color: var(--text-muted); font-size: 1rem; max-width: 540px; margin: 0 auto; }
 
- /* Progress */
- .tf-step-label { font-size: .78rem; color: var(--text-muted); text-align: right; margin-bottom: .5rem; }
- .tf-progress { background: var(--bg3); border-radius: 100px; height: 6px; margin-bottom: 1.5rem; overflow: hidden; }
- .tf-progress-fill { height: 100%; background: linear-gradient(90deg, var(--orange-dk), var(--orange-lt)); border-radius: 100px; transition: width .4s ease; }
+ .tf-step-label { font-size: .75rem; color: var(--text-muted); text-align: right; margin-bottom: .45rem; }
+ .tf-progress { background: var(--bg3); border-radius: 100px; height: 5px; margin-bottom: 1.5rem; overflow: hidden; }
+ .tf-progress-fill { height: 100%; background: linear-gradient(90deg, var(--orange-dk), var(--orange-lt)); border-radius: 100px; transition: width .35s ease; }
 
- /* Question card */
- .tf-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem 2rem 1.5rem; animation: tfSlide .25s ease; }
- @keyframes tfSlide { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
- .tf-q { font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 1.25rem; }
- .tf-options { display: flex; flex-direction: column; gap: .65rem; }
- .tf-opt { display: flex; align-items: center; gap: .85rem; padding: .85rem 1.1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; transition: border-color .2s, background .2s; font-size: .92rem; color: var(--text); text-align: left; font-family: var(--font); width: 100%; }
+ .tf-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem 2rem 1.5rem; animation: tfSlide .22s ease; }
+ @keyframes tfSlide { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform:none; } }
+ .tf-q { font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: .35rem; }
+ .tf-q-sub { font-size: .82rem; color: var(--text-muted); margin-bottom: 1.2rem; }
+
+ .tf-options { display: flex; flex-direction: column; gap: .55rem; }
+ .tf-opt { display: flex; align-items: center; gap: .85rem; padding: .8rem 1.05rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; transition: border-color .15s, background .15s; font-size: .9rem; color: var(--text); text-align: left; font-family: var(--font); width: 100%; }
  .tf-opt:hover { border-color: var(--orange); background: var(--bg2); }
- .tf-opt.selected { border-color: var(--orange); background: rgba(192,125,58,.12); }
- .tf-opt-icon { font-size: 1.3rem; flex-shrink: 0; }
+ .tf-opt.selected { border-color: var(--orange); background: rgba(192,125,58,.1); }
+ .tf-opt-icon { font-size: .95rem; flex-shrink: 0; width: 22px; text-align: center; font-style: normal; color: var(--orange); font-weight: 700; }
 
- /* Nav buttons */
- .tf-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
- .tf-back { background: none; border: 1px solid var(--border); color: var(--text-muted); font-size: .85rem; padding: .5rem 1.25rem; border-radius: var(--radius); cursor: pointer; font-family: var(--font); transition: border-color .2s, color .2s; }
+ .tf-opts-2col { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
+ @media(max-width:540px) { .tf-opts-2col { grid-template-columns: 1fr; } }
+
+ .tf-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1.4rem; gap: 1rem; }
+ .tf-back { background: none; border: 1px solid var(--border); color: var(--text-muted); font-size: .85rem; padding: .5rem 1.2rem; border-radius: var(--radius); cursor: pointer; font-family: var(--font); transition: border-color .15s, color .15s; }
  .tf-back:hover { border-color: var(--orange); color: var(--orange); }
- .tf-next { background: var(--orange); color: #fff; border: none; padding: .6rem 1.75rem; border-radius: var(--radius); font-weight: 700; font-size: .9rem; cursor: pointer; font-family: var(--font); transition: background .2s, opacity .2s; opacity: .4; pointer-events: none; }
+ .tf-next { background: var(--orange); color: #fff; border: none; padding: .6rem 1.75rem; border-radius: var(--radius); font-weight: 700; font-size: .9rem; cursor: pointer; font-family: var(--font); transition: background .15s, opacity .15s; opacity: .35; pointer-events: none; }
  .tf-next.ready { opacity: 1; pointer-events: auto; }
  .tf-next.ready:hover { background: var(--orange-dk); }
 
  /* Results */
  #tf-results { display: none; }
- .tf-results-hero { text-align: center; padding: 2rem 0 1.5rem; }
- .tf-results-hero h2 { font-size: 1.5rem; color: var(--text); margin-bottom: .5rem; }
- .tf-results-hero p { color: var(--text-muted); }
 
- .tf-rec-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem; }
+ .tf-results-hdr { text-align: center; padding: 2.5rem 0 1.5rem; }
+ .tf-results-hdr h2 { font-size: 1.55rem; color: var(--text); margin-bottom: .4rem; }
+ .tf-results-hdr p { color: var(--text-muted); font-size: .92rem; }
 
- .tf-rec {
- background: var(--bg2);
- border: 1px solid var(--border);
- border-radius: var(--radius-lg);
- overflow: hidden;
- display: grid;
- grid-template-columns: 140px 1fr;
- transition: border-color .2s;
- }
- .tf-rec:hover { border-color: var(--orange); }
- @media (max-width: 540px) { .tf-rec { grid-template-columns: 1fr; } }
+ .tf-section-title { font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--text-muted); margin: 2rem 0 .9rem; display: flex; align-items: center; gap: .6rem; }
+ .tf-section-title::after { content:''; flex:1; height:1px; background: var(--border); }
 
- .tf-rec-img-wrap {
- background: var(--bg3);
- display: flex;
- align-items: center;
- justify-content: center;
- padding: 1rem;
- border-right: 1px solid var(--border);
- }
- @media (max-width: 540px) { .tf-rec-img-wrap { border-right: none; border-bottom: 1px solid var(--border); padding: 1.25rem; } }
+ /* Chain */
+ .tf-chain { display: flex; align-items: flex-start; flex-wrap: wrap; gap: .5rem; }
+ .tf-chain-item { display: flex; flex-direction: column; align-items: center; gap: .3rem; }
+ .tf-chain-arrow { color: var(--text-muted); font-size: .9rem; padding-top: 2.5rem; flex-shrink: 0; }
 
- .tf-rec-img { width: 110px; height: 110px; object-fit: contain; display: block; }
+ .tf-pedal-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; display: grid; grid-template-columns: 130px 1fr; transition: border-color .15s; width: 100%; }
+ .tf-pedal-card:hover { border-color: var(--orange); }
+ @media(max-width:600px) { .tf-pedal-card { grid-template-columns: 1fr; } }
 
- .tf-rec-body { padding: 1.25rem 1.5rem; }
+ .tf-pedal-img-wrap { background: var(--bg3); display: flex; align-items: center; justify-content: center; padding: 1rem; border-right: 1px solid var(--border); }
+ @media(max-width:600px) { .tf-pedal-img-wrap { border-right: none; border-bottom: 1px solid var(--border); padding: 1.25rem; } }
+ .tf-pedal-img { width: 100px; height: 100px; object-fit: contain; display: block; }
 
- .tf-rec-header { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap; }
- .tf-rec-rank { background: var(--orange); color: #fff; font-weight: 800; font-size: .78rem; padding: .2rem .65rem; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
- .tf-rec-score { font-size: .8rem; font-weight: 700; color: var(--orange); }
+ .tf-pedal-body { padding: 1.1rem 1.25rem; }
+ .tf-pedal-slot { display: inline-block; background: var(--orange); color: #fff; font-size: .68rem; font-weight: 800; padding: .18rem .6rem; border-radius: 100px; margin-bottom: .45rem; text-transform: uppercase; letter-spacing: .06em; }
+ .tf-pedal-name { font-size: .98rem; font-weight: 700; color: var(--text); }
+ .tf-pedal-meta { font-size: .75rem; color: var(--text-muted); margin: .15rem 0 .6rem; }
+ .tf-pedal-blurb { font-size: .82rem; color: var(--text-muted); line-height: 1.5; margin-bottom: .75rem; }
 
- .tf-rec-name { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .1rem; }
- .tf-rec-brand { font-size: .78rem; color: var(--text-muted); margin-bottom: .6rem; }
- .tf-rec-blurb { font-size: .85rem; color: var(--text-muted); line-height: 1.55; margin-bottom: .9rem; }
-
- /* Mini DNA bars */
- .tf-rec-dna { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .9rem; }
- .tf-dna-row { display: grid; grid-template-columns: 72px 1fr 22px; align-items: center; gap: .5rem; }
- .tf-dna-axis { font-size: .7rem; font-weight: 600; color: var(--text-muted); text-align: right; }
- .tf-dna-track { height: 6px; background: var(--bg3); border-radius: 100px; overflow: hidden; }
+ .tf-dna-mini { display: flex; flex-direction: column; gap: .25rem; margin-bottom: .75rem; }
+ .tf-dna-row { display: grid; grid-template-columns: 68px 1fr 20px; align-items: center; gap: .45rem; }
+ .tf-dna-axis { font-size: .66rem; font-weight: 600; color: var(--text-muted); text-align: right; }
+ .tf-dna-track { height: 5px; background: var(--bg3); border-radius: 100px; overflow: hidden; }
  .tf-dna-fill { height: 100%; background: linear-gradient(90deg, var(--orange-dk), var(--orange-lt)); border-radius: 100px; }
- .tf-dna-val { font-size: .68rem; font-weight: 700; color: var(--orange); text-align: right; }
+ .tf-dna-val { font-size: .64rem; font-weight: 700; color: var(--orange); text-align: right; }
 
- /* Buy buttons */
- .tf-rec-btns { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
- .tf-btn-article { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 700; color: var(--orange); text-decoration: none; padding: .35rem .85rem; border: 1px solid var(--orange); border-radius: var(--radius); transition: all .2s; }
- .tf-btn-article:hover { background: var(--orange); color: #fff; }
- .tf-btn-amazon { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 700; background: #ff9900; color: #111; padding: .35rem .85rem; border-radius: var(--radius); text-decoration: none; transition: background .2s; }
+ .tf-pedal-btns { display: flex; flex-wrap: wrap; gap: .4rem; }
+ .tf-btn-review { font-size: .75rem; font-weight: 700; color: var(--orange); padding: .3rem .8rem; border: 1px solid var(--orange); border-radius: var(--radius); text-decoration: none; transition: all .15s; }
+ .tf-btn-review:hover { background: var(--orange); color: #fff; }
+ .tf-btn-amazon { font-size: .75rem; font-weight: 700; background: #ff9900; color: #111; padding: .3rem .8rem; border-radius: var(--radius); text-decoration: none; transition: background .15s; }
  .tf-btn-amazon:hover { background: #e08800; }
- .tf-btn-reverb { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 700; background: #e63329; color: #fff; padding: .35rem .85rem; border-radius: var(--radius); text-decoration: none; transition: background .2s; }
+ .tf-btn-reverb { font-size: .75rem; font-weight: 700; background: #e63329; color: #fff; padding: .3rem .8rem; border-radius: var(--radius); text-decoration: none; transition: background .15s; }
  .tf-btn-reverb:hover { background: #c42b22; }
 
- .tf-restart { display: block; margin: 2.5rem auto 0; background: none; border: 1px solid var(--border); color: var(--text-muted); padding: .6rem 1.75rem; border-radius: var(--radius); cursor: pointer; font-family: var(--font); font-size: .88rem; transition: border-color .2s, color .2s; }
+ /* Chain full-width list */
+ .tf-chain-list { display: flex; flex-direction: column; gap: .9rem; }
+
+ /* Tone matches */
+ .tf-matches { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: .75rem; }
+ .tf-match-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem 1.25rem; }
+ .tf-match-name { font-size: .92rem; font-weight: 700; color: var(--text); margin-bottom: .25rem; }
+ .tf-match-chain { font-size: .78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: .5rem; }
+ .tf-match-why { font-size: .74rem; color: var(--orange); font-weight: 600; }
+
+ /* Action buttons */
+ .tf-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+ .tf-act-btn { display: inline-flex; align-items: center; gap: .4rem; font-size: .82rem; font-weight: 700; padding: .55rem 1.2rem; border-radius: var(--radius); cursor: pointer; font-family: var(--font); border: none; transition: all .15s; text-decoration: none; }
+ .tf-act-primary { background: var(--orange); color: #fff; }
+ .tf-act-primary:hover { background: var(--orange-dk); }
+ .tf-act-secondary { background: var(--bg2); border: 1px solid var(--border); color: var(--text-muted); }
+ .tf-act-secondary:hover { border-color: var(--orange); color: var(--orange); }
+
+ .tf-restart { display: block; margin: 2.5rem auto 0; background: none; border: 1px solid var(--border); color: var(--text-muted); padding: .55rem 1.6rem; border-radius: var(--radius); cursor: pointer; font-family: var(--font); font-size: .85rem; transition: border-color .15s, color .15s; }
  .tf-restart:hover { border-color: var(--orange); color: var(--orange); }
+
+ .tf-copy-toast { display: none; font-size: .78rem; color: var(--orange); font-weight: 600; }
+ .tf-copy-toast.show { display: inline; }
+
+ /* Price total */
+ .tf-total { display: inline-flex; align-items: center; gap: .5rem; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: .45rem 1rem; font-size: .85rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+ .tf-total-label { color: var(--text-muted); font-weight: 400; }
+ .tf-total-val { color: var(--orange); }
  </style>
 </head>
 <body>
@@ -112,10 +125,13 @@
  <li><a href="index.html">Home</a></li>
  <li><a href="reviews.html">Reviews</a></li>
  <li><a href="tone-finder.html" aria-current="page">Tone Finder</a></li>
- <li><a href="pedalboard-builder.html">Pedalboard Builder</a></li>
+ <li><a href="pedalboard-builder.html">Builder</a></li>
+ <li><a href="pedal-blindspot.html">Blindspot</a></li>
  </ul>
  <a href="tone-finder.html" class="btn btn-primary nav-cta">Find My Pedal</a>
- <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+ <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+ <span></span><span></span><span></span>
+ </button>
  </nav>
  </div>
 </header>
@@ -126,42 +142,61 @@
  <a href="reviews.html">Reviews</a>
  <a href="tone-finder.html">Tone Finder</a>
  <a href="pedalboard-builder.html">Pedalboard Builder</a>
+ <a href="pedal-blindspot.html">Pedal Blindspot</a>
  </div>
 </div>
 
 <main>
- <div class="tf-wrap">
+<div class="tf-wrap">
+
  <div class="tf-hero">
- <span class="section-label">Tone Finder</span>
- <h1>Find Your Perfect Pedal</h1>
- <p>5 quick questions. Honest recommendations from our reviews.</p>
+ <h1>Find Your Perfect Tone</h1>
+ <p>Answer 8 questions. Get a complete pedal chain built around your genre, heroes, amp, and budget.</p>
  </div>
 
+ <!-- Quiz -->
  <div id="tf-quiz">
- <div class="tf-step-label" id="tf-step-label">Question 1 of 5</div>
- <div class="tf-progress"><div class="tf-progress-fill" id="tf-progress" style="width:20%"></div></div>
+ <p class="tf-step-label" id="tf-step-label">Question 1 of 8</p>
+ <div class="tf-progress"><div class="tf-progress-fill" id="tf-progress" style="width:12.5%"></div></div>
  <div class="tf-card" id="tf-card">
  <div class="tf-q" id="tf-q"></div>
- <div class="tf-options" id="tf-opts"></div>
+ <div class="tf-q-sub" id="tf-q-sub"></div>
+ <div id="tf-opts"></div>
  </div>
  <div class="tf-nav">
- <button class="tf-back" id="tf-back">← Back</button>
- <button class="tf-next" id="tf-next">Next →</button>
+ <button class="tf-back" id="tf-back">Back</button>
+ <button class="tf-next" id="tf-next">Next</button>
  </div>
  </div>
 
+ <!-- Results -->
  <div id="tf-results">
- <div class="tf-results-hero">
- <h2>Your Tone Match</h2>
- <p>Based on your answers, here are the three pedals we'd put on your board first.</p>
+ <div class="tf-results-hdr">
+ <h2>Your Recommended Chain</h2>
+ <p>Built around your genre, playing style, and budget.</p>
  </div>
- <div class="tf-rec-list" id="tf-rec-list"></div>
- <button class="tf-restart" id="tf-restart">← Start Over</button>
+
+ <div id="tf-total-wrap"></div>
+
+ <div class="tf-section-title">Signal Chain</div>
+ <div class="tf-chain-list" id="tf-chain-list"></div>
+
+ <div class="tf-section-title">Tone Matches</div>
+ <div class="tf-matches" id="tf-matches"></div>
+
+ <div class="tf-actions">
+ <a href="#" class="tf-act-btn tf-act-primary" id="tf-open-builder">Open in Pedalboard Builder</a>
+ <button class="tf-act-btn tf-act-secondary" id="tf-share-btn">Share Tone Profile</button>
+ <span class="tf-copy-toast" id="tf-copy-toast">Link copied!</span>
  </div>
+
+ <button class="tf-restart" id="tf-restart">Start Over</button>
  </div>
+
+</div>
 </main>
 
-<footer class="site-footer">
+<footer class="site-footer" aria-label="Site footer">
  <div class="container">
  <div class="footer-grid">
  <div class="footer-brand">
@@ -169,126 +204,235 @@
  <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="10" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="22" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="5" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><ellipse cx="27" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><path d="M16 13c-5 0-9 3.5-9 8 0 3.5 2.5 5 5 4.5 1.5-.3 2.5-1 4-1s2.5.7 4 1c2.5.5 5-1 5-4.5 0-4.5-4-8-9-8z" fill="#e8a020"/></svg>
  PedalHound
  </a>
- <p>Honest gear reviews for serious players.</p>
+ <p>Honest gear reviews for serious players. No hype, no fluff, just tone.</p>
  </div>
- <div class="footer-col"><h4>Reviews</h4><ul><li><a href="reviews.html">All Reviews</a></li></ul></div>
- <div class="footer-col"><h4>Tools</h4><ul><li><a href="tone-finder.html">Tone Finder</a></li><li><a href="pedalboard-builder.html">Pedalboard Builder</a></li></ul></div>
- <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Disclosure</a></li></ul></div>
+ <div class="footer-col">
+ <h4>Tools</h4>
+ <ul>
+ <li><a href="tone-finder.html">Tone Finder</a></li>
+ <li><a href="pedalboard-builder.html">Pedalboard Builder</a></li>
+ <li><a href="pedal-blindspot.html">Pedal Blindspot</a></li>
+ </ul>
  </div>
- <div class="footer-bottom">
- <span> 2026 PedalHound. All rights reserved.</span>
- <span>Made with for guitarists everywhere</span>
+ <div class="footer-col">
+ <h4>Reviews</h4>
+ <ul>
+ <li><a href="reviews.html">All Reviews</a></li>
+ <li><a href="articles/best-overdrive-pedals.html">Overdrive</a></li>
+ <li><a href="articles/best-delay-pedals.html">Delay</a></li>
+ <li><a href="articles/best-reverb-pedals.html">Reverb</a></li>
+ </ul>
  </div>
+ </div>
+ <p class="footer-copy">PedalHound is reader-supported. We may earn a commission on purchases made through affiliate links at no extra cost to you.</p>
  </div>
 </footer>
 
-<script src="js/main.js"></script>
 <script src="js/pedals.js"></script>
 <script>
 const QUESTIONS = [
  {
- q: "What genre do you mainly play?",
  key: "genre",
+ q: "What's your primary genre?",
+ sub: "Pick the style that best describes most of what you play.",
+ single: true,
  opts: [
- { icon: "", label: "Blues / Classic Rock", val: "blues" },
- { icon: "", label: "Metal / Hard Rock", val: "metal" },
- { icon: "", label: "Indie / Shoegaze / Post-Rock",val: "indie" },
- { icon: "", label: "Funk / Soul / R&B", val: "funk" },
+ { label: "Blues and roots", val: "blues", icon: "B" },
+ { label: "Classic and hard rock", val: "classic-rock", icon: "R" },
+ { label: "Metal and heavy", val: "metal", icon: "M" },
+ { label: "Indie and alternative", val: "indie", icon: "I" },
+ { label: "Country and Americana", val: "country", icon: "C" },
+ { label: "Funk and soul", val: "funk", icon: "F" },
+ { label: "Jazz and clean", val: "jazz", icon: "J" },
+ { label: "Ambient and post-rock", val: "ambient", icon: "A" },
  ]
  },
  {
- q: "How would you describe your playing style?",
+ key: "heroes",
+ q: "Who are your guitar heroes?",
+ sub: "Pick up to two. Their rigs will influence the recommendations.",
+ single: false,
+ maxSelect: 2,
+ opts: [
+ { label: "Jimi Hendrix", val: "hendrix", icon: "H" },
+ { label: "David Gilmour", val: "gilmour", icon: "G" },
+ { label: "Stevie Ray Vaughan", val: "srv", icon: "S" },
+ { label: "John Mayer", val: "mayer", icon: "M" },
+ { label: "John Frusciante", val: "frusciante", icon: "F" },
+ { label: "Mark Knopfler", val: "knopfler", icon: "K" },
+ { label: "The Edge", val: "edge", icon: "E" },
+ { label: "Jerry Cantrell", val: "cantrell", icon: "C" },
+ { label: "Jeff Beck", val: "beck", icon: "B" },
+ { label: "None / I'll wing it", val: "none", icon: "?" },
+ ]
+ },
+ {
+ key: "amp",
+ q: "What's your amp situation?",
+ sub: "How does your amp sound with the volume up?",
+ single: true,
+ opts: [
+ { label: "Clean with plenty of headroom (Fender, Vox, Roland)", val: "clean", icon: "C" },
+ { label: "Gets a little glassy and touched when pushed (Deluxe, AC30)", val: "slight-break", icon: "S" },
+ { label: "Medium crunch - some natural drive at gig volumes", val: "crunch", icon: "M" },
+ { label: "High gain amp - Mesa, 5150, or similar", val: "high-gain", icon: "H" },
+ ]
+ },
+ {
  key: "style",
+ q: "How do you mostly play?",
+ sub: "This shapes which pedal roles matter most in the chain.",
+ single: true,
  opts: [
- { icon: "", label: "Rhythm guitar, mostly chords", val: "rhythm" },
- { icon: "", label: "Lead playing and solos", val: "lead" },
- { icon: "", label: "Ambient / texture layering", val: "ambient" },
- { icon: "", label: "Clean fingerpicking", val: "clean" },
+ { label: "Mostly rhythm - holding down the groove", val: "rhythm", icon: "R" },
+ { label: "Mostly lead - playing over the band", val: "lead", icon: "L" },
+ { label: "Texture and atmosphere - painting with sound", val: "ambient", icon: "T" },
+ { label: "A mix of everything - I need versatility", val: "versatile", icon: "V" },
  ]
  },
  {
- q: "What's your pedal budget?",
  key: "budget",
+ q: "Total budget for this pedal chain?",
+ sub: "Include everything in the chain, not per pedal.",
+ single: true,
  opts: [
- { icon: "", label: "Under $75 – keep it affordable", val: "budget" },
- { icon: "", label: "$75–$175 – mid-range sweet spot", val: "mid" },
- { icon: "", label: "$175–$350 – willing to invest", val: "premium" },
- { icon: "", label: "$350+ – boutique or bust", val: "boutique" },
+ { label: "Under $200 - essentials only", val: "under-200", icon: "$" },
+ { label: "$200 to $500 - solid foundation", val: "200-500", icon: "$$" },
+ { label: "$500 to $1000 - serious rig", val: "500-1000", icon: "$$$" },
+ { label: "Over $1000 - no compromises", val: "1000plus", icon: "$$$$" },
  ]
  },
  {
- q: "What does your current rig look like?",
- key: "rig",
+ key: "own",
+ q: "What do you already own?",
+ sub: "Helps us know what to prioritize in the chain.",
+ single: true,
  opts: [
- { icon: "", label: "Solid-state or modeling amp", val: "ss" },
- { icon: "", label: "Tube amp with some natural breakup", val: "tube" },
- { icon: "", label: "Direct recording or headphone rig", val: "direct" },
- { icon: "", label: "Just starting out, building from scratch",val: "new" },
+ { label: "Nothing yet, starting from scratch", val: "nothing", icon: "0" },
+ { label: "Guitar and amp, that's it", val: "basics", icon: "1" },
+ { label: "A drive or two already on my board", val: "drives", icon: "2" },
+ { label: "A full board, looking to fill gaps", val: "full", icon: "3" },
  ]
  },
  {
- q: "What sound are you chasing?",
  key: "sound",
+ q: "What sound are you chasing?",
+ sub: "Pick the characteristic you most want to add to your playing.",
+ single: true,
  opts: [
- { icon: "", label: "More warmth and grit", val: "warm" },
- { icon: "", label: "Lush reverb and atmospheric texture", val: "atmo" },
- { icon: "", label: "Slap-back delay and rhythmic depth", val: "delay" },
- { icon: "", label: "Versatility — one pedal for many sounds", val: "versatile" },
+ { label: "More warmth, grit, and harmonic character", val: "warm", icon: "W" },
+ { label: "Lush space, reverb, and atmospheric texture", val: "atmo", icon: "A" },
+ { label: "Rhythmic depth, echoes, and slap-back", val: "delay", icon: "D" },
+ { label: "Maximum versatility - one pedal for many sounds", val: "versatile", icon: "V" },
  ]
- }
+ },
+ {
+ key: "venue",
+ q: "Where do you primarily play?",
+ sub: "Affects which pedal features matter most.",
+ single: true,
+ opts: [
+ { label: "Bedroom or headphone practice rig", val: "bedroom", icon: "B" },
+ { label: "Home studio and recording", val: "studio", icon: "S" },
+ { label: "Rehearsal space and small gigs", val: "gigging", icon: "G" },
+ { label: "Large stages and serious live work", val: "stage", icon: "L" },
+ ]
+ },
 ];
 
-const DNA_AXES = ["Warmth", "Grit", "Clarity", "Versatility", "Value"];
+const HERO_PROFILES = {
+ hendrix: { name: "Jimi Hendrix", chain: "Fuzz Face → Wah → Octavia → Marshall", why: "Fuzz-first, wah-forward, clean amp pushed hard" },
+ gilmour: { name: "David Gilmour", chain: "Compressor → Big Muff → Chorus → Delay → Hi-Watt", why: "Pristine cleans with layers of modulation and space" },
+ srv: { name: "Stevie Ray Vaughan", chain: "Wah → Tube Screamer → Reverb → Vibroverb", why: "Heavy strings, light pick attack, TS pushing the amp" },
+ mayer: { name: "John Mayer", chain: "Compressor → Klon → Delay → Two-Rock clean", why: "Transparent boost into a loud clean amp, subtle compression" },
+ frusciante: { name: "John Frusciante", chain: "Wah → DS-1 → Phase 90 → Delay → Chorus", why: "Unconventional order, raw energy, heavy mod stack" },
+ knopfler: { name: "Mark Knopfler", chain: "Compressor → light OD → Delay → clean amp", why: "Fingerstyle clarity, subtle effects, nothing between the player and the amp" },
+ edge: { name: "The Edge", chain: "Chorus → Digital Delay → Flanger → Vox AC30", why: "Effects-as-composition, polyrhythmic repeats define the sound" },
+ cantrell: { name: "Jerry Cantrell", chain: "Wah → DS-1 → Big Muff → Mesa Boogie", why: "Heavy layered gain, dropped tuning, tight low-end focus" },
+ beck: { name: "Jeff Beck", chain: "Fuzz Face → Phaser → Delay → Marshall", why: "Touch-sensitive fuzz, heavy vibrato use, minimal pedals" },
+ none: { name: "Your own path", chain: "Whatever sounds right to you", why: "The best tone is the one in your head" },
+};
 
-// Quiz state 
+const DNA_AXES = ["Warmth","Grit","Clarity","Versatility","Value"];
+
 let step = 0;
-const answers = new Array(QUESTIONS.length).fill(null);
+const answers = {};
 
 const quizEl = document.getElementById("tf-quiz");
 const resultsEl = document.getElementById("tf-results");
 const cardEl = document.getElementById("tf-card");
 const qEl = document.getElementById("tf-q");
+const qSubEl = document.getElementById("tf-q-sub");
 const optsEl = document.getElementById("tf-opts");
 const nextBtn = document.getElementById("tf-next");
 const backBtn = document.getElementById("tf-back");
 const progEl = document.getElementById("tf-progress");
 const labelEl = document.getElementById("tf-step-label");
-const recListEl = document.getElementById("tf-rec-list");
-const restartBtn= document.getElementById("tf-restart");
 
 function renderQuestion() {
  const q = QUESTIONS[step];
  qEl.textContent = q.q;
+ qSubEl.textContent = q.sub || "";
  labelEl.textContent = `Question ${step + 1} of ${QUESTIONS.length}`;
  progEl.style.width = `${((step + 1) / QUESTIONS.length) * 100}%`;
  backBtn.style.visibility = step === 0 ? "hidden" : "visible";
- nextBtn.textContent = step === QUESTIONS.length - 1 ? "See Results →" : "Next →";
+ nextBtn.textContent = step === QUESTIONS.length - 1 ? "See My Chain" : "Next";
 
  optsEl.innerHTML = "";
+ const current = answers[q.key] || (q.single ? null : []);
+
+ const wrap = document.createElement("div");
+ wrap.className = (q.opts.length > 5) ? "tf-opts-2col" : "tf-options";
+ optsEl.appendChild(wrap);
+
  q.opts.forEach(opt => {
  const btn = document.createElement("button");
- btn.className = "tf-opt" + (answers[step] === opt.val ? " selected" : "");
+ btn.className = "tf-opt";
+ const isSelected = q.single ? current === opt.val : (current || []).includes(opt.val);
+ if (isSelected) btn.classList.add("selected");
  btn.innerHTML = `<span class="tf-opt-icon">${opt.icon}</span>${opt.label}`;
  btn.addEventListener("click", () => {
- answers[step] = opt.val;
- optsEl.querySelectorAll(".tf-opt").forEach(b => b.classList.remove("selected"));
+ if (q.single) {
+ answers[q.key] = opt.val;
+ wrap.querySelectorAll(".tf-opt").forEach(b => b.classList.remove("selected"));
  btn.classList.add("selected");
- nextBtn.classList.add("ready");
- });
- optsEl.appendChild(btn);
- });
-
- // Restore ready state if already answered
- if (answers[step]) {
- nextBtn.classList.add("ready");
+ checkReady();
  } else {
- nextBtn.classList.remove("ready");
+ // Multi-select
+ let sel = answers[q.key] || [];
+ if (sel.includes(opt.val)) {
+ sel = sel.filter(v => v !== opt.val);
+ } else {
+ const max = q.maxSelect || Infinity;
+ if (opt.val === "none") {
+ sel = ["none"];
+ } else {
+ sel = sel.filter(v => v !== "none");
+ if (sel.length < max) sel.push(opt.val);
  }
+ }
+ answers[q.key] = sel;
+ wrap.querySelectorAll(".tf-opt").forEach(b => {
+ b.classList.toggle("selected", answers[q.key].includes(b.dataset.val));
+ });
+ checkReady();
+ }
+ });
+ if (!q.single) btn.dataset.val = opt.val;
+ wrap.appendChild(btn);
+ });
 
- // Animate card
+ checkReady();
  cardEl.style.animation = "none";
- cardEl.offsetHeight; // reflow
+ cardEl.offsetHeight;
  cardEl.style.animation = "";
+}
+
+function checkReady() {
+ const q = QUESTIONS[step];
+ const val = answers[q.key];
+ const hasAnswer = q.single ? !!val : (val && val.length > 0);
+ nextBtn.classList.toggle("ready", hasAnswer);
 }
 
 nextBtn.addEventListener("click", () => {
@@ -305,77 +449,266 @@ backBtn.addEventListener("click", () => {
  if (step > 0) { step--; renderQuestion(); }
 });
 
-restartBtn.addEventListener("click", () => {
+document.getElementById("tf-restart").addEventListener("click", () => {
  step = 0;
- answers.fill(null);
+ Object.keys(answers).forEach(k => delete answers[k]);
  quizEl.style.display = "";
  resultsEl.style.display = "none";
  renderQuestion();
 });
 
-// Recommendation engine 
-function scoreAndRank(answers) {
- const answerSet = new Set(answers.filter(Boolean));
+// Chain builder 
+function buildChain(ans) {
+ const budgetMap = { "under-200": 200, "200-500": 500, "500-1000": 1000, "1000plus": 9999 };
+ const budget = budgetMap[ans.budget] || 500;
+ const perSlot = budget / 5;
+ const heroes = Array.isArray(ans.heroes) ? ans.heroes.filter(h => h !== "none") : [];
+ const genre = ans.genre || "rock";
+ const amp = ans.amp || "clean";
+ const style = ans.style || "versatile";
+ const sound = ans.sound || "warm";
+ const venue = ans.venue || "gigging";
 
- return PEDALS_DB.map(pedal => {
- let score = 0;
- for (const tag of pedal.tags) {
- if (answerSet.has(tag)) score++;
+ const genreTagMap = {
+ "blues": ["blues"], "classic-rock": ["rock","classic-rock"], "metal": ["metal","high-gain"],
+ "indie": ["indie"], "country": ["country"], "funk": ["funk"],
+ "jazz": ["jazz","clean"], "ambient": ["ambient","atmo"]
+ };
+ const genreTags = genreTagMap[genre] || [genre];
+
+ function score(pedal, slotBudget) {
+ if (pedal.priceNum > slotBudget * 1.5) return -1;
+ let s = (pedal.score || 8) * 1;
+ for (const tag of genreTags) { if (pedal.tags.includes(tag)) s += 3; }
+ for (const h of heroes) { if (pedal.heroes && pedal.heroes.includes(h)) s += 5; }
+ if (pedal.tags.includes(style)) s += 2;
+ if (pedal.tags.includes(sound)) s += 2;
+ if (venue === "bedroom" && pedal.tags.includes("direct")) s += 1;
+ if (venue === "studio" && pedal.tags.includes("direct")) s += 2;
+ if (genre === "metal" && pedal.tags.includes("high-gain")) s += 3;
+ if (amp === "clean" && pedal.tags.includes("clean")) s += 1;
+ return s;
  }
- // Slight tie-break by pedal score
- const tiebreak = (pedal.score || 8) / 100;
- return { pedal, score: score + tiebreak };
- }).sort((a, b) => b.score - a.score);
+
+ function bestForRole(role, slotBudget, catFilter) {
+ return PEDALS_DB
+ .filter(p => p.role === role && (!catFilter || p.category === catFilter))
+ .map(p => ({ pedal: p, s: score(p, slotBudget) }))
+ .filter(x => x.s >= 0)
+ .sort((a, b) => b.s - a.s)[0]?.pedal || null;
+ }
+
+ function bestTimeBased(cat, slotBudget) {
+ return PEDALS_DB
+ .filter(p => p.role === "time-based" && p.category === cat)
+ .map(p => ({ pedal: p, s: score(p, slotBudget) }))
+ .filter(x => x.s >= 0)
+ .sort((a, b) => b.s - a.s)[0]?.pedal || null;
+ }
+
+ const chain = [];
+
+ // Tuner - always
+ const tuner = PEDALS_DB.find(p => p.category === "tuner");
+ if (tuner) chain.push({ slot: "Tuner", pedal: tuner });
+
+ // Compressor
+ const heroesWantComp = heroes.some(h => ["srv","mayer","gilmour","knopfler","clapton"].includes(h));
+ const genreWantsComp = ["blues","country","funk","jazz"].includes(genre);
+ if (heroesWantComp || genreWantsComp || budget >= 400) {
+ const comp = bestForRole("dynamics", Math.min(perSlot * 1.5, 300));
+ if (comp) chain.push({ slot: "Compressor", pedal: comp });
+ }
+
+ // Wah/Filter - for wah-heavy heroes
+ const heroesWantWah = heroes.some(h => ["hendrix","srv","frusciante"].includes(h));
+ const genreWantsWah = ["blues","funk","metal"].includes(genre) && style === "lead";
+ if (heroesWantWah || genreWantsWah) {
+ const wah = bestForRole("filter", perSlot * 1.5);
+ if (wah) chain.push({ slot: "Wah", pedal: wah });
+ }
+
+ // Gain slot
+ const wantsFuzz = heroes.some(h => ["hendrix","gilmour","cantrell","beck"].includes(h)) ||
+ (genre === "indie" && sound === "warm");
+ const wantsDist = genre === "metal" || amp === "high-gain" ||
+ heroes.some(h => ["cantrell"].includes(h));
+
+ if (wantsDist) {
+ const dist = bestForRole("gain-high", perSlot * 1.5);
+ if (dist) chain.push({ slot: "Distortion", pedal: dist });
+ // Also add a fuzz if heroes want it and budget allows
+ if (wantsFuzz && budget >= 400) {
+ const fuzz = bestForRole("fuzz", perSlot);
+ if (fuzz && fuzz.id !== (chain[chain.length-1]?.pedal?.id)) {
+ chain.push({ slot: "Fuzz", pedal: fuzz });
+ }
+ }
+ } else if (wantsFuzz) {
+ const fuzz = bestForRole("fuzz", perSlot * 1.5);
+ if (fuzz) chain.push({ slot: "Fuzz", pedal: fuzz });
+ // Also add a light OD for mid-budget+
+ if (budget >= 300 && genre !== "metal") {
+ const drive = bestForRole("gain-low", perSlot);
+ if (drive) chain.push({ slot: "Overdrive", pedal: drive });
+ }
+ } else {
+ const drive = bestForRole("gain-low", perSlot * 1.5);
+ if (drive) chain.push({ slot: "Overdrive", pedal: drive });
+ }
+
+ // Modulation
+ const heroesWantMod = heroes.some(h => ["gilmour","frusciante","edge","beck"].includes(h));
+ const genreWantsMod = ["indie","ambient","funk"].includes(genre);
+ const soundWantsMod = sound === "atmo";
+ if (heroesWantMod || genreWantsMod || soundWantsMod || style === "ambient" || budget >= 400) {
+ const mod = bestForRole("modulation", perSlot * 1.2);
+ if (mod) chain.push({ slot: "Modulation", pedal: mod });
+ }
+
+ // Delay
+ const delay = bestTimeBased("delay", perSlot * 1.4);
+ if (delay) chain.push({ slot: "Delay", pedal: delay });
+
+ // Reverb
+ const reverb = bestTimeBased("reverb", perSlot * 1.4);
+ if (reverb) chain.push({ slot: "Reverb", pedal: reverb });
+
+ return chain;
+}
+
+// Tone matches 
+function matchHeroes(ans) {
+ const heroes = Array.isArray(ans.heroes) ? ans.heroes.filter(h => h !== "none") : [];
+ const genre = ans.genre || "";
+ const style = ans.style || "";
+ const sound = ans.sound || "";
+
+ const genreHeroMap = {
+ "blues": ["srv","hendrix","clapton","beck"],
+ "classic-rock":["hendrix","gilmour","beck","cantrell"],
+ "metal": ["cantrell"],
+ "indie": ["frusciante","edge","beck"],
+ "country": ["knopfler"],
+ "funk": ["frusciante","srv"],
+ "jazz": ["knopfler","beck"],
+ "ambient": ["gilmour","edge"],
+ };
+
+ const candidates = new Set([...heroes]);
+ (genreHeroMap[genre] || []).forEach(h => candidates.add(h));
+ if (style === "lead") ["hendrix","srv","gilmour","beck"].forEach(h => candidates.add(h));
+ if (sound === "atmo") ["gilmour","edge"].forEach(h => candidates.add(h));
+ if (sound === "warm") ["srv","hendrix","cantrell"].forEach(h => candidates.add(h));
+
+ return [...candidates]
+ .filter(h => HERO_PROFILES[h])
+ .slice(0, 3)
+ .map(h => HERO_PROFILES[h]);
 }
 
 function renderDNA(dna) {
  return DNA_AXES.map((axis, i) => `
  <div class="tf-dna-row">
  <span class="tf-dna-axis">${axis}</span>
- <div class="tf-dna-track"><div class="tf-dna-fill" style="width:${dna[i] * 10}%"></div></div>
- <span class="tf-dna-val">${dna[i]}</span>
- </div>
- `).join("");
+ <div class="tf-dna-track"><div class="tf-dna-fill" style="width:${(dna[i]||0)*10}%"></div></div>
+ <span class="tf-dna-val">${dna[i]||0}</span>
+ </div>`).join("");
 }
 
 function showResults() {
  quizEl.style.display = "none";
  resultsEl.style.display = "block";
 
- const ranked = scoreAndRank(answers);
- const top3 = ranked.slice(0, 3);
- const labels = ["#1 Best Match", "#2 Runner-up", "#3 Also Great"];
+ const chain = buildChain(answers);
+ const totalPrice = chain.reduce((sum, item) => sum + (item.pedal.priceNum || 0), 0);
 
- recListEl.innerHTML = top3.map(({ pedal }, i) => `
- <div class="tf-rec">
- <div class="tf-rec-img-wrap">
- <img class="tf-rec-img"
- src="${pedal.image}"
- alt="${pedal.name}"
+ // Price total
+ document.getElementById("tf-total-wrap").innerHTML = `
+ <div class="tf-total">
+ <span class="tf-total-label">Estimated chain total:</span>
+ <span class="tf-total-val">~$${totalPrice}</span>
+ </div>`;
+
+ // Chain list
+ const chainEl = document.getElementById("tf-chain-list");
+ chainEl.innerHTML = chain.map(({ slot, pedal }) => `
+ <div class="tf-pedal-card">
+ <div class="tf-pedal-img-wrap">
+ <img class="tf-pedal-img" src="${pedal.image}" alt="${pedal.name}"
  loading="lazy"
- onerror="this.onerror=null;this.src='https://placehold.co/110x110/fff9f0/c07d3a?text=${encodeURIComponent(pedal.name)}'">
+ onerror="this.onerror=null;this.src='https://placehold.co/100x100/fff9f0/c07d3a?text=${encodeURIComponent(pedal.brand[0])}'">
  </div>
- <div class="tf-rec-body">
- <div class="tf-rec-header">
- <span class="tf-rec-rank">${labels[i]}</span>
- <span class="tf-rec-score"> ${pedal.score.toFixed(1)} / 10</span>
- </div>
- <div class="tf-rec-name">${pedal.name}</div>
- <div class="tf-rec-brand">${pedal.brand} · ${pedal.price}</div>
- <div class="tf-rec-blurb">${pedal.blurb}</div>
- <div class="tf-rec-dna">${renderDNA(pedal.dna)}</div>
- <div class="tf-rec-btns">
- <a href="${pedal.article}" class="tf-btn-article">Full Review →</a>
+ <div class="tf-pedal-body">
+ <span class="tf-pedal-slot">${slot}</span>
+ <div class="tf-pedal-name">${pedal.name}</div>
+ <div class="tf-pedal-meta">${pedal.brand} &middot; ${pedal.price}</div>
+ <div class="tf-pedal-blurb">${pedal.blurb}</div>
+ <div class="tf-dna-mini">${renderDNA(pedal.dna)}</div>
+ <div class="tf-pedal-btns">
+ <a href="${pedal.article}" class="tf-btn-review">Full Review</a>
  <a href="${pedal.amazon}" class="tf-btn-amazon" target="_blank" rel="noopener">Amazon</a>
  <a href="${pedal.reverb}" class="tf-btn-reverb" target="_blank" rel="noopener">Reverb</a>
  </div>
  </div>
- </div>
- `).join("");
+ </div>`).join("");
+
+ // Tone matches
+ const matches = matchHeroes(answers);
+ const matchesEl = document.getElementById("tf-matches");
+ if (matches.length) {
+ matchesEl.innerHTML = matches.map(m => `
+ <div class="tf-match-card">
+ <div class="tf-match-name">${m.name}</div>
+ <div class="tf-match-chain">${m.chain}</div>
+ <div class="tf-match-why">${m.why}</div>
+ </div>`).join("");
+ } else {
+ matchesEl.innerHTML = `<p style="color:var(--text-muted);font-size:.85rem;">Your tone is entirely your own.</p>`;
+ }
+
+ // Open in Builder button
+ const chainIds = chain.map(c => c.pedal.id).join(",");
+ document.getElementById("tf-open-builder").href =
+ `pedalboard-builder.html#${encodeURIComponent(chainIds)}`;
+
+ // Share button
+ document.getElementById("tf-share-btn").addEventListener("click", () => {
+ const params = new URLSearchParams();
+ Object.entries(answers).forEach(([k, v]) => {
+ params.set(k, Array.isArray(v) ? v.join("+") : v);
+ });
+ const url = `${location.origin}${location.pathname}?${params.toString()}`;
+ navigator.clipboard.writeText(url).then(() => {
+ const toast = document.getElementById("tf-copy-toast");
+ toast.classList.add("show");
+ setTimeout(() => toast.classList.remove("show"), 2500);
+ });
+ });
 }
 
-// Init 
-renderQuestion();
+// Load from URL params 
+function loadFromParams() {
+ const params = new URLSearchParams(location.search);
+ let hasParams = false;
+ QUESTIONS.forEach(q => {
+ const val = params.get(q.key);
+ if (val) {
+ hasParams = true;
+ answers[q.key] = q.single ? val : val.split("+");
+ }
+ });
+ if (hasParams && Object.keys(answers).length === QUESTIONS.length) {
+ showResults();
+ return true;
+ }
+ return false;
+}
+
+// Init
+if (!loadFromParams()) {
+ renderQuestion();
+}
 </script>
 </body>
 </html>
