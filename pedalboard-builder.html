@@ -1,247 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pedalboard Builder – Design Your Signal Chain | PedalHound</title>
-  <meta name="description" content="Drag and drop pedals onto your virtual pedalboard. Build and share your signal chain, then buy with one click via Amazon or Reverb.">
-  <link rel="canonical" href="https://pedalhound.com/pedalboard-builder.html">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    /* ── Layout ── */
-    .pb-layout {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      min-height: calc(100vh - 70px);
-    }
-    @media (max-width: 860px) { .pb-layout { grid-template-columns: 1fr; } }
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Pedalboard Builder – Design Your Signal Chain | PedalHound</title>
+ <meta name="description" content="Drag and drop pedals onto your virtual pedalboard. Build and share your signal chain, then buy with one click via Amazon or Reverb.">
+ <link rel="canonical" href="https://pedalhound.com/pedalboard-builder.html">
+ <link rel="stylesheet" href="css/style.css">
+ <style>
+ /* Layout */
+ .pb-layout {
+ display: grid;
+ grid-template-columns: 300px 1fr;
+ min-height: calc(100vh - 70px);
+ }
+ @media (max-width: 860px) { .pb-layout { grid-template-columns: 1fr; } }
 
-    /* ── Library panel ── */
-    .pb-library {
-      background: var(--bg2);
-      border-right: 1px solid var(--border);
-      padding: 1.25rem;
-      overflow-y: auto;
-      max-height: calc(100vh - 70px);
-      position: sticky;
-      top: 70px;
-    }
-    @media (max-width: 860px) { .pb-library { max-height: 340px; position: static; } }
+ /* Library panel */
+ .pb-library {
+ background: var(--bg2);
+ border-right: 1px solid var(--border);
+ padding: 1.25rem;
+ overflow-y: auto;
+ max-height: calc(100vh - 70px);
+ position: sticky;
+ top: 70px;
+ }
+ @media (max-width: 860px) { .pb-library { max-height: 340px; position: static; } }
 
-    .pb-library-title { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text-muted); margin-bottom: .75rem; }
-    .pb-search { width: 100%; padding: .55rem .9rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); color: var(--text); font-size: .88rem; font-family: var(--font); margin-bottom: .85rem; outline: none; }
-    .pb-search:focus { border-color: var(--orange); }
+ .pb-library-title { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text-muted); margin-bottom: .75rem; }
+ .pb-search { width: 100%; padding: .55rem .9rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); color: var(--text); font-size: .88rem; font-family: var(--font); margin-bottom: .85rem; outline: none; }
+ .pb-search:focus { border-color: var(--orange); }
 
-    .pb-cat-filter { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1rem; }
-    .pb-cat-btn { font-size: .72rem; font-weight: 600; padding: .25rem .7rem; border: 1px solid var(--border); border-radius: 100px; background: var(--bg); color: var(--text-muted); cursor: pointer; font-family: var(--font); transition: all .2s; white-space: nowrap; }
-    .pb-cat-btn.active, .pb-cat-btn:hover { background: var(--orange); border-color: var(--orange); color: #fff; }
+ .pb-cat-filter { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1rem; }
+ .pb-cat-btn { font-size: .72rem; font-weight: 600; padding: .25rem .7rem; border: 1px solid var(--border); border-radius: 100px; background: var(--bg); color: var(--text-muted); cursor: pointer; font-family: var(--font); transition: all .2s; white-space: nowrap; }
+ .pb-cat-btn.active, .pb-cat-btn:hover { background: var(--orange); border-color: var(--orange); color: #fff; }
 
-    .pb-pedal-list { display: flex; flex-direction: column; gap: .45rem; }
+ .pb-pedal-list { display: flex; flex-direction: column; gap: .45rem; }
 
-    .pb-pedal-item {
-      display: grid;
-      grid-template-columns: 44px 1fr 26px;
-      align-items: center;
-      gap: .65rem;
-      padding: .55rem .75rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      cursor: grab;
-      transition: border-color .2s, box-shadow .2s;
-      user-select: none;
-    }
-    .pb-pedal-item:hover { border-color: var(--orange); box-shadow: 0 2px 8px rgba(192,125,58,.1); }
-    .pb-pedal-item.dragging { opacity: .35; }
-    .pb-lib-img { width: 44px; height: 44px; object-fit: contain; border-radius: 6px; background: var(--bg3); display: block; flex-shrink: 0; }
-    .pb-pedal-info { min-width: 0; }
-    .pb-pedal-name { font-size: .8rem; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .pb-pedal-meta { font-size: .7rem; color: var(--text-muted); }
-    .pb-add-btn { width: 26px; height: 26px; border-radius: 50%; background: var(--orange); border: none; color: #fff; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .2s; line-height: 1; }
-    .pb-add-btn:hover { background: var(--orange-dk); }
+ .pb-pedal-item {
+ display: grid;
+ grid-template-columns: 44px 1fr 26px;
+ align-items: center;
+ gap: .65rem;
+ padding: .55rem .75rem;
+ background: var(--bg);
+ border: 1px solid var(--border);
+ border-radius: var(--radius-sm);
+ cursor: grab;
+ transition: border-color .2s, box-shadow .2s;
+ user-select: none;
+ }
+ .pb-pedal-item:hover { border-color: var(--orange); box-shadow: 0 2px 8px rgba(192,125,58,.1); }
+ .pb-pedal-item.dragging { opacity: .35; }
+ .pb-lib-img { width: 44px; height: 44px; object-fit: contain; border-radius: 6px; background: var(--bg3); display: block; flex-shrink: 0; }
+ .pb-pedal-info { min-width: 0; }
+ .pb-pedal-name { font-size: .8rem; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+ .pb-pedal-meta { font-size: .7rem; color: var(--text-muted); }
+ .pb-add-btn { width: 26px; height: 26px; border-radius: 50%; background: var(--orange); border: none; color: #fff; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .2s; line-height: 1; }
+ .pb-add-btn:hover { background: var(--orange-dk); }
 
-    /* ── Board panel ── */
-    .pb-board-panel { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+ /* Board panel */
+ .pb-board-panel { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
 
-    .pb-board-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; }
-    .pb-board-header h1 { font-size: 1.15rem; color: var(--text); }
-    .pb-board-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
-    .pb-action-btn { font-size: .8rem; font-weight: 600; padding: .4rem .95rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg2); color: var(--text-muted); cursor: pointer; font-family: var(--font); transition: all .2s; }
-    .pb-action-btn:hover { border-color: var(--orange); color: var(--orange); }
-    .pb-action-btn.primary { background: var(--orange); border-color: var(--orange); color: #fff; }
-    .pb-action-btn.primary:hover { background: var(--orange-dk); }
+ .pb-board-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; }
+ .pb-board-header h1 { font-size: 1.15rem; color: var(--text); }
+ .pb-board-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+ .pb-action-btn { font-size: .8rem; font-weight: 600; padding: .4rem .95rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg2); color: var(--text-muted); cursor: pointer; font-family: var(--font); transition: all .2s; }
+ .pb-action-btn:hover { border-color: var(--orange); color: var(--orange); }
+ .pb-action-btn.primary { background: var(--orange); border-color: var(--orange); color: #fff; }
+ .pb-action-btn.primary:hover { background: var(--orange-dk); }
 
-    /* ── Chain ── */
-    .pb-chain-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); display: flex; align-items: center; gap: .5rem; }
-    .pb-chain-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+ /* Chain */
+ .pb-chain-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); display: flex; align-items: center; gap: .5rem; }
+ .pb-chain-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-    .pb-chain-wrap {
-      background: var(--bg2);
-      border: 2px dashed var(--border);
-      border-radius: var(--radius-lg);
-      min-height: 200px;
-      padding: 1.25rem;
-      transition: border-color .2s, background .2s;
-      position: relative;
-    }
-    .pb-chain-wrap.drag-over { border-color: var(--orange); background: rgba(192,125,58,.04); }
+ .pb-chain-wrap {
+ background: var(--bg2);
+ border: 2px dashed var(--border);
+ border-radius: var(--radius-lg);
+ min-height: 200px;
+ padding: 1.25rem;
+ transition: border-color .2s, background .2s;
+ position: relative;
+ }
+ .pb-chain-wrap.drag-over { border-color: var(--orange); background: rgba(192,125,58,.04); }
 
-    .pb-chain-empty {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: .5rem; color: var(--text-muted); font-size: .88rem; pointer-events: none;
-    }
-    .pb-chain-empty-icon { font-size: 2.2rem; opacity: .35; }
+ .pb-chain-empty {
+ position: absolute; inset: 0;
+ display: flex; flex-direction: column; align-items: center; justify-content: center;
+ gap: .5rem; color: var(--text-muted); font-size: .88rem; pointer-events: none;
+ }
+ .pb-chain-empty-icon { font-size: 2.2rem; opacity: .35; }
 
-    .pb-chain { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; min-height: 140px; }
+ .pb-chain { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; min-height: 140px; }
 
-    /* Individual chain pedal */
-    .pb-chain-slot { display: flex; align-items: center; gap: .35rem; }
-    .pb-chain-pedal {
-      display: flex; flex-direction: column; align-items: center; gap: .3rem;
-      position: relative; cursor: grab;
-    }
-    .pb-chain-pedal-body {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: .65rem .6rem .5rem;
-      width: 84px;
-      text-align: center;
-      transition: border-color .2s, box-shadow .2s;
-      position: relative;
-    }
-    .pb-chain-pedal-body:hover { border-color: var(--orange); box-shadow: 0 3px 10px rgba(192,125,58,.12); }
-    .pb-chain-pedal-img { width: 54px; height: 54px; object-fit: contain; display: block; margin: 0 auto .3rem; }
-    .pb-chain-pedal-name { font-size: .6rem; font-weight: 700; color: var(--text); line-height: 1.25; }
-    .pb-chain-pedal-brand { font-size: .56rem; color: var(--text-muted); }
-    .pb-remove-btn {
-      position: absolute; top: -7px; right: -7px;
-      width: 18px; height: 18px; border-radius: 50%;
-      background: #b94040; border: none; color: #fff;
-      font-size: .65rem; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transition: opacity .15s;
-    }
-    .pb-chain-pedal-body:hover .pb-remove-btn { opacity: 1; }
-    .pb-chain-arrow { color: var(--text-muted); font-size: .9rem; padding-bottom: 20px; flex-shrink: 0; }
+ /* Individual chain pedal */
+ .pb-chain-slot { display: flex; align-items: center; gap: .35rem; }
+ .pb-chain-pedal {
+ display: flex; flex-direction: column; align-items: center; gap: .3rem;
+ position: relative; cursor: grab;
+ }
+ .pb-chain-pedal-body {
+ background: var(--bg);
+ border: 1px solid var(--border);
+ border-radius: 10px;
+ padding: .65rem .6rem .5rem;
+ width: 84px;
+ text-align: center;
+ transition: border-color .2s, box-shadow .2s;
+ position: relative;
+ }
+ .pb-chain-pedal-body:hover { border-color: var(--orange); box-shadow: 0 3px 10px rgba(192,125,58,.12); }
+ .pb-chain-slot.drag-over-slot .pb-chain-pedal-body { border-color: var(--orange); box-shadow: 0 0 0 2px var(--orange); opacity: .7; }
+ .pb-chain-slot.dragging { opacity: .4; }
+ .pb-chain-pedal-img { width: 54px; height: 54px; object-fit: contain; display: block; margin: 0 auto .3rem; }
+ .pb-chain-pedal-name { font-size: .6rem; font-weight: 700; color: var(--text); line-height: 1.25; }
+ .pb-chain-pedal-brand { font-size: .56rem; color: var(--text-muted); }
+ .pb-remove-btn {
+ position: absolute; top: -7px; right: -7px;
+ width: 18px; height: 18px; border-radius: 50%;
+ background: #b94040; border: none; color: #fff;
+ font-size: .65rem; cursor: pointer;
+ display: flex; align-items: center; justify-content: center;
+ opacity: 0; transition: opacity .15s;
+ }
+ .pb-chain-pedal-body:hover .pb-remove-btn { opacity: 1; }
+ .pb-chain-arrow { color: var(--text-muted); font-size: .9rem; padding-bottom: 20px; flex-shrink: 0; }
 
-    /* ── Share box ── */
-    .pb-share-box { display: none; padding: 1rem 1.25rem; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); }
-    .pb-share-box.visible { display: block; }
-    .pb-share-label { font-size: .78rem; color: var(--text-muted); margin-bottom: .5rem; }
-    .pb-share-row { display: flex; gap: .5rem; }
-    .pb-share-url { flex: 1; font-size: .75rem; padding: .4rem .7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); color: var(--text); font-family: monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .pb-copy-btn { font-size: .78rem; font-weight: 700; padding: .4rem .9rem; border-radius: var(--radius); border: none; background: var(--orange); color: #fff; cursor: pointer; font-family: var(--font); white-space: nowrap; }
-    .pb-copy-btn:hover { background: var(--orange-dk); }
+ /* Share box */
+ .pb-share-box { display: none; padding: 1rem 1.25rem; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+ .pb-share-box.visible { display: block; }
+ .pb-share-label { font-size: .78rem; color: var(--text-muted); margin-bottom: .5rem; }
+ .pb-share-row { display: flex; gap: .5rem; }
+ .pb-share-url { flex: 1; font-size: .75rem; padding: .4rem .7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); color: var(--text); font-family: monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+ .pb-copy-btn { font-size: .78rem; font-weight: 700; padding: .4rem .9rem; border-radius: var(--radius); border: none; background: var(--orange); color: #fff; cursor: pointer; font-family: var(--font); white-space: nowrap; }
+ .pb-copy-btn:hover { background: var(--orange-dk); }
 
-    /* ── Buy list ── */
-    .pb-buy-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); display: flex; align-items: center; gap: .5rem; }
-    .pb-buy-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+ /* Buy list */
+ .pb-buy-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); display: flex; align-items: center; gap: .5rem; }
+ .pb-buy-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-    .pb-buy-list { display: flex; flex-direction: column; gap: .5rem; }
-    .pb-buy-item {
-      display: grid;
-      grid-template-columns: 48px 1fr auto;
-      align-items: center;
-      gap: .85rem;
-      padding: .65rem 1rem;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-    }
-    .pb-buy-img { width: 48px; height: 48px; object-fit: contain; border-radius: 6px; background: var(--bg3); }
-    .pb-buy-info { min-width: 0; }
-    .pb-buy-name { font-size: .82rem; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .pb-buy-brand { font-size: .72rem; color: var(--text-muted); }
-    .pb-buy-btns { display: flex; flex-direction: column; gap: .3rem; flex-shrink: 0; }
-    .pb-buy-amazon { display: inline-flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 700; background: #ff9900; color: #111; padding: .25rem .7rem; border-radius: var(--radius); text-decoration: none; white-space: nowrap; transition: background .2s; }
-    .pb-buy-amazon:hover { background: #e08800; }
-    .pb-buy-reverb { display: inline-flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 700; background: #e63329; color: #fff; padding: .25rem .7rem; border-radius: var(--radius); text-decoration: none; white-space: nowrap; transition: background .2s; }
-    .pb-buy-reverb:hover { background: #c42b22; }
-    .pb-buy-empty { font-size: .85rem; color: var(--text-muted); text-align: center; padding: 1.25rem; }
-  </style>
+ .pb-buy-list { display: flex; flex-direction: column; gap: .5rem; }
+ .pb-buy-item {
+ display: grid;
+ grid-template-columns: 48px 1fr auto;
+ align-items: center;
+ gap: .85rem;
+ padding: .65rem 1rem;
+ background: var(--bg2);
+ border: 1px solid var(--border);
+ border-radius: var(--radius-sm);
+ }
+ .pb-buy-img { width: 48px; height: 48px; object-fit: contain; border-radius: 6px; background: var(--bg3); }
+ .pb-buy-info { min-width: 0; }
+ .pb-buy-name { font-size: .82rem; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+ .pb-buy-brand { font-size: .72rem; color: var(--text-muted); }
+ .pb-buy-btns { display: flex; flex-direction: column; gap: .3rem; flex-shrink: 0; }
+ .pb-buy-amazon { display: inline-flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 700; background: #ff9900; color: #111; padding: .25rem .7rem; border-radius: var(--radius); text-decoration: none; white-space: nowrap; transition: background .2s; }
+ .pb-buy-amazon:hover { background: #e08800; }
+ .pb-buy-reverb { display: inline-flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 700; background: #e63329; color: #fff; padding: .25rem .7rem; border-radius: var(--radius); text-decoration: none; white-space: nowrap; transition: background .2s; }
+ .pb-buy-reverb:hover { background: #c42b22; }
+ .pb-buy-empty { font-size: .85rem; color: var(--text-muted); text-align: center; padding: 1.25rem; }
+ </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="container">
-    <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-logo">
-        <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="10" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="22" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="5" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><ellipse cx="27" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><path d="M16 13c-5 0-9 3.5-9 8 0 3.5 2.5 5 5 4.5 1.5-.3 2.5-1 4-1s2.5.7 4 1c2.5.5 5-1 5-4.5 0-4.5-4-8-9-8z" fill="#e8a020"/></svg>
-        PedalHound
-      </a>
-      <ul class="nav-links" role="list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="tone-finder.html">Tone Finder</a></li>
-        <li><a href="pedalboard-builder.html" aria-current="page">Pedalboard Builder</a></li>
-      </ul>
-      <a href="tone-finder.html" class="btn btn-primary nav-cta">Find My Pedal</a>
-      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-    </nav>
-  </div>
+ <div class="container">
+ <nav class="nav" aria-label="Main navigation">
+ <a href="index.html" class="nav-logo">
+ <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="10" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="22" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="5" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><ellipse cx="27" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><path d="M16 13c-5 0-9 3.5-9 8 0 3.5 2.5 5 5 4.5 1.5-.3 2.5-1 4-1s2.5.7 4 1c2.5.5 5-1 5-4.5 0-4.5-4-8-9-8z" fill="#e8a020"/></svg>
+ PedalHound
+ </a>
+ <ul class="nav-links" role="list">
+ <li><a href="index.html">Home</a></li>
+ <li><a href="reviews.html">Reviews</a></li>
+ <li><a href="tone-finder.html">Tone Finder</a></li>
+ <li><a href="pedalboard-builder.html" aria-current="page">Pedalboard Builder</a></li>
+ </ul>
+ <a href="tone-finder.html" class="btn btn-primary nav-cta">Find My Pedal</a>
+ <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+ </nav>
+ </div>
 </header>
 
 <div class="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-  <div class="mobile-nav-panel">
-    <a href="index.html">Home</a>
-    <a href="reviews.html">Reviews</a>
-    <a href="tone-finder.html">Tone Finder</a>
-    <a href="pedalboard-builder.html">Pedalboard Builder</a>
-  </div>
+ <div class="mobile-nav-panel">
+ <a href="index.html">Home</a>
+ <a href="reviews.html">Reviews</a>
+ <a href="tone-finder.html">Tone Finder</a>
+ <a href="pedalboard-builder.html">Pedalboard Builder</a>
+ </div>
 </div>
 
 <main>
-  <div class="pb-layout">
+ <div class="pb-layout">
 
-    <!-- Library -->
-    <aside class="pb-library">
-      <div class="pb-library-title">Pedal Library</div>
-      <input class="pb-search" type="search" placeholder="Search pedals…" id="pb-search" aria-label="Search pedals">
-      <div class="pb-cat-filter" id="pb-cats"></div>
-      <div class="pb-pedal-list" id="pb-pedal-list"></div>
-    </aside>
+ <!-- Library -->
+ <aside class="pb-library">
+ <div class="pb-library-title">Pedal Library</div>
+ <input class="pb-search" type="search" placeholder="Search pedals…" id="pb-search" aria-label="Search pedals">
+ <div class="pb-cat-filter" id="pb-cats"></div>
+ <div class="pb-pedal-list" id="pb-pedal-list"></div>
+ </aside>
 
-    <!-- Board -->
-    <section class="pb-board-panel">
+ <!-- Board -->
+ <section class="pb-board-panel">
 
-      <div class="pb-board-header">
-        <h1>🎸 My Pedalboard</h1>
-        <div class="pb-board-actions">
-          <button class="pb-action-btn" id="pb-clear-btn">Clear Board</button>
-          <button class="pb-action-btn primary" id="pb-share-btn">Share Board</button>
-        </div>
-      </div>
+ <div class="pb-board-header">
+ <h1> My Pedalboard</h1>
+ <div class="pb-board-actions">
+ <button class="pb-action-btn" id="pb-clear-btn">Clear Board</button>
+ <button class="pb-action-btn primary" id="pb-share-btn">Share Board</button>
+ </div>
+ </div>
 
-      <div>
-        <div class="pb-chain-label" style="margin-bottom:.75rem;">Signal Chain — Guitar → Amp</div>
-        <div class="pb-chain-wrap" id="pb-drop-zone">
-          <div class="pb-chain-empty" id="pb-empty-msg">
-            <span class="pb-chain-empty-icon">🎛️</span>
-            <span>Click + or drag pedals here to build your signal chain</span>
-          </div>
-          <div class="pb-chain" id="pb-chain"></div>
-        </div>
-      </div>
+ <div>
+ <div class="pb-chain-label" style="margin-bottom:.75rem;">Signal Chain — Guitar → Amp</div>
+ <div class="pb-chain-wrap" id="pb-drop-zone">
+ <div class="pb-chain-empty" id="pb-empty-msg">
+ <span class="pb-chain-empty-icon"></span>
+ <span>Click + or drag pedals here to build your signal chain</span>
+ </div>
+ <div class="pb-chain" id="pb-chain"></div>
+ </div>
+ </div>
 
-      <div class="pb-share-box" id="pb-share-box">
-        <div class="pb-share-label">Shareable link to this board:</div>
-        <div class="pb-share-row">
-          <input class="pb-share-url" id="pb-share-url" readonly>
-          <button class="pb-copy-btn" id="pb-copy-btn">Copy</button>
-        </div>
-      </div>
+ <div class="pb-share-box" id="pb-share-box">
+ <div class="pb-share-label">Shareable link to this board:</div>
+ <div class="pb-share-row">
+ <input class="pb-share-url" id="pb-share-url" readonly>
+ <button class="pb-copy-btn" id="pb-copy-btn">Copy</button>
+ </div>
+ </div>
 
-      <div>
-        <div class="pb-buy-label" style="margin-bottom:.75rem;">Buy on Amazon &amp; Reverb</div>
-        <div class="pb-buy-list" id="pb-buy-list">
-          <div class="pb-buy-empty">Add pedals above to see buy links.</div>
-        </div>
-      </div>
+ <div>
+ <div class="pb-buy-label" style="margin-bottom:.75rem;">Buy on Amazon &amp; Reverb</div>
+ <div class="pb-buy-list" id="pb-buy-list">
+ <div class="pb-buy-empty">Add pedals above to see buy links.</div>
+ </div>
+ </div>
 
-    </section>
-  </div>
+ </section>
+ </div>
 </main>
 
 <script src="js/main.js"></script>
@@ -249,196 +251,232 @@
 <script>
 const CATS = ["all", "overdrive", "distortion", "fuzz", "delay", "reverb", "modulation", "compressor", "wah"];
 
-let board = [];   // array of pedal ids
+let board = []; // array of pedal ids
 let activeCat = "all";
 let searchQ = "";
 let dragLibId = null;
+let dragBoardIdx = null;
 
-// ── Restore from URL hash ──
+// Restore from URL hash 
 (function () {
-  const hash = window.location.hash.slice(1);
-  if (!hash) return;
-  try {
-    const ids = decodeURIComponent(hash).split(",").filter(Boolean);
-    board = ids.filter(id => PEDALS_DB.find(p => p.id === id));
-  } catch (e) {}
+ const hash = window.location.hash.slice(1);
+ if (!hash) return;
+ try {
+ const ids = decodeURIComponent(hash).split(",").filter(Boolean);
+ board = ids.filter(id => PEDALS_DB.find(p => p.id === id));
+ } catch (e) {}
 })();
 
 function saveHash() {
-  history.replaceState(null, "", "#" + encodeURIComponent(board.join(",")));
+ history.replaceState(null, "", "#" + encodeURIComponent(board.join(",")));
 }
 
-// ── Library ──
+// Library 
 function renderCats() {
-  const el = document.getElementById("pb-cats");
-  el.innerHTML = CATS.map(c => `
-    <button class="pb-cat-btn${activeCat === c ? " active" : ""}" data-cat="${c}">
-      ${c === "all" ? "All" : c.charAt(0).toUpperCase() + c.slice(1)}
-    </button>
-  `).join("");
-  el.querySelectorAll(".pb-cat-btn").forEach(btn => {
-    btn.addEventListener("click", () => { activeCat = btn.dataset.cat; renderCats(); renderLibrary(); });
-  });
+ const el = document.getElementById("pb-cats");
+ el.innerHTML = CATS.map(c => `
+ <button class="pb-cat-btn${activeCat === c ? " active" : ""}" data-cat="${c}">
+ ${c === "all" ? "All" : c.charAt(0).toUpperCase() + c.slice(1)}
+ </button>
+ `).join("");
+ el.querySelectorAll(".pb-cat-btn").forEach(btn => {
+ btn.addEventListener("click", () => { activeCat = btn.dataset.cat; renderCats(); renderLibrary(); });
+ });
 }
 
 function renderLibrary() {
-  const el = document.getElementById("pb-pedal-list");
-  const visible = PEDALS_DB.filter(p => {
-    const matchCat = activeCat === "all" || p.category === activeCat;
-    const matchQ   = !searchQ || p.name.toLowerCase().includes(searchQ) || p.brand.toLowerCase().includes(searchQ);
-    return matchCat && matchQ;
-  });
+ const el = document.getElementById("pb-pedal-list");
+ const visible = PEDALS_DB.filter(p => {
+ const matchCat = activeCat === "all" || p.category === activeCat;
+ const matchQ = !searchQ || p.name.toLowerCase().includes(searchQ) || p.brand.toLowerCase().includes(searchQ);
+ return matchCat && matchQ;
+ });
 
-  if (!visible.length) {
-    el.innerHTML = `<div style="color:var(--text-muted);font-size:.85rem;text-align:center;padding:1.5rem 0">No pedals found.</div>`;
-    return;
-  }
+ if (!visible.length) {
+ el.innerHTML = `<div style="color:var(--text-muted);font-size:.85rem;text-align:center;padding:1.5rem 0">No pedals found.</div>`;
+ return;
+ }
 
-  el.innerHTML = visible.map(p => `
-    <div class="pb-pedal-item" draggable="true" data-id="${p.id}">
-      <img class="pb-lib-img"
-           src="${p.image}"
-           alt="${p.name}"
-           loading="lazy"
-           onerror="this.onerror=null;this.src='https://placehold.co/44x44/fff9f0/c07d3a?text=${encodeURIComponent(p.brand[0])}'">
-      <div class="pb-pedal-info">
-        <div class="pb-pedal-name">${p.name}</div>
-        <div class="pb-pedal-meta">${p.brand} · ${p.price}</div>
-      </div>
-      <button class="pb-add-btn" data-id="${p.id}" aria-label="Add ${p.name} to board">+</button>
-    </div>
-  `).join("");
+ el.innerHTML = visible.map(p => `
+ <div class="pb-pedal-item" draggable="true" data-id="${p.id}">
+ <img class="pb-lib-img"
+ src="${p.image}"
+ alt="${p.name}"
+ loading="lazy"
+ onerror="this.onerror=null;this.src='https://placehold.co/44x44/fff9f0/c07d3a?text=${encodeURIComponent(p.brand[0])}'">
+ <div class="pb-pedal-info">
+ <div class="pb-pedal-name">${p.name}</div>
+ <div class="pb-pedal-meta">${p.brand} · ${p.price}</div>
+ </div>
+ <button class="pb-add-btn" data-id="${p.id}" aria-label="Add ${p.name} to board">+</button>
+ </div>
+ `).join("");
 
-  el.querySelectorAll(".pb-add-btn").forEach(btn =>
-    btn.addEventListener("click", () => addToBoard(btn.dataset.id))
-  );
-  el.querySelectorAll(".pb-pedal-item[draggable]").forEach(item => {
-    item.addEventListener("dragstart", e => {
-      dragLibId = item.dataset.id;
-      item.classList.add("dragging");
-      e.dataTransfer.effectAllowed = "copy";
-    });
-    item.addEventListener("dragend", () => item.classList.remove("dragging"));
-  });
+ el.querySelectorAll(".pb-add-btn").forEach(btn =>
+ btn.addEventListener("click", () => addToBoard(btn.dataset.id))
+ );
+ el.querySelectorAll(".pb-pedal-item[draggable]").forEach(item => {
+ item.addEventListener("dragstart", e => {
+ dragLibId = item.dataset.id;
+ item.classList.add("dragging");
+ e.dataTransfer.effectAllowed = "copy";
+ });
+ item.addEventListener("dragend", () => item.classList.remove("dragging"));
+ });
 }
 
-// ── Board ──
+// Board 
 function addToBoard(id) {
-  board.push(id);
-  renderBoard();
-  saveHash();
+ board.push(id);
+ renderBoard();
+ saveHash();
 }
 
 function removeFromBoard(idx) {
-  board.splice(idx, 1);
-  renderBoard();
-  saveHash();
+ board.splice(idx, 1);
+ renderBoard();
+ saveHash();
 }
 
 function renderBoard() {
-  const chain   = document.getElementById("pb-chain");
-  const emptyMsg= document.getElementById("pb-empty-msg");
-  const buyList = document.getElementById("pb-buy-list");
+ const chain = document.getElementById("pb-chain");
+ const emptyMsg= document.getElementById("pb-empty-msg");
+ const buyList = document.getElementById("pb-buy-list");
 
-  emptyMsg.style.display = board.length ? "none" : "";
+ emptyMsg.style.display = board.length ? "none" : "";
 
-  if (!board.length) {
-    chain.innerHTML = "";
-    buyList.innerHTML = `<div class="pb-buy-empty">Add pedals above to see buy links.</div>`;
-    return;
-  }
+ if (!board.length) {
+ chain.innerHTML = "";
+ buyList.innerHTML = `<div class="pb-buy-empty">Add pedals above to see buy links.</div>`;
+ return;
+ }
 
-  // Signal chain
-  chain.innerHTML = board.map((id, i) => {
-    const p = PEDALS_DB.find(x => x.id === id);
-    if (!p) return "";
-    const arrow = i < board.length - 1 ? `<div class="pb-chain-arrow">→</div>` : "";
-    return `
-      <div class="pb-chain-slot">
-        <div class="pb-chain-pedal">
-          <div class="pb-chain-pedal-body" data-idx="${i}">
-            <button class="pb-remove-btn" data-idx="${i}" aria-label="Remove ${p.name}">✕</button>
-            <img class="pb-chain-pedal-img"
-                 src="${p.image}" alt="${p.name}"
-                 onerror="this.onerror=null;this.src='https://placehold.co/54x54/fff9f0/c07d3a?text=${encodeURIComponent(p.brand[0])}'">
-            <div class="pb-chain-pedal-name">${p.name}</div>
-            <div class="pb-chain-pedal-brand">${p.brand}</div>
-          </div>
-        </div>
-        ${arrow}
-      </div>
-    `;
-  }).join("");
+ // Signal chain
+ chain.innerHTML = board.map((id, i) => {
+ const p = PEDALS_DB.find(x => x.id === id);
+ if (!p) return "";
+ const arrow = i < board.length - 1 ? `<div class="pb-chain-arrow">→</div>` : "";
+ return `
+ <div class="pb-chain-slot">
+ <div class="pb-chain-pedal">
+ <div class="pb-chain-pedal-body" data-idx="${i}">
+ <button class="pb-remove-btn" data-idx="${i}" aria-label="Remove ${p.name}"></button>
+ <img class="pb-chain-pedal-img"
+ src="${p.image}" alt="${p.name}"
+ onerror="this.onerror=null;this.src='https://placehold.co/54x54/fff9f0/c07d3a?text=${encodeURIComponent(p.brand[0])}'">
+ <div class="pb-chain-pedal-name">${p.name}</div>
+ <div class="pb-chain-pedal-brand">${p.brand}</div>
+ </div>
+ </div>
+ ${arrow}
+ </div>
+ `;
+ }).join("");
 
-  chain.querySelectorAll(".pb-remove-btn").forEach(btn =>
-    btn.addEventListener("click", () => removeFromBoard(+btn.dataset.idx))
-  );
+ chain.querySelectorAll(".pb-remove-btn").forEach(btn =>
+ btn.addEventListener("click", () => removeFromBoard(+btn.dataset.idx))
+ );
 
-  // Buy list (deduplicated)
-  const seen = new Set();
-  const unique = board.filter(id => { if (seen.has(id)) return false; seen.add(id); return true; });
+ // Drag-to-reorder within signal chain
+ chain.querySelectorAll(".pb-chain-pedal-body").forEach(body => {
+ body.setAttribute("draggable", "true");
+ body.addEventListener("dragstart", e => {
+ dragBoardIdx = +body.dataset.idx;
+ dragLibId = null;
+ e.dataTransfer.effectAllowed = "move";
+ body.closest(".pb-chain-slot").classList.add("dragging");
+ });
+ body.addEventListener("dragend", () => {
+ body.closest(".pb-chain-slot").classList.remove("dragging");
+ chain.querySelectorAll(".pb-chain-slot").forEach(s => s.classList.remove("drag-over-slot"));
+ dragBoardIdx = null;
+ });
+ body.addEventListener("dragover", e => {
+ if (dragBoardIdx === null) return;
+ e.preventDefault();
+ e.dataTransfer.dropEffect = "move";
+ chain.querySelectorAll(".pb-chain-slot").forEach(s => s.classList.remove("drag-over-slot"));
+ body.closest(".pb-chain-slot").classList.add("drag-over-slot");
+ });
+ body.addEventListener("drop", e => {
+ e.preventDefault();
+ e.stopPropagation();
+ const toIdx = +body.dataset.idx;
+ if (dragBoardIdx !== null && dragBoardIdx !== toIdx) {
+ const moved = board.splice(dragBoardIdx, 1)[0];
+ board.splice(toIdx, 0, moved);
+ renderBoard();
+ saveHash();
+ }
+ dragBoardIdx = null;
+ });
+ });
 
-  buyList.innerHTML = unique.map(id => {
-    const p = PEDALS_DB.find(x => x.id === id);
-    if (!p) return "";
-    return `
-      <div class="pb-buy-item">
-        <img class="pb-buy-img"
-             src="${p.image}" alt="${p.name}"
-             onerror="this.onerror=null;this.src='https://placehold.co/48x48/fff9f0/c07d3a?text=${encodeURIComponent(p.brand[0])}'">
-        <div class="pb-buy-info">
-          <div class="pb-buy-name">${p.name}</div>
-          <div class="pb-buy-brand">${p.brand} · ${p.price}</div>
-        </div>
-        <div class="pb-buy-btns">
-          <a href="${p.amazon}" class="pb-buy-amazon" target="_blank" rel="noopener">Amazon →</a>
-          <a href="${p.reverb}" class="pb-buy-reverb" target="_blank" rel="noopener">Reverb →</a>
-        </div>
-      </div>
-    `;
-  }).join("");
+ // Buy list (deduplicated)
+ const seen = new Set();
+ const unique = board.filter(id => { if (seen.has(id)) return false; seen.add(id); return true; });
+
+ buyList.innerHTML = unique.map(id => {
+ const p = PEDALS_DB.find(x => x.id === id);
+ if (!p) return "";
+ return `
+ <div class="pb-buy-item">
+ <img class="pb-buy-img"
+ src="${p.image}" alt="${p.name}"
+ onerror="this.onerror=null;this.src='https://placehold.co/48x48/fff9f0/c07d3a?text=${encodeURIComponent(p.brand[0])}'">
+ <div class="pb-buy-info">
+ <div class="pb-buy-name">${p.name}</div>
+ <div class="pb-buy-brand">${p.brand} · ${p.price}</div>
+ </div>
+ <div class="pb-buy-btns">
+ <a href="${p.amazon}" class="pb-buy-amazon" target="_blank" rel="noopener">Amazon →</a>
+ <a href="${p.reverb}" class="pb-buy-reverb" target="_blank" rel="noopener">Reverb →</a>
+ </div>
+ </div>
+ `;
+ }).join("");
 }
 
-// ── Drop zone ──
+// Drop zone 
 const dropZone = document.getElementById("pb-drop-zone");
 dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("drag-over"); e.dataTransfer.dropEffect = "copy"; });
 dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
 dropZone.addEventListener("drop", e => {
-  e.preventDefault();
-  dropZone.classList.remove("drag-over");
-  if (dragLibId) { addToBoard(dragLibId); dragLibId = null; }
+ e.preventDefault();
+ dropZone.classList.remove("drag-over");
+ if (dragLibId) { addToBoard(dragLibId); dragLibId = null; }
 });
 
-// ── Controls ──
+// Controls 
 document.getElementById("pb-search").addEventListener("input", e => {
-  searchQ = e.target.value.toLowerCase().trim();
-  renderLibrary();
+ searchQ = e.target.value.toLowerCase().trim();
+ renderLibrary();
 });
 
 document.getElementById("pb-clear-btn").addEventListener("click", () => {
-  board = [];
-  renderBoard();
-  saveHash();
-  document.getElementById("pb-share-box").classList.remove("visible");
+ board = [];
+ renderBoard();
+ saveHash();
+ document.getElementById("pb-share-box").classList.remove("visible");
 });
 
 document.getElementById("pb-share-btn").addEventListener("click", () => {
-  saveHash();
-  const url = window.location.href.split("#")[0] + "#" + encodeURIComponent(board.join(","));
-  document.getElementById("pb-share-url").value = url;
-  document.getElementById("pb-share-box").classList.add("visible");
+ saveHash();
+ const url = window.location.href.split("#")[0] + "#" + encodeURIComponent(board.join(","));
+ document.getElementById("pb-share-url").value = url;
+ document.getElementById("pb-share-box").classList.add("visible");
 });
 
 document.getElementById("pb-copy-btn").addEventListener("click", () => {
-  const urlEl = document.getElementById("pb-share-url");
-  urlEl.select();
-  navigator.clipboard.writeText(urlEl.value).catch(() => document.execCommand("copy"));
-  const btn = document.getElementById("pb-copy-btn");
-  btn.textContent = "Copied!";
-  setTimeout(() => btn.textContent = "Copy", 2000);
+ const urlEl = document.getElementById("pb-share-url");
+ urlEl.select();
+ navigator.clipboard.writeText(urlEl.value).catch(() => document.execCommand("copy"));
+ const btn = document.getElementById("pb-copy-btn");
+ btn.textContent = "Copied!";
+ setTimeout(() => btn.textContent = "Copy", 2000);
 });
 
-// ── Init ──
+// Init 
 renderCats();
 renderLibrary();
 renderBoard();

@@ -1,380 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tone Finder – Find Your Perfect Pedal | PedalHound</title>
-  <meta name="description" content="Answer 5 quick questions and PedalHound recommends the best guitar pedals for your genre, style, and budget.">
-  <link rel="canonical" href="https://pedalhound.com/tone-finder.html">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    .tf-wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 60px; }
-    .tf-hero { text-align: center; padding: 48px 0 36px; }
-    .tf-hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--text); margin-bottom: .75rem; }
-    .tf-hero p { color: var(--text-muted); font-size: 1rem; }
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Tone Finder – Find Your Perfect Pedal | PedalHound</title>
+ <meta name="description" content="Answer 5 quick questions and PedalHound recommends the best guitar pedals for your genre, style, and budget.">
+ <link rel="canonical" href="https://pedalhound.com/tone-finder.html">
+ <link rel="stylesheet" href="css/style.css">
+ <style>
+ .tf-wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 60px; }
+ .tf-hero { text-align: center; padding: 48px 0 36px; }
+ .tf-hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--text); margin-bottom: .75rem; }
+ .tf-hero p { color: var(--text-muted); font-size: 1rem; }
 
-    /* Progress */
-    .tf-step-label { font-size: .78rem; color: var(--text-muted); text-align: right; margin-bottom: .5rem; }
-    .tf-progress { background: var(--bg3); border-radius: 100px; height: 6px; margin-bottom: 1.5rem; overflow: hidden; }
-    .tf-progress-fill { height: 100%; background: linear-gradient(90deg, var(--orange-dk), var(--orange-lt)); border-radius: 100px; transition: width .4s ease; }
+ /* Progress */
+ .tf-step-label { font-size: .78rem; color: var(--text-muted); text-align: right; margin-bottom: .5rem; }
+ .tf-progress { background: var(--bg3); border-radius: 100px; height: 6px; margin-bottom: 1.5rem; overflow: hidden; }
+ .tf-progress-fill { height: 100%; background: linear-gradient(90deg, var(--orange-dk), var(--orange-lt)); border-radius: 100px; transition: width .4s ease; }
 
-    /* Question card */
-    .tf-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem 2rem 1.5rem; animation: tfSlide .25s ease; }
-    @keyframes tfSlide { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
-    .tf-q { font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 1.25rem; }
-    .tf-options { display: flex; flex-direction: column; gap: .65rem; }
-    .tf-opt { display: flex; align-items: center; gap: .85rem; padding: .85rem 1.1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; transition: border-color .2s, background .2s; font-size: .92rem; color: var(--text); text-align: left; font-family: var(--font); width: 100%; }
-    .tf-opt:hover { border-color: var(--orange); background: var(--bg2); }
-    .tf-opt.selected { border-color: var(--orange); background: rgba(192,125,58,.12); }
-    .tf-opt-icon { font-size: 1.3rem; flex-shrink: 0; }
+ /* Question card */
+ .tf-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem 2rem 1.5rem; animation: tfSlide .25s ease; }
+ @keyframes tfSlide { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+ .tf-q { font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 1.25rem; }
+ .tf-options { display: flex; flex-direction: column; gap: .65rem; }
+ .tf-opt { display: flex; align-items: center; gap: .85rem; padding: .85rem 1.1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; transition: border-color .2s, background .2s; font-size: .92rem; color: var(--text); text-align: left; font-family: var(--font); width: 100%; }
+ .tf-opt:hover { border-color: var(--orange); background: var(--bg2); }
+ .tf-opt.selected { border-color: var(--orange); background: rgba(192,125,58,.12); }
+ .tf-opt-icon { font-size: 1.3rem; flex-shrink: 0; }
 
-    /* Nav buttons */
-    .tf-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
-    .tf-back { background: none; border: 1px solid var(--border); color: var(--text-muted); font-size: .85rem; padding: .5rem 1.25rem; border-radius: var(--radius); cursor: pointer; font-family: var(--font); transition: border-color .2s, color .2s; }
-    .tf-back:hover { border-color: var(--orange); color: var(--orange); }
-    .tf-next { background: var(--orange); color: #fff; border: none; padding: .6rem 1.75rem; border-radius: var(--radius); font-weight: 700; font-size: .9rem; cursor: pointer; font-family: var(--font); transition: background .2s, opacity .2s; opacity: .4; pointer-events: none; }
-    .tf-next.ready { opacity: 1; pointer-events: auto; }
-    .tf-next.ready:hover { background: var(--orange-dk); }
+ /* Nav buttons */
+ .tf-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 1rem; }
+ .tf-back { background: none; border: 1px solid var(--border); color: var(--text-muted); font-size: .85rem; padding: .5rem 1.25rem; border-radius: var(--radius); cursor: pointer; font-family: var(--font); transition: border-color .2s, color .2s; }
+ .tf-back:hover { border-color: var(--orange); color: var(--orange); }
+ .tf-next { background: var(--orange); color: #fff; border: none; padding: .6rem 1.75rem; border-radius: var(--radius); font-weight: 700; font-size: .9rem; cursor: pointer; font-family: var(--font); transition: background .2s, opacity .2s; opacity: .4; pointer-events: none; }
+ .tf-next.ready { opacity: 1; pointer-events: auto; }
+ .tf-next.ready:hover { background: var(--orange-dk); }
 
-    /* Results */
-    #tf-results { display: none; }
-    .tf-results-hero { text-align: center; padding: 2rem 0 1.5rem; }
-    .tf-results-hero h2 { font-size: 1.5rem; color: var(--text); margin-bottom: .5rem; }
-    .tf-results-hero p { color: var(--text-muted); }
+ /* Results */
+ #tf-results { display: none; }
+ .tf-results-hero { text-align: center; padding: 2rem 0 1.5rem; }
+ .tf-results-hero h2 { font-size: 1.5rem; color: var(--text); margin-bottom: .5rem; }
+ .tf-results-hero p { color: var(--text-muted); }
 
-    .tf-rec-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem; }
+ .tf-rec-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem; }
 
-    .tf-rec {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      transition: border-color .2s;
-    }
-    .tf-rec:hover { border-color: var(--orange); }
-    @media (max-width: 540px) { .tf-rec { grid-template-columns: 1fr; } }
+ .tf-rec {
+ background: var(--bg2);
+ border: 1px solid var(--border);
+ border-radius: var(--radius-lg);
+ overflow: hidden;
+ display: grid;
+ grid-template-columns: 140px 1fr;
+ transition: border-color .2s;
+ }
+ .tf-rec:hover { border-color: var(--orange); }
+ @media (max-width: 540px) { .tf-rec { grid-template-columns: 1fr; } }
 
-    .tf-rec-img-wrap {
-      background: var(--bg3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      border-right: 1px solid var(--border);
-    }
-    @media (max-width: 540px) { .tf-rec-img-wrap { border-right: none; border-bottom: 1px solid var(--border); padding: 1.25rem; } }
+ .tf-rec-img-wrap {
+ background: var(--bg3);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 1rem;
+ border-right: 1px solid var(--border);
+ }
+ @media (max-width: 540px) { .tf-rec-img-wrap { border-right: none; border-bottom: 1px solid var(--border); padding: 1.25rem; } }
 
-    .tf-rec-img { width: 110px; height: 110px; object-fit: contain; display: block; }
+ .tf-rec-img { width: 110px; height: 110px; object-fit: contain; display: block; }
 
-    .tf-rec-body { padding: 1.25rem 1.5rem; }
+ .tf-rec-body { padding: 1.25rem 1.5rem; }
 
-    .tf-rec-header { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap; }
-    .tf-rec-rank { background: var(--orange); color: #fff; font-weight: 800; font-size: .78rem; padding: .2rem .65rem; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
-    .tf-rec-score { font-size: .8rem; font-weight: 700; color: var(--orange); }
+ .tf-rec-header { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap; }
+ .tf-rec-rank { background: var(--orange); color: #fff; font-weight: 800; font-size: .78rem; padding: .2rem .65rem; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
+ .tf-rec-score { font-size: .8rem; font-weight: 700; color: var(--orange); }
 
-    .tf-rec-name { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .1rem; }
-    .tf-rec-brand { font-size: .78rem; color: var(--text-muted); margin-bottom: .6rem; }
-    .tf-rec-blurb { font-size: .85rem; color: var(--text-muted); line-height: 1.55; margin-bottom: .9rem; }
+ .tf-rec-name { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .1rem; }
+ .tf-rec-brand { font-size: .78rem; color: var(--text-muted); margin-bottom: .6rem; }
+ .tf-rec-blurb { font-size: .85rem; color: var(--text-muted); line-height: 1.55; margin-bottom: .9rem; }
 
-    /* Mini DNA bars */
-    .tf-rec-dna { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .9rem; }
-    .tf-dna-row { display: grid; grid-template-columns: 72px 1fr 22px; align-items: center; gap: .5rem; }
-    .tf-dna-axis { font-size: .7rem; font-weight: 600; color: var(--text-muted); text-align: right; }
-    .tf-dna-track { height: 6px; background: var(--bg3); border-radius: 100px; overflow: hidden; }
-    .tf-dna-fill { height: 100%; background: linear-gradient(90deg, var(--orange-dk), var(--orange-lt)); border-radius: 100px; }
-    .tf-dna-val { font-size: .68rem; font-weight: 700; color: var(--orange); text-align: right; }
+ /* Mini DNA bars */
+ .tf-rec-dna { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .9rem; }
+ .tf-dna-row { display: grid; grid-template-columns: 72px 1fr 22px; align-items: center; gap: .5rem; }
+ .tf-dna-axis { font-size: .7rem; font-weight: 600; color: var(--text-muted); text-align: right; }
+ .tf-dna-track { height: 6px; background: var(--bg3); border-radius: 100px; overflow: hidden; }
+ .tf-dna-fill { height: 100%; background: linear-gradient(90deg, var(--orange-dk), var(--orange-lt)); border-radius: 100px; }
+ .tf-dna-val { font-size: .68rem; font-weight: 700; color: var(--orange); text-align: right; }
 
-    /* Buy buttons */
-    .tf-rec-btns { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
-    .tf-btn-article { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 700; color: var(--orange); text-decoration: none; padding: .35rem .85rem; border: 1px solid var(--orange); border-radius: var(--radius); transition: all .2s; }
-    .tf-btn-article:hover { background: var(--orange); color: #fff; }
-    .tf-btn-amazon { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 700; background: #ff9900; color: #111; padding: .35rem .85rem; border-radius: var(--radius); text-decoration: none; transition: background .2s; }
-    .tf-btn-amazon:hover { background: #e08800; }
-    .tf-btn-reverb { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 700; background: #e63329; color: #fff; padding: .35rem .85rem; border-radius: var(--radius); text-decoration: none; transition: background .2s; }
-    .tf-btn-reverb:hover { background: #c42b22; }
+ /* Buy buttons */
+ .tf-rec-btns { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+ .tf-btn-article { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 700; color: var(--orange); text-decoration: none; padding: .35rem .85rem; border: 1px solid var(--orange); border-radius: var(--radius); transition: all .2s; }
+ .tf-btn-article:hover { background: var(--orange); color: #fff; }
+ .tf-btn-amazon { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 700; background: #ff9900; color: #111; padding: .35rem .85rem; border-radius: var(--radius); text-decoration: none; transition: background .2s; }
+ .tf-btn-amazon:hover { background: #e08800; }
+ .tf-btn-reverb { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 700; background: #e63329; color: #fff; padding: .35rem .85rem; border-radius: var(--radius); text-decoration: none; transition: background .2s; }
+ .tf-btn-reverb:hover { background: #c42b22; }
 
-    .tf-restart { display: block; margin: 2.5rem auto 0; background: none; border: 1px solid var(--border); color: var(--text-muted); padding: .6rem 1.75rem; border-radius: var(--radius); cursor: pointer; font-family: var(--font); font-size: .88rem; transition: border-color .2s, color .2s; }
-    .tf-restart:hover { border-color: var(--orange); color: var(--orange); }
-  </style>
+ .tf-restart { display: block; margin: 2.5rem auto 0; background: none; border: 1px solid var(--border); color: var(--text-muted); padding: .6rem 1.75rem; border-radius: var(--radius); cursor: pointer; font-family: var(--font); font-size: .88rem; transition: border-color .2s, color .2s; }
+ .tf-restart:hover { border-color: var(--orange); color: var(--orange); }
+ </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="container">
-    <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-logo">
-        <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="10" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="22" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="5" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><ellipse cx="27" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><path d="M16 13c-5 0-9 3.5-9 8 0 3.5 2.5 5 5 4.5 1.5-.3 2.5-1 4-1s2.5.7 4 1c2.5.5 5-1 5-4.5 0-4.5-4-8-9-8z" fill="#e8a020"/></svg>
-        PedalHound
-      </a>
-      <ul class="nav-links" role="list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="tone-finder.html" aria-current="page">Tone Finder</a></li>
-        <li><a href="pedalboard-builder.html">Pedalboard Builder</a></li>
-      </ul>
-      <a href="tone-finder.html" class="btn btn-primary nav-cta">Find My Pedal</a>
-      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-    </nav>
-  </div>
+ <div class="container">
+ <nav class="nav" aria-label="Main navigation">
+ <a href="index.html" class="nav-logo">
+ <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="10" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="22" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="5" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><ellipse cx="27" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><path d="M16 13c-5 0-9 3.5-9 8 0 3.5 2.5 5 5 4.5 1.5-.3 2.5-1 4-1s2.5.7 4 1c2.5.5 5-1 5-4.5 0-4.5-4-8-9-8z" fill="#e8a020"/></svg>
+ PedalHound
+ </a>
+ <ul class="nav-links" role="list">
+ <li><a href="index.html">Home</a></li>
+ <li><a href="reviews.html">Reviews</a></li>
+ <li><a href="tone-finder.html" aria-current="page">Tone Finder</a></li>
+ <li><a href="pedalboard-builder.html">Pedalboard Builder</a></li>
+ </ul>
+ <a href="tone-finder.html" class="btn btn-primary nav-cta">Find My Pedal</a>
+ <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+ </nav>
+ </div>
 </header>
 
 <div class="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-  <div class="mobile-nav-panel">
-    <a href="index.html">Home</a>
-    <a href="reviews.html">Reviews</a>
-    <a href="tone-finder.html">Tone Finder</a>
-    <a href="pedalboard-builder.html">Pedalboard Builder</a>
-  </div>
+ <div class="mobile-nav-panel">
+ <a href="index.html">Home</a>
+ <a href="reviews.html">Reviews</a>
+ <a href="tone-finder.html">Tone Finder</a>
+ <a href="pedalboard-builder.html">Pedalboard Builder</a>
+ </div>
 </div>
 
 <main>
-  <div class="tf-wrap">
-    <div class="tf-hero">
-      <span class="section-label">Tone Finder</span>
-      <h1>Find Your Perfect Pedal</h1>
-      <p>5 quick questions. Honest recommendations from our reviews.</p>
-    </div>
+ <div class="tf-wrap">
+ <div class="tf-hero">
+ <span class="section-label">Tone Finder</span>
+ <h1>Find Your Perfect Pedal</h1>
+ <p>5 quick questions. Honest recommendations from our reviews.</p>
+ </div>
 
-    <div id="tf-quiz">
-      <div class="tf-step-label" id="tf-step-label">Question 1 of 5</div>
-      <div class="tf-progress"><div class="tf-progress-fill" id="tf-progress" style="width:20%"></div></div>
-      <div class="tf-card" id="tf-card">
-        <div class="tf-q" id="tf-q"></div>
-        <div class="tf-options" id="tf-opts"></div>
-      </div>
-      <div class="tf-nav">
-        <button class="tf-back" id="tf-back">← Back</button>
-        <button class="tf-next" id="tf-next">Next →</button>
-      </div>
-    </div>
+ <div id="tf-quiz">
+ <div class="tf-step-label" id="tf-step-label">Question 1 of 5</div>
+ <div class="tf-progress"><div class="tf-progress-fill" id="tf-progress" style="width:20%"></div></div>
+ <div class="tf-card" id="tf-card">
+ <div class="tf-q" id="tf-q"></div>
+ <div class="tf-options" id="tf-opts"></div>
+ </div>
+ <div class="tf-nav">
+ <button class="tf-back" id="tf-back">← Back</button>
+ <button class="tf-next" id="tf-next">Next →</button>
+ </div>
+ </div>
 
-    <div id="tf-results">
-      <div class="tf-results-hero">
-        <h2>Your Tone Match</h2>
-        <p>Based on your answers, here are the three pedals we'd put on your board first.</p>
-      </div>
-      <div class="tf-rec-list" id="tf-rec-list"></div>
-      <button class="tf-restart" id="tf-restart">← Start Over</button>
-    </div>
-  </div>
+ <div id="tf-results">
+ <div class="tf-results-hero">
+ <h2>Your Tone Match</h2>
+ <p>Based on your answers, here are the three pedals we'd put on your board first.</p>
+ </div>
+ <div class="tf-rec-list" id="tf-rec-list"></div>
+ <button class="tf-restart" id="tf-restart">← Start Over</button>
+ </div>
+ </div>
 </main>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="nav-logo">
-          <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="10" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="22" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="5" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><ellipse cx="27" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><path d="M16 13c-5 0-9 3.5-9 8 0 3.5 2.5 5 5 4.5 1.5-.3 2.5-1 4-1s2.5.7 4 1c2.5.5 5-1 5-4.5 0-4.5-4-8-9-8z" fill="#e8a020"/></svg>
-          PedalHound
-        </a>
-        <p>Honest gear reviews for serious players.</p>
-      </div>
-      <div class="footer-col"><h4>Reviews</h4><ul><li><a href="reviews.html">All Reviews</a></li></ul></div>
-      <div class="footer-col"><h4>Tools</h4><ul><li><a href="tone-finder.html">Tone Finder</a></li><li><a href="pedalboard-builder.html">Pedalboard Builder</a></li></ul></div>
-      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Disclosure</a></li></ul></div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 PedalHound. All rights reserved.</span>
-      <span>Made with 🎸 for guitarists everywhere</span>
-    </div>
-  </div>
+ <div class="container">
+ <div class="footer-grid">
+ <div class="footer-brand">
+ <a href="index.html" class="nav-logo">
+ <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="10" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="22" cy="7" rx="3" ry="4" fill="#e8a020"/><ellipse cx="5" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><ellipse cx="27" cy="15" rx="2.5" ry="3.5" fill="#e8a020"/><path d="M16 13c-5 0-9 3.5-9 8 0 3.5 2.5 5 5 4.5 1.5-.3 2.5-1 4-1s2.5.7 4 1c2.5.5 5-1 5-4.5 0-4.5-4-8-9-8z" fill="#e8a020"/></svg>
+ PedalHound
+ </a>
+ <p>Honest gear reviews for serious players.</p>
+ </div>
+ <div class="footer-col"><h4>Reviews</h4><ul><li><a href="reviews.html">All Reviews</a></li></ul></div>
+ <div class="footer-col"><h4>Tools</h4><ul><li><a href="tone-finder.html">Tone Finder</a></li><li><a href="pedalboard-builder.html">Pedalboard Builder</a></li></ul></div>
+ <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Disclosure</a></li></ul></div>
+ </div>
+ <div class="footer-bottom">
+ <span> 2026 PedalHound. All rights reserved.</span>
+ <span>Made with for guitarists everywhere</span>
+ </div>
+ </div>
 </footer>
 
 <script src="js/main.js"></script>
 <script src="js/pedals.js"></script>
 <script>
 const QUESTIONS = [
-  {
-    q: "What genre do you mainly play?",
-    key: "genre",
-    opts: [
-      { icon: "🎸", label: "Blues / Classic Rock",       val: "blues" },
-      { icon: "🤘", label: "Metal / Hard Rock",           val: "metal" },
-      { icon: "🌊", label: "Indie / Shoegaze / Post-Rock",val: "indie" },
-      { icon: "🎷", label: "Funk / Soul / R&B",           val: "funk"  },
-    ]
-  },
-  {
-    q: "How would you describe your playing style?",
-    key: "style",
-    opts: [
-      { icon: "🎵", label: "Rhythm guitar, mostly chords",  val: "rhythm"  },
-      { icon: "⚡", label: "Lead playing and solos",        val: "lead"    },
-      { icon: "🔁", label: "Ambient / texture layering",    val: "ambient" },
-      { icon: "🎹", label: "Clean fingerpicking",           val: "clean"   },
-    ]
-  },
-  {
-    q: "What's your pedal budget?",
-    key: "budget",
-    opts: [
-      { icon: "💵", label: "Under $75 – keep it affordable",  val: "budget"   },
-      { icon: "💰", label: "$75–$175 – mid-range sweet spot",  val: "mid"      },
-      { icon: "💎", label: "$175–$350 – willing to invest",    val: "premium"  },
-      { icon: "🏆", label: "$350+ – boutique or bust",         val: "boutique" },
-    ]
-  },
-  {
-    q: "What does your current rig look like?",
-    key: "rig",
-    opts: [
-      { icon: "🔊", label: "Solid-state or modeling amp",             val: "ss"     },
-      { icon: "🔥", label: "Tube amp with some natural breakup",      val: "tube"   },
-      { icon: "📱", label: "Direct recording or headphone rig",       val: "direct" },
-      { icon: "🆕", label: "Just starting out, building from scratch",val: "new"    },
-    ]
-  },
-  {
-    q: "What sound are you chasing?",
-    key: "sound",
-    opts: [
-      { icon: "🌡️", label: "More warmth and grit",              val: "warm"      },
-      { icon: "🌌", label: "Lush reverb and atmospheric texture", val: "atmo"      },
-      { icon: "⏱️", label: "Slap-back delay and rhythmic depth", val: "delay"     },
-      { icon: "🎛️", label: "Versatility — one pedal for many sounds", val: "versatile" },
-    ]
-  }
+ {
+ q: "What genre do you mainly play?",
+ key: "genre",
+ opts: [
+ { icon: "", label: "Blues / Classic Rock", val: "blues" },
+ { icon: "", label: "Metal / Hard Rock", val: "metal" },
+ { icon: "", label: "Indie / Shoegaze / Post-Rock",val: "indie" },
+ { icon: "", label: "Funk / Soul / R&B", val: "funk" },
+ ]
+ },
+ {
+ q: "How would you describe your playing style?",
+ key: "style",
+ opts: [
+ { icon: "", label: "Rhythm guitar, mostly chords", val: "rhythm" },
+ { icon: "", label: "Lead playing and solos", val: "lead" },
+ { icon: "", label: "Ambient / texture layering", val: "ambient" },
+ { icon: "", label: "Clean fingerpicking", val: "clean" },
+ ]
+ },
+ {
+ q: "What's your pedal budget?",
+ key: "budget",
+ opts: [
+ { icon: "", label: "Under $75 – keep it affordable", val: "budget" },
+ { icon: "", label: "$75–$175 – mid-range sweet spot", val: "mid" },
+ { icon: "", label: "$175–$350 – willing to invest", val: "premium" },
+ { icon: "", label: "$350+ – boutique or bust", val: "boutique" },
+ ]
+ },
+ {
+ q: "What does your current rig look like?",
+ key: "rig",
+ opts: [
+ { icon: "", label: "Solid-state or modeling amp", val: "ss" },
+ { icon: "", label: "Tube amp with some natural breakup", val: "tube" },
+ { icon: "", label: "Direct recording or headphone rig", val: "direct" },
+ { icon: "", label: "Just starting out, building from scratch",val: "new" },
+ ]
+ },
+ {
+ q: "What sound are you chasing?",
+ key: "sound",
+ opts: [
+ { icon: "", label: "More warmth and grit", val: "warm" },
+ { icon: "", label: "Lush reverb and atmospheric texture", val: "atmo" },
+ { icon: "", label: "Slap-back delay and rhythmic depth", val: "delay" },
+ { icon: "", label: "Versatility — one pedal for many sounds", val: "versatile" },
+ ]
+ }
 ];
 
 const DNA_AXES = ["Warmth", "Grit", "Clarity", "Versatility", "Value"];
 
-// ── Quiz state ──
+// Quiz state 
 let step = 0;
 const answers = new Array(QUESTIONS.length).fill(null);
 
-const quizEl    = document.getElementById("tf-quiz");
+const quizEl = document.getElementById("tf-quiz");
 const resultsEl = document.getElementById("tf-results");
-const cardEl    = document.getElementById("tf-card");
-const qEl       = document.getElementById("tf-q");
-const optsEl    = document.getElementById("tf-opts");
-const nextBtn   = document.getElementById("tf-next");
-const backBtn   = document.getElementById("tf-back");
-const progEl    = document.getElementById("tf-progress");
-const labelEl   = document.getElementById("tf-step-label");
+const cardEl = document.getElementById("tf-card");
+const qEl = document.getElementById("tf-q");
+const optsEl = document.getElementById("tf-opts");
+const nextBtn = document.getElementById("tf-next");
+const backBtn = document.getElementById("tf-back");
+const progEl = document.getElementById("tf-progress");
+const labelEl = document.getElementById("tf-step-label");
 const recListEl = document.getElementById("tf-rec-list");
 const restartBtn= document.getElementById("tf-restart");
 
 function renderQuestion() {
-  const q = QUESTIONS[step];
-  qEl.textContent = q.q;
-  labelEl.textContent = `Question ${step + 1} of ${QUESTIONS.length}`;
-  progEl.style.width = `${((step + 1) / QUESTIONS.length) * 100}%`;
-  backBtn.style.visibility = step === 0 ? "hidden" : "visible";
-  nextBtn.textContent = step === QUESTIONS.length - 1 ? "See Results →" : "Next →";
+ const q = QUESTIONS[step];
+ qEl.textContent = q.q;
+ labelEl.textContent = `Question ${step + 1} of ${QUESTIONS.length}`;
+ progEl.style.width = `${((step + 1) / QUESTIONS.length) * 100}%`;
+ backBtn.style.visibility = step === 0 ? "hidden" : "visible";
+ nextBtn.textContent = step === QUESTIONS.length - 1 ? "See Results →" : "Next →";
 
-  optsEl.innerHTML = "";
-  q.opts.forEach(opt => {
-    const btn = document.createElement("button");
-    btn.className = "tf-opt" + (answers[step] === opt.val ? " selected" : "");
-    btn.innerHTML = `<span class="tf-opt-icon">${opt.icon}</span>${opt.label}`;
-    btn.addEventListener("click", () => {
-      answers[step] = opt.val;
-      optsEl.querySelectorAll(".tf-opt").forEach(b => b.classList.remove("selected"));
-      btn.classList.add("selected");
-      nextBtn.classList.add("ready");
-    });
-    optsEl.appendChild(btn);
-  });
+ optsEl.innerHTML = "";
+ q.opts.forEach(opt => {
+ const btn = document.createElement("button");
+ btn.className = "tf-opt" + (answers[step] === opt.val ? " selected" : "");
+ btn.innerHTML = `<span class="tf-opt-icon">${opt.icon}</span>${opt.label}`;
+ btn.addEventListener("click", () => {
+ answers[step] = opt.val;
+ optsEl.querySelectorAll(".tf-opt").forEach(b => b.classList.remove("selected"));
+ btn.classList.add("selected");
+ nextBtn.classList.add("ready");
+ });
+ optsEl.appendChild(btn);
+ });
 
-  // Restore ready state if already answered
-  if (answers[step]) {
-    nextBtn.classList.add("ready");
-  } else {
-    nextBtn.classList.remove("ready");
-  }
+ // Restore ready state if already answered
+ if (answers[step]) {
+ nextBtn.classList.add("ready");
+ } else {
+ nextBtn.classList.remove("ready");
+ }
 
-  // Animate card
-  cardEl.style.animation = "none";
-  cardEl.offsetHeight; // reflow
-  cardEl.style.animation = "";
+ // Animate card
+ cardEl.style.animation = "none";
+ cardEl.offsetHeight; // reflow
+ cardEl.style.animation = "";
 }
 
 nextBtn.addEventListener("click", () => {
-  if (!nextBtn.classList.contains("ready")) return;
-  if (step < QUESTIONS.length - 1) {
-    step++;
-    renderQuestion();
-  } else {
-    showResults();
-  }
+ if (!nextBtn.classList.contains("ready")) return;
+ if (step < QUESTIONS.length - 1) {
+ step++;
+ renderQuestion();
+ } else {
+ showResults();
+ }
 });
 
 backBtn.addEventListener("click", () => {
-  if (step > 0) { step--; renderQuestion(); }
+ if (step > 0) { step--; renderQuestion(); }
 });
 
 restartBtn.addEventListener("click", () => {
-  step = 0;
-  answers.fill(null);
-  quizEl.style.display = "";
-  resultsEl.style.display = "none";
-  renderQuestion();
+ step = 0;
+ answers.fill(null);
+ quizEl.style.display = "";
+ resultsEl.style.display = "none";
+ renderQuestion();
 });
 
-// ── Recommendation engine ──
+// Recommendation engine 
 function scoreAndRank(answers) {
-  const answerSet = new Set(answers.filter(Boolean));
+ const answerSet = new Set(answers.filter(Boolean));
 
-  return PEDALS_DB.map(pedal => {
-    let score = 0;
-    for (const tag of pedal.tags) {
-      if (answerSet.has(tag)) score++;
-    }
-    // Slight tie-break by pedal score
-    const tiebreak = (pedal.score || 8) / 100;
-    return { pedal, score: score + tiebreak };
-  }).sort((a, b) => b.score - a.score);
+ return PEDALS_DB.map(pedal => {
+ let score = 0;
+ for (const tag of pedal.tags) {
+ if (answerSet.has(tag)) score++;
+ }
+ // Slight tie-break by pedal score
+ const tiebreak = (pedal.score || 8) / 100;
+ return { pedal, score: score + tiebreak };
+ }).sort((a, b) => b.score - a.score);
 }
 
 function renderDNA(dna) {
-  return DNA_AXES.map((axis, i) => `
-    <div class="tf-dna-row">
-      <span class="tf-dna-axis">${axis}</span>
-      <div class="tf-dna-track"><div class="tf-dna-fill" style="width:${dna[i] * 10}%"></div></div>
-      <span class="tf-dna-val">${dna[i]}</span>
-    </div>
-  `).join("");
+ return DNA_AXES.map((axis, i) => `
+ <div class="tf-dna-row">
+ <span class="tf-dna-axis">${axis}</span>
+ <div class="tf-dna-track"><div class="tf-dna-fill" style="width:${dna[i] * 10}%"></div></div>
+ <span class="tf-dna-val">${dna[i]}</span>
+ </div>
+ `).join("");
 }
 
 function showResults() {
-  quizEl.style.display = "none";
-  resultsEl.style.display = "";
+ quizEl.style.display = "none";
+ resultsEl.style.display = "block";
 
-  const ranked = scoreAndRank(answers);
-  const top3 = ranked.slice(0, 3);
-  const labels = ["#1 Best Match", "#2 Runner-up", "#3 Also Great"];
+ const ranked = scoreAndRank(answers);
+ const top3 = ranked.slice(0, 3);
+ const labels = ["#1 Best Match", "#2 Runner-up", "#3 Also Great"];
 
-  recListEl.innerHTML = top3.map(({ pedal }, i) => `
-    <div class="tf-rec">
-      <div class="tf-rec-img-wrap">
-        <img class="tf-rec-img"
-             src="${pedal.image}"
-             alt="${pedal.name}"
-             loading="lazy"
-             onerror="this.onerror=null;this.src='https://placehold.co/110x110/fff9f0/c07d3a?text=${encodeURIComponent(pedal.name)}'">
-      </div>
-      <div class="tf-rec-body">
-        <div class="tf-rec-header">
-          <span class="tf-rec-rank">${labels[i]}</span>
-          <span class="tf-rec-score">★ ${pedal.score.toFixed(1)} / 10</span>
-        </div>
-        <div class="tf-rec-name">${pedal.name}</div>
-        <div class="tf-rec-brand">${pedal.brand} · ${pedal.price}</div>
-        <div class="tf-rec-blurb">${pedal.blurb}</div>
-        <div class="tf-rec-dna">${renderDNA(pedal.dna)}</div>
-        <div class="tf-rec-btns">
-          <a href="${pedal.article}" class="tf-btn-article">Full Review →</a>
-          <a href="${pedal.amazon}" class="tf-btn-amazon" target="_blank" rel="noopener">Amazon</a>
-          <a href="${pedal.reverb}" class="tf-btn-reverb" target="_blank" rel="noopener">Reverb</a>
-        </div>
-      </div>
-    </div>
-  `).join("");
+ recListEl.innerHTML = top3.map(({ pedal }, i) => `
+ <div class="tf-rec">
+ <div class="tf-rec-img-wrap">
+ <img class="tf-rec-img"
+ src="${pedal.image}"
+ alt="${pedal.name}"
+ loading="lazy"
+ onerror="this.onerror=null;this.src='https://placehold.co/110x110/fff9f0/c07d3a?text=${encodeURIComponent(pedal.name)}'">
+ </div>
+ <div class="tf-rec-body">
+ <div class="tf-rec-header">
+ <span class="tf-rec-rank">${labels[i]}</span>
+ <span class="tf-rec-score"> ${pedal.score.toFixed(1)} / 10</span>
+ </div>
+ <div class="tf-rec-name">${pedal.name}</div>
+ <div class="tf-rec-brand">${pedal.brand} · ${pedal.price}</div>
+ <div class="tf-rec-blurb">${pedal.blurb}</div>
+ <div class="tf-rec-dna">${renderDNA(pedal.dna)}</div>
+ <div class="tf-rec-btns">
+ <a href="${pedal.article}" class="tf-btn-article">Full Review →</a>
+ <a href="${pedal.amazon}" class="tf-btn-amazon" target="_blank" rel="noopener">Amazon</a>
+ <a href="${pedal.reverb}" class="tf-btn-reverb" target="_blank" rel="noopener">Reverb</a>
+ </div>
+ </div>
+ </div>
+ `).join("");
 }
 
-// ── Init ──
+// Init 
 renderQuestion();
 </script>
 </body>
