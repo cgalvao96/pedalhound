@@ -238,8 +238,8 @@
  </div>
 </div>
 
-<script src="js/pedals.js"></script>
 <script>
+let PEDALS_DB = [];
 let board = [];
 let activeCat = "all";
 let searchQ = "";
@@ -476,186 +476,149 @@ function checkCompatibility() {
  warnEl.style.display = warnings.length ? "" : "none";
 }
 
-// Drop zone (from library) 
-const dropZone = document.getElementById("pb-drop-zone");
-dropZone.addEventListener("dragover", e => {
- if (dragLibId) { e.preventDefault(); dropZone.classList.add("drag-over"); e.dataTransfer.dropEffect = "copy"; }
-});
-dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
-dropZone.addEventListener("drop", e => {
- e.preventDefault();
- dropZone.classList.remove("drag-over");
- if (dragLibId) { addToBoard(dragLibId); dragLibId = null; }
-});
-
-// Controls 
-document.getElementById("pb-search").addEventListener("input", e => {
- searchQ = e.target.value.toLowerCase().trim();
- renderLibrary();
-});
-document.getElementById("pb-clear-btn").addEventListener("click", () => {
- board = [];
- renderBoard();
- saveHash();
- document.getElementById("pb-share-box").classList.remove("visible");
-});
-document.getElementById("pb-share-btn").addEventListener("click", () => {
- saveHash();
- const url = window.location.href.split("#")[0] + "#" + encodeURIComponent(board.join(","));
- document.getElementById("pb-share-url").value = url;
- document.getElementById("pb-share-box").classList.add("visible");
-});
-document.getElementById("pb-copy-btn").addEventListener("click", () => {
- const urlEl = document.getElementById("pb-share-url");
- urlEl.select();
- navigator.clipboard.writeText(urlEl.value).catch(() => document.execCommand("copy"));
- const btn = document.getElementById("pb-copy-btn");
- btn.textContent = "Copied!";
- setTimeout(() => btn.textContent = "Copy", 2000);
-});
-
-// Budget builder 
-document.getElementById("pb-budget-btn").addEventListener("click", () => {
- document.getElementById("pb-budget-modal").classList.add("open");
- document.getElementById("pb-budget-input").focus();
-});
-document.getElementById("pb-budget-cancel").addEventListener("click", () => {
- document.getElementById("pb-budget-modal").classList.remove("open");
-});
-document.getElementById("pb-budget-go").addEventListener("click", () => {
- const budget = +document.getElementById("pb-budget-input").value;
- if (!budget || budget < 50) return;
- document.getElementById("pb-budget-modal").classList.remove("open");
- buildForBudget(budget);
-});
-document.getElementById("pb-budget-modal").addEventListener("click", e => {
- if (e.target === e.currentTarget) e.currentTarget.classList.remove("open");
-});
-
-function buildForBudget(budget) {
- const perSlot = budget / 5;
- function cheapestForRole(role, max) {
- return PEDALS_DB
- .filter(p => p.role === role && p.priceNum <= max)
- .sort((a, b) => b.score - a.score)[0];
- }
- function cheapestTimeBased(cat, max) {
- return PEDALS_DB
- .filter(p => p.role === "time-based" && p.category === cat && p.priceNum <= max)
- .sort((a, b) => b.score - a.score)[0];
- }
- const chain = [];
- const tuner = PEDALS_DB.find(p => p.category === "tuner");
- if (tuner) chain.push(tuner.id);
- if (budget >= 150) {
- const drive = cheapestForRole("gain-low", perSlot * 1.5);
- if (drive) chain.push(drive.id);
- }
- if (budget >= 300) {
- const comp = cheapestForRole("dynamics", perSlot);
- if (comp) chain.push(comp.id);
- }
- const delay = cheapestTimeBased("delay", perSlot * 1.3);
- if (delay) chain.push(delay.id);
- const reverb = cheapestTimeBased("reverb", perSlot * 1.3);
- if (reverb) chain.push(reverb.id);
- if (budget >= 400) {
- const mod = cheapestForRole("modulation", perSlot);
- if (mod) chain.push(mod.id);
- }
- board = chain;
- renderBoard();
- saveHash();
-}
-
-// Save / load boards 
-document.getElementById("pb-save-btn").addEventListener("click", () => {
- if (!board.length) return;
- const name = prompt("Name this board:");
- if (!name) return;
- const boards = JSON.parse(localStorage.getItem("ph_boards") || "[]");
- boards.unshift({ id: Date.now(), name, board: [...board], created: Date.now() });
- if (boards.length > 20) boards.splice(20);
- localStorage.setItem("ph_boards", JSON.stringify(boards));
- renderSavedBoards();
-});
-
-function renderSavedBoards() {
- const boards = JSON.parse(localStorage.getItem("ph_boards") || "[]");
- const section = document.getElementById("pb-saved-section");
- const list = document.getElementById("pb-saved-list");
- if (!boards.length) { section.style.display = "none"; return; }
- section.style.display = "";
- list.innerHTML = boards.map(b => `
- <div class="pb-saved-item">
- <span class="pb-saved-item-name">${b.name}</span>
- <span class="pb-saved-item-count">${b.board.length} pedal${b.board.length !== 1 ? "s" : ""}</span>
- <button class="pb-saved-load" data-board='${JSON.stringify(b.board)}'>Load</button>
- <button class="pb-saved-del" data-id="${b.id}" aria-label="Delete board" title="Delete">&#10005;</button>
- </div>`).join("");
- list.querySelectorAll(".pb-saved-load").forEach(btn => {
- btn.addEventListener("click", () => {
- board = JSON.parse(btn.dataset.board);
- renderBoard();
- saveHash();
- });
- });
- list.querySelectorAll(".pb-saved-del").forEach(btn => {
- btn.addEventListener("click", () => {
- const boards2 = JSON.parse(localStorage.getItem("ph_boards") || "[]");
- const filtered = boards2.filter(b => b.id !== +btn.dataset.id);
- localStorage.setItem("ph_boards", JSON.stringify(filtered));
- renderSavedBoards();
- });
- });
-}
-
-document.getElementById("pb-saved-toggle").addEventListener("click", () => {
- const list = document.getElementById("pb-saved-list");
- list.style.display = list.style.display === "none" ? "" : "none";
-});
-
-// Blindspot link 
-document.getElementById("pb-blindspot-btn").addEventListener("click", () => {
- const ids = [...new Set(board)].join(",");
- window.location.href = `pedal-blindspot.html${ids ? "#" + encodeURIComponent(ids) : ""}`;
-});
-
-// Hash 
 function saveHash() {
- if (board.length) {
- history.replaceState(null, "", "#" + encodeURIComponent(board.join(",")));
- } else {
- history.replaceState(null, "", location.pathname);
- }
+  if (board.length) {
+    history.replaceState(null, "", "#" + encodeURIComponent(board.join(",")));
+  } else {
+    history.replaceState(null, "", location.pathname);
+  }
 }
 
 function loadHash() {
- const hash = decodeURIComponent(location.hash.slice(1));
- if (hash) {
- board = hash.split(",").filter(id => PEDALS_DB.some(p => p.id === id));
- renderBoard();
- }
+  const hash = decodeURIComponent(location.hash.slice(1));
+  if (hash) {
+    board = hash.split(",").filter(id => PEDALS_DB.some(p => p.id === id));
+    renderBoard();
+  }
 }
 
-// Init
-function boot() {
+function buildForBudget(budget) {
+  const perSlot = budget / 5;
+  const best = (role, max) => PEDALS_DB.filter(p => p.role === role && p.priceNum <= max).sort((a,b) => b.score - a.score)[0];
+  const bestTB = (cat, max) => PEDALS_DB.filter(p => p.role === "time-based" && p.category === cat && p.priceNum <= max).sort((a,b) => b.score - a.score)[0];
+  const chain = [];
+  const tuner = PEDALS_DB.find(p => p.category === "tuner");
+  if (tuner) chain.push(tuner.id);
+  if (budget >= 150) { const d = best("gain-low", perSlot * 1.5); if (d) chain.push(d.id); }
+  if (budget >= 300) { const c = best("dynamics", perSlot); if (c) chain.push(c.id); }
+  const delay = bestTB("delay", perSlot * 1.3); if (delay) chain.push(delay.id);
+  const reverb = bestTB("reverb", perSlot * 1.3); if (reverb) chain.push(reverb.id);
+  if (budget >= 400) { const m = best("modulation", perSlot); if (m) chain.push(m.id); }
+  board = chain; renderBoard(); saveHash();
+}
+
+function renderSavedBoards() {
+  const boards = JSON.parse(localStorage.getItem("ph_boards") || "[]");
+  const section = document.getElementById("pb-saved-section");
+  const list = document.getElementById("pb-saved-list");
+  if (!boards.length) { section.style.display = "none"; return; }
+  section.style.display = "";
+  list.innerHTML = boards.map(b => `
+    <div class="pb-saved-item">
+      <span class="pb-saved-item-name">${b.name}</span>
+      <span class="pb-saved-item-count">${b.board.length} pedal${b.board.length !== 1 ? "s" : ""}</span>
+      <button class="pb-saved-load" data-board='${JSON.stringify(b.board)}'>Load</button>
+      <button class="pb-saved-del" data-id="${b.id}" title="Delete">&#10005;</button>
+    </div>`).join("");
+  list.querySelectorAll(".pb-saved-load").forEach(btn => btn.addEventListener("click", () => {
+    board = JSON.parse(btn.dataset.board); renderBoard(); saveHash();
+  }));
+  list.querySelectorAll(".pb-saved-del").forEach(btn => btn.addEventListener("click", () => {
+    const remaining = JSON.parse(localStorage.getItem("ph_boards") || "[]").filter(b => b.id !== +btn.dataset.id);
+    localStorage.setItem("ph_boards", JSON.stringify(remaining));
+    renderSavedBoards();
+  }));
+}
+
+// Wire up everything after data loads
+function boot(data) {
+  PEDALS_DB = data;
+
+  // Library search & filter
   renderLibrary();
+  document.getElementById("pb-search").addEventListener("input", e => {
+    searchQ = e.target.value.toLowerCase().trim();
+    renderLibrary();
+  });
+
+  // Drop zone
+  const dropZone = document.getElementById("pb-drop-zone");
+  dropZone.addEventListener("dragover", e => {
+    if (dragLibId) { e.preventDefault(); dropZone.classList.add("drag-over"); e.dataTransfer.dropEffect = "copy"; }
+  });
+  dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
+  dropZone.addEventListener("drop", e => {
+    e.preventDefault(); dropZone.classList.remove("drag-over");
+    if (dragLibId) { addToBoard(dragLibId); dragLibId = null; }
+  });
+
+  // Toolbar buttons
+  document.getElementById("pb-clear-btn").addEventListener("click", () => {
+    board = []; renderBoard(); saveHash();
+    document.getElementById("pb-share-box").classList.remove("visible");
+  });
+  document.getElementById("pb-share-btn").addEventListener("click", () => {
+    saveHash();
+    const url = location.href.split("#")[0] + "#" + encodeURIComponent(board.join(","));
+    document.getElementById("pb-share-url").value = url;
+    document.getElementById("pb-share-box").classList.add("visible");
+  });
+  document.getElementById("pb-copy-btn").addEventListener("click", () => {
+    const el = document.getElementById("pb-share-url");
+    el.select();
+    navigator.clipboard.writeText(el.value).catch(() => document.execCommand("copy"));
+    const btn = document.getElementById("pb-copy-btn");
+    btn.textContent = "Copied!"; setTimeout(() => btn.textContent = "Copy", 2000);
+  });
+  document.getElementById("pb-save-btn").addEventListener("click", () => {
+    if (!board.length) return;
+    const name = prompt("Name this board:"); if (!name) return;
+    const boards = JSON.parse(localStorage.getItem("ph_boards") || "[]");
+    boards.unshift({ id: Date.now(), name, board: [...board], created: Date.now() });
+    if (boards.length > 20) boards.splice(20);
+    localStorage.setItem("ph_boards", JSON.stringify(boards));
+    renderSavedBoards();
+  });
+  document.getElementById("pb-saved-toggle").addEventListener("click", () => {
+    const list = document.getElementById("pb-saved-list");
+    list.style.display = list.style.display === "none" ? "" : "none";
+  });
+  document.getElementById("pb-blindspot-btn").addEventListener("click", () => {
+    const ids = [...new Set(board)].join(",");
+    location.href = "pedal-blindspot.html" + (ids ? "#" + encodeURIComponent(ids) : "");
+  });
+
+  // Budget modal
+  document.getElementById("pb-budget-btn").addEventListener("click", () => {
+    document.getElementById("pb-budget-modal").classList.add("open");
+    document.getElementById("pb-budget-input").focus();
+  });
+  document.getElementById("pb-budget-cancel").addEventListener("click", () => {
+    document.getElementById("pb-budget-modal").classList.remove("open");
+  });
+  document.getElementById("pb-budget-go").addEventListener("click", () => {
+    const budget = +document.getElementById("pb-budget-input").value;
+    if (!budget || budget < 50) return;
+    document.getElementById("pb-budget-modal").classList.remove("open");
+    buildForBudget(budget);
+  });
+  document.getElementById("pb-budget-modal").addEventListener("click", e => {
+    if (e.target === e.currentTarget) e.currentTarget.classList.remove("open");
+  });
+
   loadHash();
   renderSavedBoards();
 }
 
-if (typeof PEDALS_DB !== "undefined" && PEDALS_DB.length) {
-  boot();
-} else {
-  fetch("js/pedals.json")
-    .then(r => r.json())
-    .then(data => { PEDALS_DB = data; boot(); })
-    .catch(() => {
-      document.getElementById("pb-pedal-list").innerHTML =
-        '<p style="font-size:.8rem;color:var(--text-muted);padding:.5rem 0;">Could not load pedal database. Try refreshing.</p>';
-    });
-}
+// Fetch pedals then boot — guaranteed: nothing runs until data is ready
+fetch("js/pedals.json")
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(data => boot(data))
+  .catch(err => {
+    console.error("pedals.json load failed:", err);
+    document.getElementById("pb-pedal-list").innerHTML =
+      '<p style="font-size:.8rem;color:var(--text-muted);padding:.5rem 0;">Could not load pedal database. Try refreshing.</p>';
+  });
 </script>
 </body>
 </html>
