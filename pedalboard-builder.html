@@ -238,8 +238,8 @@
  </div>
 </div>
 
+<script src="js/pedals.js"></script>
 <script>
-let PEDALS_DB = [];
 let board = [];
 let activeCat = "all";
 let searchQ = "";
@@ -638,19 +638,24 @@ function loadHash() {
  }
 }
 
-// Init — fetch pedal data then boot the UI
-fetch("js/pedals.json")
-  .then(r => r.json())
-  .then(data => {
-    PEDALS_DB = data;
-    renderLibrary();
-    loadHash();
-    renderSavedBoards();
-  })
-  .catch(() => {
-    document.getElementById("pb-pedal-list").innerHTML =
-      '<p style="font-size:.8rem;color:var(--text-muted);padding:.5rem 0;">Could not load pedal database. Try refreshing.</p>';
-  });
+// Init
+function boot() {
+  renderLibrary();
+  loadHash();
+  renderSavedBoards();
+}
+
+if (typeof PEDALS_DB !== "undefined" && PEDALS_DB.length) {
+  boot();
+} else {
+  fetch("js/pedals.json")
+    .then(r => r.json())
+    .then(data => { PEDALS_DB = data; boot(); })
+    .catch(() => {
+      document.getElementById("pb-pedal-list").innerHTML =
+        '<p style="font-size:.8rem;color:var(--text-muted);padding:.5rem 0;">Could not load pedal database. Try refreshing.</p>';
+    });
+}
 </script>
 </body>
 </html>
