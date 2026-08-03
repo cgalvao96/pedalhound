@@ -1,0 +1,1239 @@
+[
+  {
+    "id": "ts9",
+    "name": "Tube Screamer TS9",
+    "brand": "Ibanez",
+    "category": "overdrive",
+    "role": "gain-low",
+    "priceNum": 99,
+    "price": "$99",
+    "image": "https://www.ibanez.com/common/product_artist_file/file/p_region_TS9_en_1.png",
+    "article": "articles/best-overdrive-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Ibanez+Tube+Screamer+TS9&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DIbanez%2BTube%2BScreamer%2BTS9",
+    "dna": [
+      8,
+      9,
+      7,
+      8,
+      9
+    ],
+    "score": 9.2,
+    "heroes": [
+      "srv",
+      "clapton"
+    ],
+    "tags": [
+      "blues",
+      "rock",
+      "lead",
+      "warm",
+      "tube",
+      "mid",
+      "budget",
+      "rhythm",
+      "clean"
+    ],
+    "blurb": "The benchmark overdrive since 1982. Mid-forward circuit with singing lead tone that sounds perfect through a clean Fender."
+  },
+  {
+    "id": "ocd",
+    "name": "OCD Overdrive v2",
+    "brand": "Fulltone",
+    "category": "overdrive",
+    "role": "gain-low",
+    "priceNum": 149,
+    "price": "$149",
+    "image": "https://www.humbuckermusic.com/cdn/shop/products/fulltone_ocd_v2_pedal_1_large.jpg?v=1568138822",
+    "article": "articles/best-overdrive-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Fulltone+OCD+Overdrive&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DFulltone%2BOCD%2BOverdrive",
+    "dna": [
+      7,
+      8,
+      8,
+      9,
+      8
+    ],
+    "score": 9,
+    "heroes": [
+      "cantrell"
+    ],
+    "tags": [
+      "rock",
+      "metal",
+      "lead",
+      "rhythm",
+      "warm",
+      "tube",
+      "mid",
+      "premium",
+      "versatile"
+    ],
+    "blurb": "Lives in the gap between overdrive and distortion. HP/LP switch makes it one of the most versatile drives ever made."
+  },
+  {
+    "id": "sd1",
+    "name": "SD-1 Super OverDrive",
+    "brand": "Boss",
+    "category": "overdrive",
+    "role": "gain-low",
+    "priceNum": 59,
+    "price": "$59",
+    "image": "https://static.roland.com/assets/images/products/main/sd1_main.jpg",
+    "article": "articles/best-overdrive-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Boss+SD-1+Super+OverDrive&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DBoss%2BSD-1%2BOverDrive",
+    "dna": [
+      7,
+      8,
+      7,
+      7,
+      10
+    ],
+    "score": 8.6,
+    "heroes": [],
+    "tags": [
+      "blues",
+      "rock",
+      "budget",
+      "rhythm",
+      "lead",
+      "warm",
+      "tube",
+      "clean"
+    ],
+    "blurb": "A $59 classic with asymmetric clipping that's been on professional pedalboards since 1981. Genuinely good, not just good for the price."
+  },
+  {
+    "id": "morning-glory",
+    "name": "Morning Glory V4",
+    "brand": "JHS Pedals",
+    "category": "overdrive",
+    "role": "gain-low",
+    "priceNum": 159,
+    "price": "$159",
+    "image": "https://jhspedals.info/cdn/shop/files/JHSPedalsMorningGloryV4.png?v=1698363259",
+    "article": "articles/best-overdrive-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=JHS+Morning+Glory+V4&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DJHS%2BMorning%2BGlory%2BV4",
+    "dna": [
+      7,
+      6,
+      9,
+      8,
+      7
+    ],
+    "score": 9.1,
+    "heroes": [
+      "mayer",
+      "knopfler"
+    ],
+    "tags": [
+      "blues",
+      "indie",
+      "rock",
+      "clean",
+      "lead",
+      "premium",
+      "tube",
+      "warm"
+    ],
+    "blurb": "One of the most transparent overdrives at any price. Leaves your core tone alone and just adds a little more grit and sustain."
+  },
+  {
+    "id": "klon-ktr",
+    "name": "Klon KTR",
+    "brand": "Klon",
+    "category": "overdrive",
+    "role": "gain-low",
+    "priceNum": 299,
+    "price": "$299",
+    "image": "https://www.humbuckermusic.com/cdn/shop/products/klon-ktr-pedal-33_large.jpeg?v=1541218648",
+    "article": "articles/best-klon-clones.html",
+    "amazon": "https://www.amazon.com/s?k=Klon+KTR+Professional+Overdrive&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DKlon%2BKTR%2BOverdrive",
+    "dna": [
+      8,
+      7,
+      9,
+      8,
+      6
+    ],
+    "score": 9.8,
+    "heroes": [
+      "mayer"
+    ],
+    "tags": [
+      "blues",
+      "rock",
+      "lead",
+      "warm",
+      "tube",
+      "boutique",
+      "premium",
+      "clean"
+    ],
+    "blurb": "The most hyped pedal in history that actually earns it. Makes your amp sound more like itself, only better."
+  },
+  {
+    "id": "centura",
+    "name": "Centura Professional Overdrive",
+    "brand": "Ceriatone",
+    "category": "overdrive",
+    "role": "gain-low",
+    "priceNum": 175,
+    "price": "$175",
+    "image": "https://ceriatone.com/wp-content/uploads/2018/10/web_CC_1.jpg",
+    "article": "articles/best-klon-clones.html",
+    "amazon": "https://www.amazon.com/s?k=Ceriatone+Centura+Overdrive&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DCeriatone%2BCentura%2BOverdrive",
+    "dna": [
+      8,
+      7,
+      9,
+      8,
+      8
+    ],
+    "score": 9.6,
+    "heroes": [
+      "mayer",
+      "clapton"
+    ],
+    "tags": [
+      "blues",
+      "rock",
+      "lead",
+      "warm",
+      "tube",
+      "premium",
+      "clean"
+    ],
+    "blurb": "The most faithful circuit-level Klon reproduction. Genuinely hard to tell from an original Centaur in blind testing."
+  },
+  {
+    "id": "tumnus-deluxe",
+    "name": "Tumnus Deluxe Overdrive",
+    "brand": "Wampler",
+    "category": "overdrive",
+    "role": "gain-low",
+    "priceNum": 149,
+    "price": "$149",
+    "image": "https://media.sweetwater.com/m/products/image/887c8865f4gjKLvaVORZcmhzAOgwPEuf4YMeQ7qp.jpg?quality=1&ha=887c8865f4d382de",
+    "article": "articles/best-klon-clones.html",
+    "amazon": "https://www.amazon.com/s?k=Wampler+Tumnus+Deluxe+Overdrive&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DWampler%2BTumnus%2BDeluxe%2BOverdrive",
+    "dna": [
+      8,
+      7,
+      8,
+      9,
+      8
+    ],
+    "score": 9.2,
+    "heroes": [
+      "mayer",
+      "knopfler"
+    ],
+    "tags": [
+      "blues",
+      "rock",
+      "lead",
+      "warm",
+      "tube",
+      "mid",
+      "premium",
+      "clean"
+    ],
+    "blurb": "Klon-inspired circuit with bass and treble controls. The EQ flexibility makes it work across more amps than the original."
+  },
+  {
+    "id": "soul-food",
+    "name": "Soul Food Overdrive",
+    "brand": "Electro-Harmonix",
+    "category": "overdrive",
+    "role": "gain-low",
+    "priceNum": 79,
+    "price": "$79",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/soulfood-f.jpg",
+    "article": "articles/best-klon-clones.html",
+    "amazon": "https://www.amazon.com/s?k=Electro-Harmonix+Soul+Food+Overdrive&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DElectro-Harmonix%2BSoul%2BFood%2BOverdrive",
+    "dna": [
+      7,
+      7,
+      8,
+      7,
+      9
+    ],
+    "score": 8.8,
+    "heroes": [],
+    "tags": [
+      "blues",
+      "rock",
+      "lead",
+      "warm",
+      "tube",
+      "budget",
+      "clean"
+    ],
+    "blurb": "The best Klon-style value at $79. Most players can't reliably tell it apart from the original at lower gain settings."
+  },
+  {
+    "id": "ds1",
+    "name": "DS-1 Distortion",
+    "brand": "Boss",
+    "category": "distortion",
+    "role": "gain-high",
+    "priceNum": 49,
+    "price": "$49",
+    "image": "https://static.roland.com/assets/images/products/main/ds-1_main.jpg",
+    "article": "articles/boss-ds1-review.html",
+    "amazon": "https://www.amazon.com/s?k=Boss+DS-1+Distortion&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DBoss%2BDS-1%2BDistortion",
+    "dna": [
+      6,
+      9,
+      6,
+      6,
+      10
+    ],
+    "score": 8.9,
+    "heroes": [
+      "frusciante",
+      "cantrell"
+    ],
+    "tags": [
+      "rock",
+      "metal",
+      "lead",
+      "grit",
+      "budget",
+      "ss",
+      "tube",
+      "high-gain"
+    ],
+    "blurb": "The $49 distortion pedal that defined rock guitar for 40 years. Simple, brutal, and effective."
+  },
+  {
+    "id": "rat2",
+    "name": "RAT2 Distortion",
+    "brand": "ProCo",
+    "category": "distortion",
+    "role": "gain-high",
+    "priceNum": 79,
+    "price": "$79",
+    "image": "https://pmt.imgix.net/catalog/product/R/A/RAT2_1.jpg?w=500&auto=compress",
+    "article": "articles/best-overdrive-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=ProCo+RAT2+Distortion&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DProCo%2BRAT2%2BDistortion",
+    "dna": [
+      6,
+      10,
+      6,
+      7,
+      9
+    ],
+    "score": 9.1,
+    "heroes": [
+      "cantrell",
+      "beck"
+    ],
+    "tags": [
+      "rock",
+      "metal",
+      "indie",
+      "lead",
+      "grit",
+      "budget",
+      "tube",
+      "high-gain",
+      "versatile"
+    ],
+    "blurb": "The RAT has been covering gain duties since 1979. One of the few distortions that works at all gain levels from light crunch to full melt."
+  },
+  {
+    "id": "big-muff",
+    "name": "Big Muff Pi",
+    "brand": "Electro-Harmonix",
+    "category": "fuzz",
+    "role": "fuzz",
+    "priceNum": 89,
+    "price": "$89",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/usbm-f.jpg",
+    "article": "articles/best-fuzz-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Electro-Harmonix+Big+Muff+Pi&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DElectro-Harmonix%2BBig%2BMuff%2BPi",
+    "dna": [
+      6,
+      10,
+      5,
+      5,
+      8
+    ],
+    "score": 9.3,
+    "heroes": [
+      "gilmour",
+      "cantrell",
+      "beck"
+    ],
+    "tags": [
+      "rock",
+      "indie",
+      "metal",
+      "lead",
+      "grit",
+      "budget",
+      "tube",
+      "warm"
+    ],
+    "blurb": "The most famous fuzz ever made. Massive sustained silicon fuzz that has appeared on more recordings than you can count."
+  },
+  {
+    "id": "fuzz-face",
+    "name": "Fuzz Face Mini",
+    "brand": "Dunlop",
+    "category": "fuzz",
+    "role": "fuzz",
+    "priceNum": 69,
+    "price": "$69",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/660/images/6598/11602052001.MAIN__79836.1663874798.386.513.jpg?c=2",
+    "article": "articles/best-fuzz-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Dunlop+Fuzz+Face+Mini&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DDunlop%2BFuzz%2BFace%2BMini",
+    "dna": [
+      7,
+      9,
+      6,
+      5,
+      8
+    ],
+    "score": 8.9,
+    "heroes": [
+      "hendrix",
+      "beck"
+    ],
+    "tags": [
+      "blues",
+      "rock",
+      "lead",
+      "warm",
+      "tube",
+      "budget",
+      "classic-rock"
+    ],
+    "blurb": "Hendrix's fuzz in a compact enclosure. Rolls back the guitar volume for the full range from sparkle clean to full singing fuzz."
+  },
+  {
+    "id": "eqd-hoof",
+    "name": "Hoof Fuzz",
+    "brand": "EarthQuaker Devices",
+    "category": "fuzz",
+    "role": "fuzz",
+    "priceNum": 145,
+    "price": "$145",
+    "image": "https://images.squarespace-cdn.com/content/57cebe2c03596e075fca5f24/1545936245365-7YYI7771A10T5E8NEX3W/Earthquaker-Hoof-Fuzz.jpg?content-type=image%2Fjpeg",
+    "article": "articles/best-fuzz-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=EarthQuaker+Devices+Hoof+Fuzz&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DEarthQuaker%2BDevices%2BHoof%2BFuzz",
+    "dna": [
+      6,
+      10,
+      6,
+      7,
+      7
+    ],
+    "score": 9.1,
+    "heroes": [
+      "gilmour",
+      "cantrell"
+    ],
+    "tags": [
+      "indie",
+      "rock",
+      "lead",
+      "grit",
+      "mid",
+      "premium",
+      "warm"
+    ],
+    "blurb": "Big Muff circuit with a real mid control. The shift knob finally fixes the band-mix disappearing act that classic Muffs are notorious for."
+  },
+  {
+    "id": "fuzz-factory",
+    "name": "Fuzz Factory",
+    "brand": "ZVex",
+    "category": "fuzz",
+    "role": "fuzz",
+    "priceNum": 249,
+    "price": "$249",
+    "image": "https://images.squarespace-cdn.com/content/555e332ce4b0577e788c3a16/1530209029128-8FIT05MCLKNC6NZ6VNXU/ZVEX_Fuzz_Factory.jpg?format=1500w&content-type=image%2Fjpeg",
+    "article": "articles/best-fuzz-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=ZVex+Fuzz+Factory&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DZVex%2BFuzz%2BFactory",
+    "dna": [
+      5,
+      10,
+      4,
+      8,
+      6
+    ],
+    "score": 8.5,
+    "heroes": [],
+    "tags": [
+      "indie",
+      "rock",
+      "ambient",
+      "grit",
+      "boutique",
+      "premium",
+      "versatile"
+    ],
+    "blurb": "Controlled chaos. Oscillates, gates, and squeals in genuinely musical ways. The pedal you buy when normal isn't enough."
+  },
+  {
+    "id": "echosystem",
+    "name": "Echosystem Delay",
+    "brand": "Empress Effects",
+    "category": "delay",
+    "role": "time-based",
+    "priceNum": 349,
+    "price": "$349",
+    "image": "https://empresseffects.com/cdn/shop/products/Echosystem_3-4.jpg?v=1712080837",
+    "article": "articles/best-delay-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Empress+Echosystem+Delay&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DEmpress%2BEchosystem%2BDelay",
+    "dna": [
+      7,
+      3,
+      9,
+      10,
+      7
+    ],
+    "score": 9.5,
+    "heroes": [
+      "edge"
+    ],
+    "tags": [
+      "indie",
+      "ambient",
+      "rock",
+      "delay",
+      "premium",
+      "boutique",
+      "direct",
+      "atmo",
+      "versatile"
+    ],
+    "blurb": "Two independent delay engines with 36 algorithms. The only delay you'll ever need to buy."
+  },
+  {
+    "id": "dd200",
+    "name": "DD-200 Digital Delay",
+    "brand": "Boss",
+    "category": "delay",
+    "role": "time-based",
+    "priceNum": 179,
+    "price": "$179",
+    "image": "https://static.roland.com/assets/images/products/gallery/dd-200_angle_gal.jpg",
+    "article": "articles/best-delay-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Boss+DD-200+Digital+Delay&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DBoss%2BDD-200%2BDigital%2BDelay",
+    "dna": [
+      7,
+      3,
+      9,
+      9,
+      8
+    ],
+    "score": 9.1,
+    "heroes": [
+      "mayer",
+      "frusciante",
+      "edge"
+    ],
+    "tags": [
+      "blues",
+      "indie",
+      "rock",
+      "delay",
+      "mid",
+      "premium",
+      "ss",
+      "direct",
+      "versatile"
+    ],
+    "blurb": "Boss's best compact delay: 12 modes, tap tempo, hold function, stereo I/O. The practical choice for working guitarists."
+  },
+  {
+    "id": "dd8",
+    "name": "DD-8 Digital Delay",
+    "brand": "Boss",
+    "category": "delay",
+    "role": "time-based",
+    "priceNum": 129,
+    "price": "$129",
+    "image": "https://static.roland.com/assets/images/products/gallery/dd-8_angle_gal.jpg",
+    "article": "articles/best-delay-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Boss+DD-8+Digital+Delay&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DBoss%2BDD-8%2BDigital%2BDelay",
+    "dna": [
+      7,
+      3,
+      9,
+      8,
+      9
+    ],
+    "score": 9,
+    "heroes": [
+      "knopfler",
+      "edge"
+    ],
+    "tags": [
+      "blues",
+      "rock",
+      "delay",
+      "mid",
+      "budget",
+      "ss",
+      "direct"
+    ],
+    "blurb": "11 modes, tap tempo, built-in looper. The most popular delay pedal in the world for very good reason."
+  },
+  {
+    "id": "carbon-copy",
+    "name": "Carbon Copy Analog Delay",
+    "brand": "MXR",
+    "category": "delay",
+    "role": "time-based",
+    "priceNum": 149,
+    "price": "$149",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/607/images/6299/11169000001.MAIN__89194.1663874794.386.513.jpg?c=2",
+    "article": "articles/best-delay-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=MXR+Carbon+Copy+Analog+Delay&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DMXR%2BCarbon%2BCopy%2BAnalog%2BDelay",
+    "dna": [
+      8,
+      3,
+      8,
+      6,
+      8
+    ],
+    "score": 8.9,
+    "heroes": [
+      "gilmour",
+      "srv",
+      "clapton"
+    ],
+    "tags": [
+      "blues",
+      "country",
+      "rock",
+      "delay",
+      "warm",
+      "mid",
+      "tube",
+      "direct"
+    ],
+    "blurb": "Genuine bucket-brigade warmth with simple controls. The benchmark for analog delay - sounds organic and sits in a mix perfectly."
+  },
+  {
+    "id": "bigsky",
+    "name": "BigSky Reverb",
+    "brand": "Strymon",
+    "category": "reverb",
+    "role": "time-based",
+    "priceNum": 479,
+    "price": "$479",
+    "image": "https://www.strymon.net/wp-content/uploads/2016/02/bigsky_topdown_grad2_1600-1024x1024-1.jpeg",
+    "article": "articles/strymon-bigsky-review.html",
+    "amazon": "https://www.amazon.com/s?k=Strymon+BigSky+Reverb&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DStrymon%2BBigSky%2BReverb",
+    "dna": [
+      8,
+      2,
+      9,
+      10,
+      7
+    ],
+    "score": 9.4,
+    "heroes": [
+      "gilmour",
+      "edge"
+    ],
+    "tags": [
+      "indie",
+      "ambient",
+      "atmo",
+      "clean",
+      "boutique",
+      "premium",
+      "direct",
+      "versatile"
+    ],
+    "blurb": "12 reverb algorithms at studio-rack quality. The standard by which every other reverb pedal is measured."
+  },
+  {
+    "id": "rv500",
+    "name": "RV-500 Reverb",
+    "brand": "Boss",
+    "category": "reverb",
+    "role": "time-based",
+    "priceNum": 299,
+    "price": "$299",
+    "image": "https://static.roland.com/assets/images/products/main/rv-500_main.jpg",
+    "article": "articles/best-reverb-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Boss+RV-500+Reverb&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DBoss%2BRV-500%2BReverb",
+    "dna": [
+      8,
+      2,
+      9,
+      9,
+      8
+    ],
+    "score": 9.2,
+    "heroes": [],
+    "tags": [
+      "indie",
+      "ambient",
+      "atmo",
+      "clean",
+      "premium",
+      "direct",
+      "ss",
+      "versatile"
+    ],
+    "blurb": "21 reverb modes with two engines simultaneously. Everything the BigSky does, for $180 less."
+  },
+  {
+    "id": "oceans11",
+    "name": "Oceans 11 Reverb",
+    "brand": "Electro-Harmonix",
+    "category": "reverb",
+    "role": "time-based",
+    "priceNum": 155,
+    "price": "$155",
+    "image": "https://www.ehx.com/wp-content/uploads/2020/10/oceans11-f.jpg",
+    "article": "articles/best-reverb-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Electro-Harmonix+Oceans+11+Reverb&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DElectro-Harmonix%2BOceans%2B11%2BReverb",
+    "dna": [
+      8,
+      2,
+      8,
+      9,
+      8
+    ],
+    "score": 9,
+    "heroes": [],
+    "tags": [
+      "indie",
+      "ambient",
+      "clean",
+      "mid",
+      "ss",
+      "direct",
+      "versatile"
+    ],
+    "blurb": "11 reverb types with secondary controls. Serious depth at $155 - the reverb to buy if you want BigSky range without BigSky price."
+  },
+  {
+    "id": "rv6",
+    "name": "RV-6 Reverb",
+    "brand": "Boss",
+    "category": "reverb",
+    "role": "time-based",
+    "priceNum": 145,
+    "price": "$145",
+    "image": "https://media.guitarcenter.com/is/image/MMGS7/Boss-RV-6-Reverb-Effects-Pedal/J04195000000000-00-2000x2000.jpg",
+    "article": "articles/best-reverb-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Boss+RV-6+Reverb&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DBoss%2BRV-6%2BReverb",
+    "dna": [
+      8,
+      2,
+      8,
+      8,
+      8
+    ],
+    "score": 8.8,
+    "heroes": [
+      "knopfler"
+    ],
+    "tags": [
+      "blues",
+      "indie",
+      "rock",
+      "clean",
+      "mid",
+      "ss",
+      "tube",
+      "budget-reverb"
+    ],
+    "blurb": "8 practical reverb modes with a dynamic mode that ducks reverb when you play hard. Knob-per-function, no menus."
+  },
+  {
+    "id": "strymon-ola",
+    "name": "Ola dBucket Chorus",
+    "brand": "Strymon",
+    "category": "modulation",
+    "role": "modulation",
+    "priceNum": 199,
+    "price": "$199",
+    "image": "https://www.strymon.net/wp-content/uploads/2015/09/ola_topdown_1600.jpg",
+    "article": "articles/best-chorus-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Strymon+Ola+Chorus&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DStrymon%2BOla%2BChorus",
+    "dna": [
+      7,
+      3,
+      8,
+      8,
+      7
+    ],
+    "score": 9.3,
+    "heroes": [
+      "gilmour",
+      "edge"
+    ],
+    "tags": [
+      "indie",
+      "rock",
+      "clean",
+      "ambient",
+      "premium",
+      "boutique",
+      "atmo"
+    ],
+    "blurb": "dBucket technology captures the warmth of vintage BBD chips without the noise. Silky smooth modulation at its finest."
+  },
+  {
+    "id": "ce5",
+    "name": "CE-5 Chorus Ensemble",
+    "brand": "Boss",
+    "category": "modulation",
+    "role": "modulation",
+    "priceNum": 99,
+    "price": "$99",
+    "image": "https://static.roland.com/products/ce-5/images/ce-5_01_gal.jpg",
+    "article": "articles/best-chorus-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Boss+CE-5+Chorus+Ensemble&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DBoss%2BCE-5%2BChorus%2BEnsemble",
+    "dna": [
+      7,
+      3,
+      8,
+      8,
+      8
+    ],
+    "score": 9.2,
+    "heroes": [
+      "frusciante",
+      "edge"
+    ],
+    "tags": [
+      "indie",
+      "pop",
+      "funk",
+      "clean",
+      "rhythm",
+      "mid",
+      "budget",
+      "ss",
+      "direct"
+    ],
+    "blurb": "The definitive workhorse chorus. Based on the legendary CE-1 circuit, the CE-5 is responsible for decades of classic clean chorus tone."
+  },
+  {
+    "id": "mxr-analog-chorus",
+    "name": "M234 Analog Chorus",
+    "brand": "MXR",
+    "category": "modulation",
+    "role": "modulation",
+    "priceNum": 99,
+    "price": "$99",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/629/images/6423/11234000001.MAIN__89220.1663874795.386.513.jpg?c=2",
+    "article": "articles/best-chorus-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=MXR+M234+Analog+Chorus&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DMXR%2BM234%2BAnalog%2BChorus",
+    "dna": [
+      8,
+      3,
+      8,
+      7,
+      8
+    ],
+    "score": 9,
+    "heroes": [
+      "gilmour",
+      "clapton"
+    ],
+    "tags": [
+      "blues",
+      "rock",
+      "clean",
+      "rhythm",
+      "mid",
+      "budget",
+      "tube",
+      "warm"
+    ],
+    "blurb": "All-analog bucket-brigade chorus with a high-cut filter. Warmer and more vintage-flavored than its Boss competitor."
+  },
+  {
+    "id": "walrus-julia",
+    "name": "Julia V2 Chorus Vibrato",
+    "brand": "Walrus Audio",
+    "category": "modulation",
+    "role": "modulation",
+    "priceNum": 179,
+    "price": "$179",
+    "image": "https://www.walrusaudio.com/cdn/shop/files/Julia-V2_right_front_900x.jpg?v=1755869159",
+    "article": "articles/best-chorus-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Walrus+Audio+Julia+V2+Chorus&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DWalrus%2BAudio%2BJulia%2BV2%2BChorus",
+    "dna": [
+      7,
+      3,
+      8,
+      9,
+      7
+    ],
+    "score": 8.9,
+    "heroes": [],
+    "tags": [
+      "indie",
+      "ambient",
+      "clean",
+      "premium",
+      "direct",
+      "atmo",
+      "versatile"
+    ],
+    "blurb": "The D-C-V blend knob sweeps from pure dry to full vibrato in one movement. Extraordinarily expressive modulation."
+  },
+  {
+    "id": "phase-90",
+    "name": "Phase 90",
+    "brand": "MXR",
+    "category": "modulation",
+    "role": "modulation",
+    "priceNum": 79,
+    "price": "$79",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/589/images/6193/11101000001.MAIN__38391.1663874793.386.513.jpg?c=2",
+    "article": "articles/mxr-phase-90-review.html",
+    "amazon": "https://www.amazon.com/s?k=MXR+Phase+90&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DMXR%2BPhase%2B90",
+    "dna": [
+      7,
+      4,
+      8,
+      7,
+      9
+    ],
+    "score": 9.2,
+    "heroes": [
+      "frusciante",
+      "beck",
+      "srv"
+    ],
+    "tags": [
+      "blues",
+      "rock",
+      "indie",
+      "funk",
+      "rhythm",
+      "budget",
+      "tube",
+      "ss",
+      "classic-rock"
+    ],
+    "blurb": "The phaser. One knob, one sound, and that sound is one of the most iconic in guitar history. EVH used one. Enough said."
+  },
+  {
+    "id": "tr2",
+    "name": "TR-2 Tremolo",
+    "brand": "Boss",
+    "category": "modulation",
+    "role": "modulation",
+    "priceNum": 99,
+    "price": "$99",
+    "image": "https://static.roland.com/assets/images/products/main/tr-2_main.jpg",
+    "article": "articles/best-chorus-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Boss+TR-2+Tremolo&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DBoss%2BTR-2%2BTremolo",
+    "dna": [
+      7,
+      3,
+      8,
+      6,
+      8
+    ],
+    "score": 8.7,
+    "heroes": [],
+    "tags": [
+      "blues",
+      "country",
+      "rock",
+      "rhythm",
+      "budget",
+      "tube",
+      "clean",
+      "classic-rock"
+    ],
+    "blurb": "Classic optical-style tremolo that covers everything from subtle texture to full chop. Pairs perfectly with a clean amp."
+  },
+  {
+    "id": "cali76",
+    "name": "Cali76 Compact Deluxe",
+    "brand": "Origin Effects",
+    "category": "compressor",
+    "role": "dynamics",
+    "priceNum": 299,
+    "price": "$299",
+    "image": "https://origineffects.com/wp-content/uploads/2016/04/Origin-Effects-Cali76-Compact-Deluxe-Main-Product-Image-1.jpg",
+    "article": "articles/best-compressor-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Origin+Effects+Cali76+Compact+Deluxe&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DOrigin%2BEffects%2BCali76%2BCompact%2BDeluxe",
+    "dna": [
+      7,
+      4,
+      9,
+      8,
+      7
+    ],
+    "score": 9.5,
+    "heroes": [
+      "mayer",
+      "gilmour",
+      "knopfler"
+    ],
+    "tags": [
+      "blues",
+      "country",
+      "funk",
+      "clean",
+      "premium",
+      "boutique",
+      "lead",
+      "jazz"
+    ],
+    "blurb": "1176-inspired FET compression that is simply more transparent and musical than anything else in pedal format."
+  },
+  {
+    "id": "keeley-comp",
+    "name": "Compressor Plus",
+    "brand": "Keeley",
+    "category": "compressor",
+    "role": "dynamics",
+    "priceNum": 129,
+    "price": "$129",
+    "image": "https://thumbs.static-thomann.de/thumb/padthumb600x600/pics/bdb/_41/417791/12357167_800.jpg",
+    "article": "articles/best-compressor-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Keeley+Compressor+Plus&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DKeeley%2BCompressor%2BPlus",
+    "dna": [
+      7,
+      4,
+      9,
+      8,
+      8
+    ],
+    "score": 9.2,
+    "heroes": [
+      "srv",
+      "mayer",
+      "knopfler",
+      "clapton"
+    ],
+    "tags": [
+      "blues",
+      "country",
+      "funk",
+      "clean",
+      "mid",
+      "premium",
+      "lead",
+      "jazz"
+    ],
+    "blurb": "The best value in optical compression. Four controls, all genuinely useful. Works beautifully on clean guitar and light overdrive."
+  },
+  {
+    "id": "535q",
+    "name": "535Q Multi-Wah",
+    "brand": "Dunlop",
+    "category": "wah",
+    "role": "filter",
+    "priceNum": 139,
+    "price": "$139",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/657/images/6586/11537002001.MAIN__42690.1663874797.386.513.jpg?c=2",
+    "article": "articles/best-wah-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Dunlop+535Q+Multi-Wah&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DDunlop%2B535Q%2BWah",
+    "dna": [
+      6,
+      7,
+      7,
+      9,
+      7
+    ],
+    "score": 9.3,
+    "heroes": [
+      "hendrix",
+      "frusciante",
+      "srv"
+    ],
+    "tags": [
+      "blues",
+      "metal",
+      "funk",
+      "lead",
+      "mid",
+      "premium",
+      "tube",
+      "versatile"
+    ],
+    "blurb": "Fully adjustable wah with variable Q and frequency sweep. Can nail Hendrix, Clapton, or modern metal from the same pedal."
+  },
+  {
+    "id": "gcb95",
+    "name": "GCB95 Original Crybaby",
+    "brand": "Dunlop",
+    "category": "wah",
+    "role": "filter",
+    "priceNum": 79,
+    "price": "$79",
+    "image": "https://cdn11.bigcommerce.com/s-n26aknlnlm/products/583/images/6157/11095000001.MAIN__82256.1663874792.386.513.jpg?c=2",
+    "article": "articles/best-wah-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Dunlop+GCB95+Original+Crybaby+Wah&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DDunlop%2BGCB95%2BCrybaby%2BWah",
+    "dna": [
+      6,
+      7,
+      7,
+      6,
+      8
+    ],
+    "score": 9,
+    "heroes": [
+      "hendrix",
+      "srv",
+      "clapton"
+    ],
+    "tags": [
+      "blues",
+      "rock",
+      "lead",
+      "budget",
+      "tube",
+      "classic-rock"
+    ],
+    "blurb": "The wah pedal on more recordings than any other. The classic 60s and 70s nasal, vocal sweep - plug in and play."
+  },
+  {
+    "id": "tu3",
+    "name": "TU-3 Chromatic Tuner",
+    "brand": "Boss",
+    "category": "tuner",
+    "role": "utility",
+    "priceNum": 99,
+    "price": "$99",
+    "image": "https://static.roland.com/assets/images/products/gallery/tu-3_top_gal.jpg",
+    "article": "articles/best-tuner-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Boss+TU-3+Chromatic+Tuner&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DBoss%2BTU-3%2BTuner",
+    "dna": [
+      5,
+      1,
+      10,
+      5,
+      9
+    ],
+    "score": 9.5,
+    "heroes": [],
+    "tags": [
+      "utility",
+      "tuner",
+      "budget",
+      "ss",
+      "tube",
+      "direct",
+      "blues",
+      "rock",
+      "metal",
+      "country",
+      "funk",
+      "indie",
+      "ambient",
+      "jazz"
+    ],
+    "blurb": "The industry standard tuner pedal. True bypass or buffer mode, ultra-bright display that reads in full sun, and built like a tank."
+  },
+  {
+    "id": "ns2",
+    "name": "NS-2 Noise Suppressor",
+    "brand": "Boss",
+    "category": "noise-gate",
+    "role": "utility",
+    "priceNum": 99,
+    "price": "$99",
+    "image": "https://static.roland.com/assets/images/products/main/ns-2_main.jpg",
+    "article": "articles/best-noise-gate-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Boss+NS-2+Noise+Suppressor&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DBoss%2BNS-2%2BNoise%2BSuppressor",
+    "dna": [
+      5,
+      1,
+      9,
+      6,
+      9
+    ],
+    "score": 9.1,
+    "heroes": [],
+    "tags": [
+      "utility",
+      "noise-gate",
+      "metal",
+      "rock",
+      "budget",
+      "ss",
+      "high-gain"
+    ],
+    "blurb": "The go-to noise gate for high-gain rigs. Loop function keeps all your dirt pedals inside the suppressor loop for surgical noise reduction."
+  },
+  {
+    "id": "rc5",
+    "name": "RC-5 Loop Station",
+    "brand": "Boss",
+    "category": "looper",
+    "role": "utility",
+    "priceNum": 149,
+    "price": "$149",
+    "image": "https://static.roland.com/assets/images/products/main/rc-5_main.jpg",
+    "article": "articles/best-looper-pedals.html",
+    "amazon": "https://www.amazon.com/s?k=Boss+RC-5+Loop+Station&tag=pedalhound-20",
+    "reverb": "https://www.awin1.com/cread.php?awinmid=67144&awinaffid=3000683&ued=https%3A%2F%2Freverb.com%2Fsearch%3Fquery%3DBoss%2BRC-5%2BLoop%2BStation",
+    "dna": [
+      5,
+      1,
+      9,
+      8,
+      9
+    ],
+    "score": 9,
+    "heroes": [],
+    "tags": [
+      "utility",
+      "looper",
+      "budget",
+      "direct",
+      "ss",
+      "blues",
+      "indie",
+      "ambient",
+      "jazz"
+    ],
+    "blurb": "99 memory slots, 13 hours of recording, built-in rhythm patterns. The most capable compact looper at this price point."
+  }
+]
