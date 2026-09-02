@@ -458,7 +458,6 @@ function checkCompatibility() {
  }
  }
  const fuzzIdxs = pedals.map((p,i) => p.role === "fuzz" ? i : -1).filter(i => i >= 0);
- const buffers = pedals.filter(p => p.id === "tu3" && i => !board.includes("true-bypass"));
  if (fuzzIdxs.length && tunerIdx !== -1 && pedals[tunerIdx]?.id === "tu3") {
  const firstFuzz = Math.min(...fuzzIdxs);
  if (tunerIdx > 0 && tunerIdx < firstFuzz) {
