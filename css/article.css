@@ -416,3 +416,58 @@
   .buying-guide li strong { min-width: unset; }
   .score-card { flex-direction: column; gap: .5rem; }
 }
+
+
+/* --- FAQ Section --- */
+.faq-section {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--orange);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  margin: 2.5rem 0 1rem;
+}
+.faq-label {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--orange);
+  margin-bottom: .5rem;
+}
+.faq-section h3 { font-size: 1.15rem; color: var(--text); margin: 0 0 .5rem; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: none; }
+.faq-item summary {
+  cursor: pointer;
+  padding: .9rem 0;
+  font-weight: 600;
+  color: var(--text);
+  font-size: .95rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  color: var(--orange);
+  font-size: 1.3rem;
+  font-weight: 400;
+  flex-shrink: 0;
+  transition: transform .2s ease;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p {
+  color: var(--text-muted);
+  font-size: .9rem;
+  line-height: 1.65;
+  padding: 0 0 1rem;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .faq-section { padding: 1.25rem; }
+}
